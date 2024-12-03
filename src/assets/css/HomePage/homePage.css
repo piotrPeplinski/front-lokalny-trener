@@ -82,3 +82,97 @@ a.shift.important:after {
 a.shift.important:hover:after {
     background: #5691c2;
 }
+
+/* --------------------- */
+/* SEARCH TRAINER */
+/* --------------------- */
+.search-container {
+    background: linear-gradient(to right, #4285c4, #86bedf);
+    padding: 1.5rem 0;
+}
+
+.search-container h1 {
+    color: #fff;
+    font-size: 4.2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-container h3 {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+}
+
+.search-container form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+}
+
+.form-row input[type='text'],
+.form-row select {
+    height: 35px;
+    width: 180px;
+    border: none;
+    border-radius: 8px;
+    padding: 0 4px;
+}
+
+.form-row select {
+    width: 210px;
+}
+
+.form-row select:first-of-type,
+.form-row input {
+    margin-right: 1rem;
+}
+
+.form-row input[type='text']::placeholder,
+.form-row input[type='text'],
+.form-row select {
+    font-size: 2.2rem;
+    font-family: 'Montserrat';
+}
+
+.remote-btn {
+    display: flex;
+    width: fit-content;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    padding: 0 4px;
+    align-items: center;
+    background-color: transparent;
+    box-shadow: inset 0 0 5px 2px transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.remote-btn p {
+    font-size: 1.9rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.remote-btn svg {
+    width: 2.3rem;
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.remote-btn.clicked {
+    box-shadow: inset 0 0 5px 2px #22496e;
+    background-color: #3a7bb9;
+}
