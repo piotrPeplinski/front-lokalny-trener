@@ -1,4 +1,4 @@
-import HomePage from "./components/HomePage";
+import HomePage from "./modules/HomePage/HomePage";
 import './assets/css/font-faces.css'
 import './assets/css/main.css'
 
