@@ -3,20 +3,26 @@ import logo from "./../../../assets/img/logo.png";
 
 const NavBar: FC<{}> = () => {
   return (
-    <nav className="shift">
+    <nav>
       <a href="#">
         <img src={logo} alt="Logo" />
       </a>
 
       <ul className="main-nav">
         <li>
-          <a href="#">Czym jesteśmy</a>
+          <a className="shift" href="#">
+            Czym jesteśmy
+          </a>
         </li>
         <li>
-          <a href="#">Zaloguj się</a>
+          <a className="shift" href="#">
+            Zaloguj się
+          </a>
         </li>
         <li>
-          <a href="#">Zarejestruj się</a>
+          <a className="shift important" href="#">
+            Zarejestruj się
+          </a>
         </li>
       </ul>
     </nav>

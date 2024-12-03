@@ -43,16 +43,12 @@ nav ul li a:before {
     transition: all .5s;
 }
 
-nav.shift ul li a {
+a.shift {
     position: relative;
     z-index: 1;
 }
 
-nav.shift ul li a:hover {
-    color: #fff;
-}
-
-nav.shift ul li a:after {
+a.shift:after {
     display: block;
     position: absolute;
     top: 0;
@@ -71,8 +67,18 @@ nav.shift ul li a:after {
     border-radius: 0.2rem;
 }
 
-nav.shift ul li a:hover:after {
+a.shift:hover,
+a.shift.important {
+    color: #fff;
+}
+
+a.shift:hover:after,
+a.shift.important:after {
     opacity: 1;
     visibility: visible;
     height: 100%;
+}
+
+a.shift.important:hover:after {
+    background: #5691c2;
 }
