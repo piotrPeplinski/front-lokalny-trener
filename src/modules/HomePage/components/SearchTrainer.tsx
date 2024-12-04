@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import api from "../../../api/axiosClient";
 import { Category } from "../types";
-import { HomeIcon } from "../../../assets/icons/icons";
+import { HomeIcon, SearchIcon } from "../../../assets/icons/icons";
 
 const SearchTrainer: FC<{}> = () => {
   const [categories, setCategories] = useState([]);
@@ -98,7 +98,10 @@ const SearchTrainer: FC<{}> = () => {
               </select>
             </div>
           </div>
-          {/* <button>Wyszukaj</button> */}
+          <button className="btn btn-light">
+            <SearchIcon />
+            <p>Wyszukaj</p>
+          </button>
         </form>
       </div>
     </div>

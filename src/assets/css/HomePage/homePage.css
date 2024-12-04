@@ -109,6 +109,7 @@ a.shift.important:hover:after {
 .search-container form {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
 .form-col {

@@ -29,3 +29,39 @@ li {
     width: 1140px;
     margin: 0 auto;
 }
+
+.btn {
+    display: flex;
+    width: fit-content;
+    height: 35px;
+    font-family: 'Montserrat';
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    padding: 0 4px;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn svg {
+    width: 2.3rem;
+    margin-right: 0.5rem;
+}
+
+.btn-dark,
+.btn-light:hover,
+.btn-light:active {
+    background-color: #3a7bb9;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: all 0.4s;
+}
+
+.btn-light,
+.btn-dark:hover,
+.btn-dark:active {
+    background-color: #fff;
+    border: 2px solid #3a7bb9;
+    color: #3a7bb9;
+    transition: all 0.4s;
+}
