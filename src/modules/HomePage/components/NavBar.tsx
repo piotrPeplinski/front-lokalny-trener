@@ -15,7 +15,7 @@ const NavBar: FC<{}> = () => {
           </a>
         </li>
         <li>
-          <a className="shift" href="#">
+          <a className="shift" href="/login">
             Zaloguj się
           </a>
         </li>

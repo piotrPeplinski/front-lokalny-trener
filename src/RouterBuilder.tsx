@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 import HomePage from "./modules/HomePage/HomePage";
 import RegisterScreen from "./modules/Auth/RegisterScreen";
 import AppLayout from "./App.layout";
+import LoginScreen from "./modules/Auth/LoginScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -13,6 +14,10 @@ const RouterBuilder = () => {
     {
       path: "/register",
       element: <RegisterScreen />,
+    },
+    {
+      path: "/login",
+      element: <LoginScreen />,
     },
   ];
 

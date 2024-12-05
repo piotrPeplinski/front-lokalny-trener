@@ -105,3 +105,40 @@
 .margin-top {
     margin-top: 2rem;
 }
+
+/* --------------------- */
+/* LOGIN SCREEN */
+/* --------------------- */
+.login-container {
+    width: fit-content;
+    padding: 4rem;
+    align-self: center;
+}
+
+.login-container input[type='password'] {
+    width: 30rem;
+}
+
+.login-container input {
+    margin-bottom: 2rem;
+    margin-top: 0.3rem;
+}
+
+.forgot-password {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #3a7bb9;
+    color: #3a7bb9;
+    transition: all 0.4s;
+}
+
+.forgot-password:hover,
+.forgot-password:active {
+    color: #1e3f5f;
+    border-color: transparent;
+}
+
+.login-container img {
+    width: 4rem;
+    margin-bottom: 2rem;
+}

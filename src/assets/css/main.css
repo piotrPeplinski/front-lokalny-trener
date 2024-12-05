@@ -92,3 +92,10 @@ section {
 .dark-bg {
     background-color: #f5f5f5;
 }
+
+.center-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
