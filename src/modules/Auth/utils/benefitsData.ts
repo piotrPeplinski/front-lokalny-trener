@@ -3,7 +3,7 @@ const benefitsData = {
     slogan: "Załóż konto, zapełnij swój grafik i zarabiaj ponad 100zł/h!",
     benefitsArray: [
       "Możliwość wystawiania ogłoszeń w różnych kategoriach",
-      "Dostęp do ogłoszeń osób potrzebujących aktualnie instruktora",
+      "Dostęp do bieżących  ogłoszeń osób szukających aktualnie pomocy w dziedzinie w której jesteś ekspertem!",
       "Reklamę siebie i swoich usług przed tysiącami osób w całej Polsce",
     ],
   },
@@ -11,6 +11,7 @@ const benefitsData = {
     slogan:
       "Załóż konto, dodaj ogłoszenie, a specjalista skontaktuje się z Tobą!",
     benefitsArray: [
+      "Stały kontakt z twoim ekspertem",
       "Możliwość wystawiania opinii",
       "Możliwość tworzenia ogłoszeń jako potrzebujący",
     ],

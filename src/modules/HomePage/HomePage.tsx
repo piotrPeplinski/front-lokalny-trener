@@ -2,6 +2,7 @@ import { FC } from "react";
 import "../../assets/css/HomePage/homePage.css";
 import SearchTrainer from "./components/SearchTrainer";
 import Steps from "./components/Steps";
+import RegisterScreen from "../Auth/RegisterScreen";
 
 const HomePage: FC<{}> = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage: FC<{}> = () => {
       <section>
         <Steps />
       </section>
+      <RegisterScreen darkBg={true} />
     </>
   );
 };

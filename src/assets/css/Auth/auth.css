@@ -71,3 +71,37 @@
     width: 3rem;
     color: #3a7bb9;
 }
+
+/* --------------------- */
+/* REGISTER FORM */
+/* --------------------- */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.register-container form {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.register-row {
+    display: flex;
+}
+
+.register-row input:first-of-type {
+    margin-right: 2rem;
+}
+
+.form-label {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.margin-top {
+    margin-top: 2rem;
+}

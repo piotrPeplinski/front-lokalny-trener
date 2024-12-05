@@ -1,12 +1,17 @@
 import { FC, useState } from "react";
 import "./../../assets/css/Auth/auth.css";
 import Benefits from "./components/Benefits";
+import RegisterForm from "./components/RegisterForm";
 
-const RegisterScreen: FC<{}> = () => {
+interface RegisterScreenProps {
+  darkBg?: boolean;
+}
+
+const RegisterScreen: FC<RegisterScreenProps> = ({ darkBg }) => {
   const [isTrainer, setIsTrainer] = useState(true);
 
   return (
-    <section>
+    <section className={darkBg ? "dark-bg" : ""}>
       <div className="row">
         <div className="auth-row">
           <div className="auth-col">
@@ -27,7 +32,9 @@ const RegisterScreen: FC<{}> = () => {
           </div>
         </div>
         <div className="auth-row">
-          <div className="auth-col"></div>
+          <div className="auth-col">
+            <RegisterForm isTrainer={isTrainer} />
+          </div>
           <div className="auth-col">
             <Benefits isTrainer={isTrainer} />
           </div>
