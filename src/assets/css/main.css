@@ -65,3 +65,7 @@ li {
     color: #3a7bb9;
     transition: all 0.4s;
 }
+
+section {
+    padding: 7rem 3rem;
+}

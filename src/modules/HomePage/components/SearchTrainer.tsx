@@ -45,65 +45,71 @@ const SearchTrainer: FC<{}> = () => {
 
   return (
     <div className="search-container">
-      <div className="row">
-        <h1>
-          Znajdź idealnego specjalistę i umów zajęcia w kilka chwil – szybko,
-          wygodnie, skutecznie!
-        </h1>
-        <form action="">
-          <div className="form-col">
-            <h3>Gdzie chcesz odbyć zajęcia?</h3>
-            <div className="form-row">
-              <input type="text" placeholder="Wpisz miasto" disabled={remote} />
-              <div
-                onClick={() => setRemote(!remote)}
-                className={`remote-btn ${remote ? "clicked" : ""}`}
-              >
-                <HomeIcon />
-                <p>Zdalnie</p>
+      <section>
+        <div className="row">
+          <h1>
+            Znajdź idealnego specjalistę i umów zajęcia w kilka chwil – szybko,
+            wygodnie, skutecznie!
+          </h1>
+          <form action="">
+            <div className="form-col">
+              <h3>Gdzie chcesz odbyć zajęcia?</h3>
+              <div className="form-row">
+                <input
+                  type="text"
+                  placeholder="Wpisz miasto"
+                  disabled={remote}
+                />
+                <div
+                  onClick={() => setRemote(!remote)}
+                  className={`remote-btn ${remote ? "clicked" : ""}`}
+                >
+                  <HomeIcon />
+                  <p>Zdalnie</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="form-col">
-            <h3>W czym potrzebujesz pomocy?</h3>
-            <div className="form-row">
-              <select
-                name=""
-                id=""
-                onChange={(e) => {
-                  const selectedCategory = categories.find(
-                    (category: Category) =>
-                      category.id === parseInt(e.target.value)
-                  );
-                  if (selectedCategory) {
-                    setCategory(selectedCategory);
-                    setSubcategory({ id: 0, name: "" }); // Reset subcategory
-                  }
-                }}
-              >
-                <option selected disabled>
-                  Kategoria
-                </option>
-                {categories?.map((category: Category) => (
-                  <option value={category.id}>{category.name}</option>
-                ))}
-              </select>
-              <select name="" id="" disabled={category.id === 0}>
-                <option selected disabled>
-                  Podkategoria
-                </option>
-                {subcategories?.map((subcategory: Category) => (
-                  <option value={subcategory.id}>{subcategory.name}</option>
-                ))}
-              </select>
+            <div className="form-col">
+              <h3>W czym potrzebujesz pomocy?</h3>
+              <div className="form-row">
+                <select
+                  name=""
+                  id=""
+                  onChange={(e) => {
+                    const selectedCategory = categories.find(
+                      (category: Category) =>
+                        category.id === parseInt(e.target.value)
+                    );
+                    if (selectedCategory) {
+                      setCategory(selectedCategory);
+                      setSubcategory({ id: 0, name: "" }); // Reset subcategory
+                    }
+                  }}
+                >
+                  <option selected disabled>
+                    Kategoria
+                  </option>
+                  {categories?.map((category: Category) => (
+                    <option value={category.id}>{category.name}</option>
+                  ))}
+                </select>
+                <select name="" id="" disabled={category.id === 0}>
+                  <option selected disabled>
+                    Podkategoria
+                  </option>
+                  {subcategories?.map((subcategory: Category) => (
+                    <option value={subcategory.id}>{subcategory.name}</option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
-          <button className="btn btn-light">
-            <SearchIcon />
-            <p>Wyszukaj</p>
-          </button>
-        </form>
-      </div>
+            <button className="btn btn-light">
+              <SearchIcon />
+              <p>Wyszukaj</p>
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

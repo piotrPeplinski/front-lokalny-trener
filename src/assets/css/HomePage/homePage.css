@@ -88,7 +88,6 @@ a.shift.important:hover:after {
 /* --------------------- */
 .search-container {
     background: linear-gradient(to right, #4285c4, #86bedf);
-    padding: 1.5rem 0;
 }
 
 .search-container h1 {
@@ -176,4 +175,32 @@ a.shift.important:hover:after {
 .remote-btn.clicked {
     box-shadow: inset 0 0 5px 2px #22496e;
     background-color: #3a7bb9;
+}
+
+/* --------------------- */
+/* STEPS */
+/* --------------------- */
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 40rem;
+}
+
+.step svg {
+    width: 6rem;
+    color: #3a7bb9;
+    fill: #3a7bb9;
+}
+
+.step p {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
 }
