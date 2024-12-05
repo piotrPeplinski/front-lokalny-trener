@@ -52,7 +52,7 @@ li {
 .btn-light:hover,
 .btn-light:active {
     background-color: #3a7bb9;
-    border: 2px solid #fff;
+    border: 2px solid #3a7bb9;
     color: #fff;
     transition: all 0.4s;
 }

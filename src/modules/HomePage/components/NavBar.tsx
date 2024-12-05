@@ -4,7 +4,7 @@ import logo from "./../../../assets/img/logo.png";
 const NavBar: FC<{}> = () => {
   return (
     <nav>
-      <a href="#">
+      <a href="/">
         <img src={logo} alt="Logo" />
       </a>
 

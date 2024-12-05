@@ -1,0 +1,73 @@
+/* --------------------- */
+/* REGISTER SCREEN */
+/* --------------------- */
+
+.auth-row {
+    display: flex;
+}
+
+.auth-col {
+    display: flex;
+    width: 50%;
+    padding: 0 3rem 3rem 3rem;
+
+}
+
+.auth-col:first-of-type {
+    border-right: 1px solid #b8b8b8;
+    justify-content: flex-end;
+}
+
+.auth-col:last-of-type {
+    border-left: 1px solid #b8b8b8;
+}
+
+/* --------------------- */
+/* BENEFITS */
+/* --------------------- */
+.benefits h3 {
+    font-size: 2.5rem;
+    font-weight: 400;
+
+}
+
+.benefits__intro {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.benefits__intro p {
+    font-size: 2.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 0.6rem;
+}
+
+.benefits__intro svg {
+    width: 2.7rem;
+    color: #3a7bb9;
+}
+
+.benefits__list {
+    margin-top: 2rem;
+}
+
+.benefits__list__benefit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.benefits__list__benefit p {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: justify;
+    width: fit-content;
+    margin-left: 0.6rem;
+}
+
+.benefits__list__benefit svg {
+    width: 3rem;
+    color: #3a7bb9;
+}

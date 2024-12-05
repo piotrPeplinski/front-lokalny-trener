@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import HomePage from "./modules/HomePage/HomePage";
-import Register from "./modules/Auth/Register";
+import RegisterScreen from "./modules/Auth/RegisterScreen";
 import AppLayout from "./App.layout";
 
 const RouterBuilder = () => {
@@ -12,7 +12,7 @@ const RouterBuilder = () => {
     },
     {
       path: "/register",
-      element: <Register />,
+      element: <RegisterScreen />,
     },
   ];
 
