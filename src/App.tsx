@@ -1,9 +1,13 @@
-import HomePage from "./modules/HomePage/HomePage";
-import './assets/css/font-faces.css'
-import './assets/css/main.css'
+import { useMemo } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RouterBuilder from "./RouterBuilder";
+import "./assets/css/font-faces.css";
+import "./assets/css/main.css";
 
-function App() {
-  return <HomePage />;
-}
+const App = () => {
+  const routes = useMemo(() => RouterBuilder(), []);
+
+  return <RouterProvider router={createBrowserRouter(routes)} />;
+};
 
 export default App;

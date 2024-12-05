@@ -20,7 +20,7 @@ const NavBar: FC<{}> = () => {
           </a>
         </li>
         <li>
-          <a className="shift important" href="#">
+          <a className="shift important" href="/register">
             Zarejestruj się
           </a>
         </li>
