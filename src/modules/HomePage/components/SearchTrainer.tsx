@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import api from "../../../api/axiosClient";
+import { api } from "../../../api/axiosClient";
 import { Category } from "../types";
 import { HomeIcon, SearchIcon } from "../../../assets/icons/icons";
 
