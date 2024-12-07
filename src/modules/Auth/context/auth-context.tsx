@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { api } from "../../../api/axiosClient"; // Ensure you have your axios clients
 import { decodeJWT } from "../utils/functions";
-import { User } from "../types/auth-types";
+import { RegisterData, User } from "../types/auth-types";
 
 // Define the shape of the context
 interface AuthContextProps {
@@ -12,23 +12,13 @@ interface AuthContextProps {
   isAuthenticated: boolean;
 }
 
-interface RegisterData {
-  email: string;
-  password: string;
-  first_name?: string;
-  last_name?: string;
-  is_trainer?: boolean;
-}
-
 // Create the context
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<{ id: number; is_trainer: boolean } | null>(
-    null
-  );
+  const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Decode token and fetch user info if a token exists
