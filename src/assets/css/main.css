@@ -99,3 +99,7 @@ section {
     justify-content: center;
     align-items: center;
 }
+
+.shadow {
+    box-shadow: 0 0 8px 2px #d6d6d6;
+}

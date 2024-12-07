@@ -23,7 +23,7 @@ const getNavbarData = (user: User | null) => {
   } else {
     links = [
       {
-        href: "#",
+        href: "/profile",
         text: "Mój profil",
         classes: "shift",
       },
