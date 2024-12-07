@@ -1,10 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { api } from "../../../api/axiosClient"; // Ensure you have your axios clients
 import { decodeJWT } from "../utils/functions";
+import { User } from "../types/auth-types";
 
 // Define the shape of the context
 interface AuthContextProps {
-  user: { id: number; is_trainer: boolean } | null;
+  user: User | null;
   login: (email: string, password: string) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => void;
