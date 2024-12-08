@@ -60,3 +60,14 @@
     height: 2rem;
     width: 2rem;
 }
+
+.profile-image-circle {
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    overflow: hidden;
+}
+
+.profile-image-circle img {
+    width: 100%;
+}
