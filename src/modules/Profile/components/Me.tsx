@@ -28,13 +28,60 @@ const Me: FC<{}> = () => {
     fetchProfile();
   }, [user?.id]);
 
-  useEffect(() => {
-    console.log(profileData);
-  }, [profileData]);
+  // Handle file input changes
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setProfilePicture(file);
+
+      // Use FileReader to display a preview of the image
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileData({
+          ...profileData,
+          profile_picture: reader.result as string, // Set the preview URL
+        });
+      };
+      reader.readAsDataURL(file); // Read the selected file as a data URL
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    // Append all fields to the form data
+    // formData.append("id", `${user?.id}`);
+    formData.append("first_name", profileData.first_name);
+    formData.append("last_name", profileData.last_name);
+    formData.append("city", profileData.city);
+    formData.append("remote", String(profileData.remote));
+
+    // If a new profile picture is selected, append it
+    if (profilePicture) {
+      formData.append("profile_picture", profilePicture);
+    }
+
+    try {
+      // Send PUT request to update user profile
+      const response = await protectedApi.put(
+        `accounts/users/${user?.id}/`,
+        formData
+      );
+      console.log("Profile updated successfully:", response.data);
+      alert("Zaktualizowano pomyślnie!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Błąd podczas aktualizacji. Spróbuj ponownie.");
+    }
+  };
+
   return (
     <div className="me-container">
       <h1 className="profile-func-title">O mnie</h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="form-row-2">
           <div className="form-col-2">
             <label htmlFor="">
@@ -44,7 +91,17 @@ const Me: FC<{}> = () => {
             <input
               type="file"
               accept="image/*" // Restrict to image files only
+              onChange={handleFileChange}
             />
+            {profileData.profile_picture && (
+              <button
+                type="button"
+                className="btn btn-light"
+                // onClick={handleDeleteProfilePicture}
+              >
+                Usuń zdjęcie profilowe
+              </button>
+            )}
           </div>
           <div className="profile-image-circle">
             <img
@@ -55,12 +112,15 @@ const Me: FC<{}> = () => {
         </div>
         <div className="form-row-2">
           <div className="form-col-2">
-            <label htmlFor="name">Imie</label>
+            <label htmlFor="name">Imię</label>
             <input
               className="form-input"
               value={profileData.first_name}
               type="text"
               id="name"
+              onChange={(e) =>
+                setProfileData({ ...profileData, first_name: e.target.value })
+              }
             />
           </div>
           <div className="form-col-2">
@@ -70,6 +130,9 @@ const Me: FC<{}> = () => {
               value={profileData.last_name}
               type="text"
               id="surname"
+              onChange={(e) =>
+                setProfileData({ ...profileData, last_name: e.target.value })
+              }
             />
           </div>
         </div>
@@ -81,6 +144,9 @@ const Me: FC<{}> = () => {
               value={profileData.city}
               type="text"
               id="city"
+              onChange={(e) =>
+                setProfileData({ ...profileData, city: e.target.value })
+              }
             />
           </div>
           <div className="checkbox-col">
@@ -90,6 +156,12 @@ const Me: FC<{}> = () => {
               checked={profileData.remote}
               type="checkbox"
               id="remote"
+              onChange={(e) =>
+                setProfileData({
+                  ...profileData,
+                  remote: e.target.checked,
+                })
+              }
             />
           </div>
         </div>

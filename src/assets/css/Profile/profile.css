@@ -71,3 +71,7 @@
 .profile-image-circle img {
     width: 100%;
 }
+
+.me-container input[type='file'] {
+    margin-bottom: 1rem;
+}
