@@ -78,6 +78,23 @@ const Me: FC<{}> = () => {
     }
   };
 
+  // Handle delete profile picture
+  const handleDeleteProfilePicture = async () => {
+    try {
+      // Send PUT request to remove the profile picture (set it to null)
+      const response = await protectedApi.put(`accounts/users/${user?.id}/`, {
+        ...profileData,
+        profile_picture: null, // Delete the profile picture
+      });
+      setProfileData(response.data); // Update profile data after deletion
+      setProfilePicture(null); // Reset the local state for profile picture
+      console.log("Profile picture deleted successfully:", response.data);
+      alert("Pomyślnie usunięto Twoje zdjęcie profilowe!");
+    } catch (error) {
+      console.error("Error deleting profile picture:", error);
+    }
+  };
+
   return (
     <div className="me-container">
       <h1 className="profile-func-title">O mnie</h1>
@@ -97,7 +114,7 @@ const Me: FC<{}> = () => {
               <button
                 type="button"
                 className="btn btn-light"
-                // onClick={handleDeleteProfilePicture}
+                onClick={handleDeleteProfilePicture}
               >
                 Usuń zdjęcie profilowe
               </button>
