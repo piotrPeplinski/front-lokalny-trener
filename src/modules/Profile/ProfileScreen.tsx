@@ -1,9 +1,17 @@
 import { FC, useState } from "react";
 import "./../../assets/css/Profile/profile.css";
 import { functionalities } from "./utils/constans";
+import Me from "./components/Me";
 
 const ProfileScreen: FC<{}> = () => {
-  const [selectedFunc, setSelectedFunc] = useState("");
+  const [selectedFunc, setSelectedFunc] = useState("O mnie");
+
+  const renderFunctionality = () => {
+    switch (selectedFunc) {
+      case "O mnie":
+        return <Me />;
+    }
+  };
   return (
     <section>
       <div className="row">
@@ -20,7 +28,7 @@ const ProfileScreen: FC<{}> = () => {
               ))}
             </div>
           </div>
-          <div className="profile-display">content</div>
+          <div className="profile-display">{renderFunctionality()}</div>
         </div>
       </div>
     </section>

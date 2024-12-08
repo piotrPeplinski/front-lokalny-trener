@@ -31,3 +31,32 @@
 .funcs-card p.selected {
     background-color: #d6d6d6;
 }
+
+/* --------------------- */
+/* ME */
+/* --------------------- */
+.profile-func-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.checkbox-col {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.checkbox-col label {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    width: 22rem;
+    margin-right: 2rem;
+}
+
+.checkbox-col input {
+    height: 2rem;
+    width: 2rem;
+}
