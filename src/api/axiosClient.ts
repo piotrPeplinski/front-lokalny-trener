@@ -1,18 +1,13 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+//im not setting header Content-Type to application/json because axios sets it automatically, so if i want to send files via those axios clients i should not manually set it to any value
 const api = axios.create({
   baseURL: "http://127.0.0.1:8000/",
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 const protectedApi = axios.create({
   baseURL: "http://127.0.0.1:8000/",
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 //add auth header to protectedApi

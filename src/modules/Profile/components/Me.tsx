@@ -186,7 +186,7 @@ const Me: FC<{}> = () => {
           Zapisz zmiany
         </button>
       </form>
-      <h1 className="profile-func-title">Dane kontaktowe</h1>
+      {/* <h1 className="profile-func-title">Dane kontaktowe</h1> */}
     </div>
   );
 };
