@@ -162,3 +162,10 @@
     height: 1.4rem;
     margin-right: 0;
 }
+
+/* --------------------- */
+/* FORM EDUCATION */
+/* --------------------- */
+#in {
+    transform: translateX(-15rem);
+}
