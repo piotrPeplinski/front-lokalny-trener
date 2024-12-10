@@ -5,3 +5,11 @@ export interface UserProfile {
   city: string;
   remote: boolean;
 }
+
+export interface Education {
+  id: number;
+  name: string;
+  date: string | null;
+  in_progress: boolean;
+  user: number;
+}
