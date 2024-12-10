@@ -1,20 +1,33 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Education } from "../types/profile-types";
+import { useAuthContext } from "../../Auth/context/auth-context";
+import { protectedApi } from "../../../api/axiosClient";
 
 interface FormEducationProps {
   education?: Education;
 }
 
 const FormEducation: FC<FormEducationProps> = ({ education }) => {
+  const { user } = useAuthContext();
   const [formData, setFormData] = useState(
     education
       ? { ...education }
       : {
           name: "",
-          date: "",
+          date: null,
           in_progress: false,
         }
   );
+
+  //add user id to form data
+  useEffect(() => {
+    if (user?.id) {
+      setFormData({
+        ...formData,
+        user: user?.id,
+      });
+    }
+  }, [user?.id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value, type, checked } = e.target;
@@ -25,11 +38,33 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
     }));
   };
 
+  const handleCreate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await protectedApi.post("/accounts/education/", formData);
+      alert("Pomyślnie dodano wykształcenie");
+    } catch (error) {
+      console.error("Error creating Education instance: ", error);
+      alert("Błąd podczas tworzenia. Spróbuj ponownie.");
+    }
+  };
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await protectedApi.put(`/accounts/education/${education?.id}/`, formData);
+      alert("Pomyślnie zaktualizowano wykształcenie");
+    } catch (error) {
+      console.error("Error updating Education instance: ", error);
+      alert("Błąd aktualizacji wykształcenia. Spróbuj ponownie.");
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={education ? handleUpdate : handleCreate}>
       <div className="form-row-2">
         <div className="form-col-2">
-          <label htmlFor="name">Nazwa</label>
+          <label htmlFor="name">Nazwa (max 250 znaków)</label>
           <input
             type="text"
             className="form-input"
@@ -64,7 +99,7 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
         </div>
       </div>
       <button className="btn btn-dark" type="submit">
-        Dodaj
+        {education ? "Zapisz zmiany" : "Dodaj"}
       </button>
     </form>
   );
