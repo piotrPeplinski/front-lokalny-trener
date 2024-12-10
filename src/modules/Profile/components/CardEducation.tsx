@@ -34,7 +34,7 @@ const CardEducation: FC<CardEducationProps> = ({ education, allowEdit }) => {
         </div>
       </div>
       <Popup isOpen={isPopupOpen} onClose={closePopup}>
-        <FormEducation />
+        <FormEducation education={education} />
       </Popup>
     </>
   );
