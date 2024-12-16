@@ -6,9 +6,10 @@ import { TrashIcon } from "../../../assets/icons/icons";
 
 interface FormEducationProps {
   education?: Education;
+  closePopup?: Function;
 }
 
-const FormEducation: FC<FormEducationProps> = ({ education }) => {
+const FormEducation: FC<FormEducationProps> = ({ education, closePopup }) => {
   const { user } = useAuthContext();
   const [formData, setFormData] = useState(
     education
@@ -70,6 +71,7 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
           date: null,
         });
       }
+      closePopup && closePopup();
       alert("Pomyślnie zaktualizowano wykształcenie");
     } catch (error) {
       console.error("Error updating Education instance: ", error);
@@ -77,6 +79,17 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
     }
   };
 
+  const handleDelete = async () => {
+    if (!education) return;
+    try {
+      await protectedApi.delete(`/accounts/education/${education.id}/`);
+      closePopup && closePopup();
+      alert("Pomyślnie usunięto wykształcenie");
+    } catch (error) {
+      console.error("Error deleting Education instance: ", error);
+      alert("Błąd usuwania wykształcenia. Spróbuj ponownie.");
+    }
+  };
   return (
     <form onSubmit={education ? handleUpdate : handleCreate}>
       <div className="form-row-2">
@@ -120,7 +133,11 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
         {education ? "Zapisz zmiany" : "Dodaj"}
       </button>
       {education && (
-        <div style={{ marginTop: "10px" }} className="btn btn-light">
+        <div
+          style={{ marginTop: "10px" }}
+          className="btn btn-light"
+          onClick={handleDelete}
+        >
           <TrashIcon />
           <p>Usuń</p>
         </div>
