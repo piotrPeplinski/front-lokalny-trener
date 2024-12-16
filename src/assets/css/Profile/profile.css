@@ -156,3 +156,20 @@
 #in {
     transform: translateX(-15rem);
 }
+
+/* --------------------- */
+/* GALLERY */
+/* --------------------- */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.photo {
+    flex: 0 0 48%;
+}
+
+.photo img {
+    width: 100%;
+}

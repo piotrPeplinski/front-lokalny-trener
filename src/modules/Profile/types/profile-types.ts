@@ -13,3 +13,9 @@ export interface Education {
   in_progress: boolean;
   user: number;
 }
+
+export interface Photo {
+  id: number;
+  image: string;
+  user_id: number;
+}
