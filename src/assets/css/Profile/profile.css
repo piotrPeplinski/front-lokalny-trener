@@ -150,19 +150,6 @@
     font-size: 1.5rem;
 }
 
-.education-card .btn {
-    font-size: 1.2rem;
-    height: 2rem;
-    border-width: 1px;
-    padding-left: 0;
-    margin-top: 0.5rem;
-}
-
-.education-card .btn svg {
-    height: 1.4rem;
-    margin-right: 0;
-}
-
 /* --------------------- */
 /* FORM EDUCATION */
 /* --------------------- */

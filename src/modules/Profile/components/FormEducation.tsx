@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Education } from "../types/profile-types";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import { protectedApi } from "../../../api/axiosClient";
+import { TrashIcon } from "../../../assets/icons/icons";
 
 interface FormEducationProps {
   education?: Education;
@@ -57,7 +58,18 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await protectedApi.put(`/accounts/education/${education?.id}/`, formData);
+      //backend does not accept empty string if empty - only null
+      if (formData.date !== "") {
+        await protectedApi.put(
+          `/accounts/education/${education?.id}/`,
+          formData
+        );
+      } else {
+        await protectedApi.put(`/accounts/education/${education?.id}/`, {
+          ...formData,
+          date: null,
+        });
+      }
       alert("Pomyślnie zaktualizowano wykształcenie");
     } catch (error) {
       console.error("Error updating Education instance: ", error);
@@ -100,12 +112,19 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
             id="in_progress"
             checked={formData.in_progress}
             onChange={handleChange}
+            required={formData.date ? false : true}
           />
         </div>
       </div>
       <button className="btn btn-dark" type="submit">
         {education ? "Zapisz zmiany" : "Dodaj"}
       </button>
+      {education && (
+        <div style={{ marginTop: "10px" }} className="btn btn-light">
+          <TrashIcon />
+          <p>Usuń</p>
+        </div>
+      )}
     </form>
   );
 };

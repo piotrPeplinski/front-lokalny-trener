@@ -1,10 +1,8 @@
 import { FC, useState } from "react";
 import { Education } from "../types/profile-types";
-import { useAuthContext } from "../../Auth/context/auth-context";
 import { CalendarIcon, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
 import FormEducation from "./FormEducation";
-import { useProfileContext } from "../context/profile-context";
 
 interface CardEducationProps {
   education: Education;
@@ -13,9 +11,9 @@ interface CardEducationProps {
 
 const CardEducation: FC<CardEducationProps> = ({ education, allowEdit }) => {
   // POPUP
-  const { editPopupOpen, setEditPopupOpen } = useProfileContext();
-  const openPopup = () => setEditPopupOpen(true);
-  const closePopup = () => setEditPopupOpen(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
   return (
     <>
@@ -28,12 +26,8 @@ const CardEducation: FC<CardEducationProps> = ({ education, allowEdit }) => {
           <p>{education.in_progress ? "W trakcie" : education.date}</p>
         </div>
         <p className="education-card__name">{education.name}</p>
-        <div className="btn btn-light">
-          <TrashIcon />
-          <p>Usuń</p>
-        </div>
       </div>
-      <Popup isOpen={editPopupOpen} onClose={closePopup}>
+      <Popup isOpen={isPopupOpen} onClose={closePopup}>
         <FormEducation education={education} />
       </Popup>
     </>
