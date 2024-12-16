@@ -3,6 +3,7 @@ import { api } from "../../../api/axiosClient";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import CardEducation from "./CardEducation";
 import { Education } from "../types/profile-types";
+import { useProfileContext } from "../context/profile-context";
 
 interface ListEducationProps {
   allowEdit: boolean;
@@ -10,6 +11,7 @@ interface ListEducationProps {
 
 const ListEducation: FC<ListEducationProps> = ({ allowEdit }) => {
   const { user } = useAuthContext();
+  const { refreshEducationList } = useProfileContext();
   const [educationList, setEducationList] = useState<Education[]>([]);
   useEffect(() => {
     const fetchEducation = async () => {
@@ -26,7 +28,7 @@ const ListEducation: FC<ListEducationProps> = ({ allowEdit }) => {
       }
     };
     fetchEducation();
-  }, [user?.id]);
+  }, [user?.id, refreshEducationList]);
   return (
     <div className="education-list shadow">
       <h2>Wykształcenie</h2>

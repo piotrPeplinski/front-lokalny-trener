@@ -3,6 +3,7 @@ import { Education } from "../types/profile-types";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import { protectedApi } from "../../../api/axiosClient";
 import { TrashIcon } from "../../../assets/icons/icons";
+import { useProfileContext } from "../context/profile-context";
 
 interface FormEducationProps {
   education?: Education;
@@ -11,6 +12,7 @@ interface FormEducationProps {
 
 const FormEducation: FC<FormEducationProps> = ({ education, closePopup }) => {
   const { user } = useAuthContext();
+  const { setRefreshEducationList, refreshEducationList } = useProfileContext();
   const [formData, setFormData] = useState(
     education
       ? { ...education }
@@ -50,6 +52,7 @@ const FormEducation: FC<FormEducationProps> = ({ education, closePopup }) => {
         date: null,
         in_progress: false,
       });
+      setRefreshEducationList(!refreshEducationList);
     } catch (error) {
       console.error("Error creating Education instance: ", error);
       alert("Błąd podczas tworzenia. Spróbuj ponownie.");
@@ -72,6 +75,7 @@ const FormEducation: FC<FormEducationProps> = ({ education, closePopup }) => {
         });
       }
       closePopup && closePopup();
+      setRefreshEducationList(!refreshEducationList);
       alert("Pomyślnie zaktualizowano wykształcenie");
     } catch (error) {
       console.error("Error updating Education instance: ", error);
@@ -84,6 +88,7 @@ const FormEducation: FC<FormEducationProps> = ({ education, closePopup }) => {
     try {
       await protectedApi.delete(`/accounts/education/${education.id}/`);
       closePopup && closePopup();
+      setRefreshEducationList(!refreshEducationList);
       alert("Pomyślnie usunięto wykształcenie");
     } catch (error) {
       console.error("Error deleting Education instance: ", error);

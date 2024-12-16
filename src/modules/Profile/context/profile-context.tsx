@@ -1,20 +1,20 @@
 import { createContext, FC, ReactNode, useContext, useState } from "react";
 
 interface ProfileContextType {
-  editPopupOpen: boolean;
-  setEditPopupOpen: Function;
+  refreshEducationList: boolean;
+  setRefreshEducationList: Function;
 }
 
 const ProfileContext = createContext<ProfileContextType | null>(null);
 
 const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [editPopupOpen, setEditPopupOpen] = useState(false);
+  const [refreshEducationList, setRefreshEducationList] = useState(false);
 
   return (
     <ProfileContext.Provider
       value={{
-        editPopupOpen,
-        setEditPopupOpen,
+        refreshEducationList,
+        setRefreshEducationList,
       }}
     >
       {children}
