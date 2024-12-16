@@ -43,6 +43,11 @@ const FormEducation: FC<FormEducationProps> = ({ education }) => {
     try {
       await protectedApi.post("/accounts/education/", formData);
       alert("Pomyślnie dodano wykształcenie");
+      setFormData({
+        name: "",
+        date: null,
+        in_progress: false,
+      });
     } catch (error) {
       console.error("Error creating Education instance: ", error);
       alert("Błąd podczas tworzenia. Spróbuj ponownie.");

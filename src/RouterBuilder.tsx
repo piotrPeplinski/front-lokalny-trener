@@ -4,6 +4,7 @@ import RegisterScreen from "./modules/Auth/RegisterScreen";
 import AppLayout from "./App.layout";
 import LoginScreen from "./modules/Auth/LoginScreen";
 import ProfileScreen from "./modules/Profile/ProfileScreen";
+import { ProfileProvider } from "./modules/Profile/context/profile-context";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -22,7 +23,11 @@ const RouterBuilder = () => {
     },
     {
       path: "/profile",
-      element: <ProfileScreen />,
+      element: (
+        <ProfileProvider>
+          <ProfileScreen />
+        </ProfileProvider>
+      ),
     },
   ];
 

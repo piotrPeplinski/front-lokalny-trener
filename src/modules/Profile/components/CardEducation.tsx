@@ -4,6 +4,7 @@ import { useAuthContext } from "../../Auth/context/auth-context";
 import { CalendarIcon, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
 import FormEducation from "./FormEducation";
+import { useProfileContext } from "../context/profile-context";
 
 interface CardEducationProps {
   education: Education;
@@ -12,11 +13,10 @@ interface CardEducationProps {
 
 const CardEducation: FC<CardEducationProps> = ({ education, allowEdit }) => {
   // POPUP
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
+  const { editPopupOpen, setEditPopupOpen } = useProfileContext();
+  const openPopup = () => setEditPopupOpen(true);
+  const closePopup = () => setEditPopupOpen(false);
 
-  const { user } = useAuthContext();
   return (
     <>
       <div
@@ -33,7 +33,7 @@ const CardEducation: FC<CardEducationProps> = ({ education, allowEdit }) => {
           <p>Usuń</p>
         </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup}>
+      <Popup isOpen={editPopupOpen} onClose={closePopup}>
         <FormEducation education={education} />
       </Popup>
     </>
