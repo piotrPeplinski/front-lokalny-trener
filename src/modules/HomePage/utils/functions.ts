@@ -28,7 +28,7 @@ const getNavbarData = (user: User | null) => {
         classes: "shift",
       },
       {
-        href: "#",
+        href: "/add",
         text: "Dodaj ogłoszenie",
         classes: "shift important",
       },
