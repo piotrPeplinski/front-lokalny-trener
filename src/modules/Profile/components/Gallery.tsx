@@ -29,6 +29,7 @@ const Gallery: FC<GalleryProps> = ({ userId, allowEdit }) => {
 
     fetchPhotos();
   }, [refreshPhotos]);
+
   return (
     <div className="photo-gallery">
       {photos.map((photo) => (
