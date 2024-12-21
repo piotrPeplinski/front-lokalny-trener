@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { api } from "../../../api/axiosClient"; // Ensure you have your axios clients
+import { api, protectedApi } from "../../../api/axiosClient";
 import { decodeJWT } from "../utils/functions";
 import { RegisterData, User } from "../types/auth-types";
 
@@ -25,9 +25,24 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      const decoded: any = decodeJWT(accessToken);
-      setUser({ id: decoded.user_id, is_trainer: decoded.is_trainer });
-      setIsAuthenticated(true);
+      const decoded: any = decodeJWT(accessToken); // Extract user_id
+      const userId = decoded.user_id;
+
+      const fetchUserProfile = async () => {
+        try {
+          const response = await protectedApi.get(`accounts/users/${userId}/`);
+          const userData = response.data;
+          setUser({
+            id: userData.id,
+            is_trainer: userData.is_trainer,
+          });
+          setIsAuthenticated(true);
+        } catch (error) {
+          console.error("Failed to fetch user profile:", error);
+        }
+      };
+
+      fetchUserProfile();
     }
   }, []);
 
@@ -46,7 +61,19 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       // Decode token to get user info
       const decoded: any = decodeJWT(access);
-      setUser({ id: decoded.user_id, is_trainer: decoded.is_trainer });
+      const userId = decoded.user_id;
+
+      try {
+        const response = await protectedApi.get(`accounts/users/${userId}`);
+        setUser({
+          id: userId,
+          is_trainer: response.data.is_trainer,
+        });
+        console.log(response.data.is_trainer);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+
       setIsAuthenticated(true);
     } catch (error) {
       console.error("Login failed:", error);
