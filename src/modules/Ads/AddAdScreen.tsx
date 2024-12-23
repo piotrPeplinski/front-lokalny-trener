@@ -9,7 +9,9 @@ const AddAdScreen: FC<{}> = () => {
   useEffect(() => {
     console.log(user);
   }, [user]);
-  return <>{user?.is_trainer ? <TrainerAdForm /> : <ClientAdForm />}</>;
+  return (
+    <section>{user?.is_trainer ? <TrainerAdForm /> : <ClientAdForm />}</section>
+  );
 };
 
 export default AddAdScreen;
