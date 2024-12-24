@@ -87,6 +87,21 @@ section {
     text-align: center;
 }
 
+.row-2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col-2 {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
 /* FORMS */
 .form-row-2 {
     display: flex;
@@ -157,6 +172,10 @@ textarea {
     font-size: 1.5rem;
     font-family: 'Montserrat';
     padding: 4px;
+}
+
+.form-input[type='number'] {
+    width: 16rem;
 }
 
 /* POPUP */
