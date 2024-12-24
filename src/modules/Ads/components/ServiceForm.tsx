@@ -1,32 +1,86 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Service } from "../types/ads-types";
 
 interface ServiceFormProps {
   services: Service[];
-  setServices: Function;
+  setServices: (services: Service[]) => void; // Explicit type for setServices
 }
 
 const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
+  const [name, setName] = useState<string>("");
+  const [price, setPrice] = useState<number | "">("");
+  const [time, setTime] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate inputs (optional)
+    if (!name || price === "" || time === "") {
+      alert("Please fill out all fields!");
+      return;
+    }
+
+    // Create a new service object
+    const newService: Service = {
+      name,
+      price: Number(price),
+      time: time,
+    };
+
+    // Update the services state
+    setServices([...services, newService]);
+
+    // Clear the form fields
+    setName("");
+    setPrice("");
+    setTime("");
+  };
+
   return (
     <>
       <h3 className="subtitle text-center mt-2">Jakie usługi oferujesz?</h3>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="name">Nazwa</label>
-          <input type="text" className="form-input" />
+      <form onSubmit={handleSubmit}>
+        <div className="form-row-2">
+          <div className="form-col-2">
+            <label htmlFor="name">Nazwa</label>
+            <input
+              type="text"
+              required
+              className="form-input"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
         </div>
-      </div>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="price">Cena (PLN)</label>
-          <input type="number" className="form-input" />
+        <div className="form-row-2">
+          <div className="form-col-2">
+            <label htmlFor="price">Cena (PLN)</label>
+            <input
+              type="number"
+              required
+              className="form-input"
+              value={price}
+              onChange={(e) => setPrice(Number(e.target.value) || "")}
+            />
+          </div>
+          <div className="form-col-2">
+            <label htmlFor="time">Czas (Minuty)</label>
+            <input
+              type="number"
+              required
+              className="form-input"
+              value={time}
+              onChange={(e) => setTime(e.target.value || "")}
+            />
+          </div>
         </div>
-        <div className="form-col-2">
-          <label htmlFor="time">Czas (Minuty)</label>
-          <input type="number" className="form-input" />
-        </div>
-      </div>
-      <button className="btn btn-dark">Dodaj usługę</button>
+        <button
+          type="submit"
+          className="btn btn-dark"
+        >
+          Dodaj usługę
+        </button>
+      </form>
     </>
   );
 };
