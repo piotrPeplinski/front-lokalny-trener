@@ -4,7 +4,7 @@ import { Category } from "../HomePage/types";
 import { useAuthContext } from "../Auth/context/auth-context";
 
 interface SelectSubCategoryProps {
-  subcategory: number | null;
+  subcategory: Category;
   setSubcategory: Function;
 }
 
@@ -58,8 +58,6 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       <div className="row-small-space">
         <select
           className="form-select shadow"
-          name=""
-          id=""
           onChange={(e) => {
             const selectedCategory = categories.find(
               (category: Category) => category.id === parseInt(e.target.value)
@@ -78,10 +76,17 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
           ))}
         </select>
         <select
-          name=""
-          id=""
-          disabled={category.id === 0}
+          disabled={category.name === ""}
           className="form-select shadow"
+          onChange={(e) => {
+            const selectedSubCategory = subcategories.find(
+              (subcategory: Category) =>
+                subcategory.id === parseInt(e.target.value)
+            );
+            if (selectedSubCategory) {
+              setSubcategory(selectedSubCategory);
+            }
+          }}
         >
           <option selected disabled>
             Podkategoria

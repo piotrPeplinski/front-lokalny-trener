@@ -13,6 +13,7 @@ const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
 
     // validate inputs
     if (!name || price === "" || time === "") {
