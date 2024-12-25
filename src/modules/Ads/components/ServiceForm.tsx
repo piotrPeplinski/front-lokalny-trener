@@ -3,18 +3,18 @@ import { Service } from "../types/ads-types";
 
 interface ServiceFormProps {
   services: Service[];
-  setServices: (services: Service[]) => void; // Explicit type for setServices
+  setServices: Function;
 }
 
 const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number | "">("");
-  const [time, setTime] = useState<string>("");
+  const [time, setTime] = useState<number | "">("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate inputs (optional)
+    // validate inputs
     if (!name || price === "" || time === "") {
       alert("Please fill out all fields!");
       return;
@@ -24,7 +24,7 @@ const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
     const newService: Service = {
       name,
       price: Number(price),
-      time: time,
+      time: Number(time),
     };
 
     // Update the services state
@@ -70,14 +70,11 @@ const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
               required
               className="form-input"
               value={time}
-              onChange={(e) => setTime(e.target.value || "")}
+              onChange={(e) => setTime(Number(e.target.value) || "")}
             />
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn btn-dark"
-        >
+        <button type="submit" className="btn btn-dark">
           Dodaj usługę
         </button>
       </form>

@@ -1,0 +1,48 @@
+/* --------------------- */
+/* SERVICE LIST */
+/* --------------------- */
+
+.services-list {
+    background-color: #ebebeb;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #fff;
+    position: relative;
+}
+
+.service-row:first-of-type p {
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.service-row:last-of-type {
+    border: none;
+}
+
+.delete-service {
+    position: absolute;
+}
+
+.service-row p {
+    flex: 0 0 30%;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.service-row svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.service-row:hover svg {
+    opacity: 0.9;
+}

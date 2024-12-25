@@ -54,6 +54,7 @@ li {
     background-color: #3a7bb9;
     border: 2px solid #3a7bb9;
     color: #fff;
+    fill: #fff;
     transition: all 0.4s;
 }
 
@@ -63,6 +64,7 @@ li {
     background-color: #fff;
     border: 2px solid #3a7bb9;
     color: #3a7bb9;
+    fill: #3a7bb9;
     transition: all 0.4s;
 }
 
@@ -100,6 +102,11 @@ section {
 
 .mt-2 {
     margin-top: 2rem;
+}
+
+.row-center {
+    display: flex;
+    justify-content: center;
 }
 
 /* FORMS */
