@@ -22,16 +22,14 @@ const ServiceList: FC<ServiceListProps> = ({ services, setServices }) => {
         <div className="service-row">
           <p>Nazwa</p>
           <p>Cena (PLN)</p>
-          <p>Czas (minuty)</p>
+          <p>Czas (min)</p>
         </div>
         {services?.map((service, index) => (
           <div className="service-row" key={index}>
             <div className="delete-service" onClick={() => handleDelete(index)}>
               <TrashIcon />
             </div>
-            <p>
-              {service.name} {index}
-            </p>
+            <p>{service.name}</p>
             <p>{service.price}</p>
             <p>{service.time}</p>
           </div>
