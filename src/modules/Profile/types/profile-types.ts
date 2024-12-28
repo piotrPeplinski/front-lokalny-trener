@@ -19,3 +19,10 @@ export interface Photo {
   image: string;
   user_id: number;
 }
+
+export interface AdPreview {
+  profile_picture: string;
+  full_name: string;
+  sub_category: string;
+  average_rating: number;
+}

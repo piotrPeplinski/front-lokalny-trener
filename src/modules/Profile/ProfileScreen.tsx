@@ -4,6 +4,7 @@ import { functionalities } from "./utils/constans";
 import Me from "./components/Me";
 import Education from "./components/Education";
 import PhotoGallery from "./components/PhotoGallery";
+import MyAds from "./components/MyAds";
 
 const ProfileScreen: FC<{}> = () => {
   const [selectedFunc, setSelectedFunc] = useState("O mnie");
@@ -16,6 +17,8 @@ const ProfileScreen: FC<{}> = () => {
         return <Education />;
       case "Galeria zdjęć":
         return <PhotoGallery />;
+      case "Moje ogłoszenia":
+        return <MyAds />;
     }
   };
   return (
