@@ -1,15 +1,23 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import SelectSubCategory from "../../Reusable/SelectSubCategory";
 import { Service } from "../types/ads-types";
 import ServiceForm from "./ServiceForm";
 import ServiceList from "./ServiceList";
 import { AdIcon } from "../../../assets/icons/icons";
-import { protectedApi } from "../../../api/axiosClient";
+import { api, protectedApi } from "../../../api/axiosClient";
 import { Category } from "../../HomePage/types";
 import { useNavigate } from "react-router-dom";
 import { useProfileContext } from "../../Profile/context/profile-context";
 
-const TrainerAdForm: FC<{}> = () => {
+interface TrainerAdFormProps {
+  adId?: number;
+}
+
+const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
+  const [category, setCategory] = useState<Category>({
+    id: 0,
+    name: "",
+  });
   const [subcategory, setSubcategory] = useState<Category>({
     id: 0,
     name: "",
@@ -20,6 +28,23 @@ const TrainerAdForm: FC<{}> = () => {
 
   const navigate = useNavigate();
   const { setSelectedFunc } = useProfileContext();
+
+  useEffect(() => {
+    if (adId) {
+      const fetchAd = async () => {
+        try {
+          const response = await api.get(`/ads/${adId}`);
+          setSubcategory(response.data.subcategory);
+          setCategory(response.data.category);
+          setDescription(response.data.text);
+          setServices(response.data.services);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchAd();
+    }
+  }, [adId]);
 
   const handleSubmit = async () => {
     // Validate description
@@ -55,13 +80,13 @@ const TrainerAdForm: FC<{}> = () => {
       // Show success feedback or perform navigation
       alert("Pomyślnie utworzono ogłoszenie.");
       console.log("Response:", response.data);
+      setSelectedFunc("Moje ogłoszenia");
+      navigate("/profile");
     } catch (error) {
       console.error("", error);
       alert("Błąd podczas tworzenia ogłoszenia.");
     } finally {
       setIsSubmitting(false);
-      setSelectedFunc("Moje ogłoszenia");
-      navigate("/profile");
     }
   };
 
@@ -71,10 +96,18 @@ const TrainerAdForm: FC<{}> = () => {
 
       <div className="form-row-2">
         <div className="form-col-2">
-          <SelectSubCategory
-            subcategory={subcategory}
-            setSubcategory={setSubcategory}
-          />
+          {adId ? (
+            <SelectSubCategory
+              subcategory={subcategory}
+              setSubcategory={setSubcategory}
+              selectedCategory={category}
+            />
+          ) : (
+            <SelectSubCategory
+              subcategory={subcategory}
+              setSubcategory={setSubcategory}
+            />
+          )}
         </div>
         <div className="form-col-2">
           <label htmlFor="desc">Opis</label>

@@ -6,6 +6,7 @@ import { EditIcon, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
 import { protectedApi } from "../../../api/axiosClient";
 import { useProfileContext } from "../../Profile/context/profile-context";
+import TrainerAdForm from "./TrainerAdForm";
 
 interface AdPreviewProps {
   ad: AdPreviewType;
@@ -70,7 +71,7 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
         <p className="ad-preview__category">{ad.sub_category}</p>
       </div>
       <Popup isOpen={popupOpen} onClose={() => setPopupOpen(false)}>
-        <p>edit ad</p>
+        <TrainerAdForm adId={ad.id} />
       </Popup>
     </div>
   );

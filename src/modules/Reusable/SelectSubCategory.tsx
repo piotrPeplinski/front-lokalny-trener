@@ -6,11 +6,13 @@ import { useAuthContext } from "../Auth/context/auth-context";
 interface SelectSubCategoryProps {
   subcategory: Category;
   setSubcategory: Function;
+  selectedCategory?: Category;
 }
 
 const SelectSubCategory: FC<SelectSubCategoryProps> = ({
   subcategory,
   setSubcategory,
+  selectedCategory,
 }) => {
   const { user } = useAuthContext();
   const [categories, setCategories] = useState([]);
@@ -31,11 +33,14 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       }
     };
     fetchCategories();
-  }, []);
+    if (selectedCategory) {
+      setCategory(selectedCategory);
+    }
+  }, [selectedCategory]);
 
   //fetch subcategories when category selected
   useEffect(() => {
-    if (category.id !== 0) {
+    if (category.name !== "") {
       const fetchSubcategories = async () => {
         try {
           const response = await api.get(`/categories/${category.id}`);
@@ -58,6 +63,7 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       <div className="row-small-space">
         <select
           className="form-select shadow"
+          value={selectedCategory ? category.id : undefined}
           onChange={(e) => {
             const selectedCategory = categories.find(
               (category: Category) => category.id === parseInt(e.target.value)
@@ -77,6 +83,7 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
         </select>
         <select
           disabled={category.name === ""}
+          value={subcategory.id || ""}
           className="form-select shadow"
           onChange={(e) => {
             const selectedSubCategory = subcategories.find(
