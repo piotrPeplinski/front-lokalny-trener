@@ -34,10 +34,12 @@
     font-size: 1.6rem;
     text-align: center;
 }
+
 .service-row p:first-of-type {
     flex: 0 0 50%;
     padding: 0 2rem;
 }
+
 .service-row svg {
     position: absolute;
     width: 2rem;
@@ -51,4 +53,74 @@
 
 .service-row:hover svg {
     opacity: 0.9;
+}
+
+/* --------------------- */
+/* AD PREVIEW */
+/* --------------------- */
+.ad-preview__card {
+    padding: 1rem;
+    border-radius: 5px;
+    max-width: 50rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.ad-preview-col:last-of-type {
+    margin-left: 2rem;
+}
+
+.profile-image-circle {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+}
+
+.profile-image-circle img {
+    width: 100%;
+}
+
+.ad-preview__name {
+    font-size: 2.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.ad-preview__category {
+    font-size: 1.3rem;
+}
+
+.ad-preview__rating {
+    display: flex;
+    margin-bottom: 0.6rem;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.ad-preview__rating p {
+    margin-left: 1rem;
+}
+
+.ad-preview__rating p:first-of-type {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.ad-preview__rating p:last-of-type {
+    font-weight: 500;
+    color: #3a7bb9;
+}
+
+/* STARS RATING */
+.star-container {
+    display: flex;
+}
+
+.star-container svg {
+    width: 2rem;
+    height: 2rem;
+    color: #3a7bb9;
+    fill: #3a7bb9;
 }
