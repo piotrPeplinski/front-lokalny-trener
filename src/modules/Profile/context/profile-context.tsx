@@ -5,6 +5,10 @@ interface ProfileContextType {
   setRefreshEducationList: Function;
   refreshPhotos: boolean;
   setRefreshPhotos: Function;
+  refreshAds: boolean;
+  setRefreshAds: Function;
+  selectedFunc: string;
+  setSelectedFunc: Function;
 }
 
 const ProfileContext = createContext<ProfileContextType | null>(null);
@@ -12,6 +16,8 @@ const ProfileContext = createContext<ProfileContextType | null>(null);
 const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [refreshEducationList, setRefreshEducationList] = useState(false);
   const [refreshPhotos, setRefreshPhotos] = useState(false);
+  const [refreshAds, setRefreshAds] = useState(false);
+  const [selectedFunc, setSelectedFunc] = useState("O mnie");
 
   return (
     <ProfileContext.Provider
@@ -20,6 +26,10 @@ const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setRefreshEducationList,
         refreshPhotos,
         setRefreshPhotos,
+        refreshAds,
+        setRefreshAds,
+        selectedFunc,
+        setSelectedFunc,
       }}
     >
       {children}

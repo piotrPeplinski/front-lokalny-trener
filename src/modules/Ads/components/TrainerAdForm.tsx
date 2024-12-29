@@ -6,6 +6,8 @@ import ServiceList from "./ServiceList";
 import { AdIcon } from "../../../assets/icons/icons";
 import { protectedApi } from "../../../api/axiosClient";
 import { Category } from "../../HomePage/types";
+import { useNavigate } from "react-router-dom";
+import { useProfileContext } from "../../Profile/context/profile-context";
 
 const TrainerAdForm: FC<{}> = () => {
   const [subcategory, setSubcategory] = useState<Category>({
@@ -15,6 +17,9 @@ const TrainerAdForm: FC<{}> = () => {
   const [description, setDescription] = useState<string>("");
   const [services, setServices] = useState<Service[]>([]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const { setSelectedFunc } = useProfileContext();
 
   const handleSubmit = async () => {
     // Validate description
@@ -50,19 +55,13 @@ const TrainerAdForm: FC<{}> = () => {
       // Show success feedback or perform navigation
       alert("Pomyślnie utworzono ogłoszenie.");
       console.log("Response:", response.data);
-
-      // Reset state
-      setDescription("");
-      setSubcategory({
-        id: 0,
-        name: "",
-      });
-      setServices([]);
     } catch (error) {
       console.error("", error);
       alert("Błąd podczas tworzenia ogłoszenia.");
     } finally {
       setIsSubmitting(false);
+      setSelectedFunc("Moje ogłoszenia");
+      navigate("/profile");
     }
   };
 

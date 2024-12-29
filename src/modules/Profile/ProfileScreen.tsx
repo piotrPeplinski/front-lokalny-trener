@@ -1,13 +1,14 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import "./../../assets/css/Profile/profile.css";
 import { functionalities } from "./utils/constans";
 import Me from "./components/Me";
 import Education from "./components/Education";
 import PhotoGallery from "./components/PhotoGallery";
 import MyAds from "./components/MyAds";
+import { useProfileContext } from "./context/profile-context";
 
 const ProfileScreen: FC<{}> = () => {
-  const [selectedFunc, setSelectedFunc] = useState("O mnie");
+  const { selectedFunc, setSelectedFunc } = useProfileContext();
 
   const renderFunctionality = () => {
     switch (selectedFunc) {

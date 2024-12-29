@@ -65,6 +65,14 @@
     margin-bottom: 3rem;
     display: flex;
     align-items: center;
+    position: relative;
+    background-color: transparent;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.ad-preview__card:hover {
+    background-color: #ebebeb;
 }
 
 .ad-preview-col:last-of-type {
@@ -123,4 +131,25 @@
     height: 2rem;
     color: #3a7bb9;
     fill: #3a7bb9;
+}
+
+/* ACTION BUTTONS */
+.action-btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    padding: 1rem;
+}
+
+.action-btns svg {
+    width: 1.7rem;
+    height: 1.7rem;
+    color: #3a7bb9;
+    fill: #3a7bb9;
+    cursor: pointer;
+}
+
+.action-btns div:first-of-type {
+    margin-right: 0.75rem;
 }
