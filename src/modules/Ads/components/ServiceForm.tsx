@@ -23,6 +23,7 @@ const ServiceForm: FC<ServiceFormProps> = ({ services, setServices }) => {
 
     // Create a new service object
     const newService: Service = {
+      id: Date.now(), //temporary id
       name,
       price: Number(price),
       time: Number(time),

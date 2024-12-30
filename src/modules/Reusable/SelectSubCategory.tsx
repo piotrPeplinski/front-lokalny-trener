@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { api } from "../../api/axiosClient";
 import { Category } from "../HomePage/types";
 import { useAuthContext } from "../Auth/context/auth-context";
@@ -51,6 +51,9 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       };
       fetchSubcategories();
     }
+    if (!selectedCategory) {
+      setSubcategory({ id: 0, name: "" });
+    }
   }, [category]);
 
   return (
@@ -65,11 +68,11 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
           className="form-select shadow"
           value={selectedCategory ? category.id : undefined}
           onChange={(e) => {
-            const selectedCategory = categories.find(
+            const selectedCat = categories.find(
               (category: Category) => category.id === parseInt(e.target.value)
             );
-            if (selectedCategory) {
-              setCategory(selectedCategory);
+            if (selectedCat) {
+              setCategory(selectedCat);
               setSubcategory({ id: 0, name: "" }); // Reset subcategory
             }
           }}
@@ -83,7 +86,7 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
         </select>
         <select
           disabled={category.name === ""}
-          value={subcategory.id || ""}
+          value={subcategory.name === "" ? undefined : subcategory.id}
           className="form-select shadow"
           onChange={(e) => {
             const selectedSubCategory = subcategories.find(

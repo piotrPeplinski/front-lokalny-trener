@@ -14,6 +14,8 @@ interface TrainerAdFormProps {
 }
 
 const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
+  const { setRefreshAds, refreshAds } = useProfileContext();
+
   const [category, setCategory] = useState<Category>({
     id: 0,
     name: "",
@@ -73,18 +75,20 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
         sub_category: subcategory.id,
         services,
       };
-
-      // Send request to create the ad
-      const response = await protectedApi.post("/ads/", adData);
-
-      // Show success feedback or perform navigation
-      alert("Pomyślnie utworzono ogłoszenie.");
-      console.log("Response:", response.data);
-      setSelectedFunc("Moje ogłoszenia");
-      navigate("/profile");
+      if (adId) {
+        const response = await protectedApi.put(`/ads/${adId}/`, adData);
+        alert("Pomyślnie zaktualizowano ogłoszenie.");
+      } else {
+        // CREATE
+        const response = await protectedApi.post("/ads/", adData);
+        alert("Pomyślnie utworzono ogłoszenie.");
+        setSelectedFunc("Moje ogłoszenia");
+        navigate("/profile");
+      }
+      setRefreshAds(!refreshAds);
     } catch (error) {
       console.error("", error);
-      alert("Błąd podczas tworzenia ogłoszenia.");
+      alert("Błąd podczas przesyłania ogłoszenia.");
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +96,9 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
 
   return (
     <div className="row">
-      <h1 className="title text-center">Dodaj ogłoszenie</h1>
+      <h1 className="title text-center">
+        {adId ? "Edytuj" : "Dodaj"} ogłoszenie
+      </h1>
 
       <div className="form-row-2">
         <div className="form-col-2">
@@ -139,7 +145,11 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
           disabled={isSubmitting}
         >
           <AdIcon />
-          <p>{isSubmitting ? "Tworzenie..." : "Utwórz ogłoszenie"}</p>
+          {adId ? (
+            <p>{isSubmitting ? "Zapisywanie..." : "Zapisz zmiany"}</p>
+          ) : (
+            <p>{isSubmitting ? "Tworzenie..." : "Utwórz ogłoszenie"}</p>
+          )}
         </button>
       </div>
     </div>
