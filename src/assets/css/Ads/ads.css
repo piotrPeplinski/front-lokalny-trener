@@ -172,3 +172,40 @@
     flex-direction: column;
     flex: 0 0 25%;
 }
+
+/* --------------------- */
+/* CONTACT INFO */
+/* --------------------- */
+.contact-row {
+    display: flex;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+.contact-row svg {
+    color: #3a7bb9;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 0.5rem;
+}
+
+.contact-row:first-of-type {
+    margin-bottom: 1rem;
+}
+
+.socials-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.socials-row a {
+    flex: 0 0 12%;
+}
+
+#fb {
+    fill: #1877F2;
+}
+
+#insta {
+    fill: #C13584;
+}

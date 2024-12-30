@@ -7,27 +7,35 @@ import { useProfileContext } from "../context/profile-context";
 
 interface ListEducationProps {
   allowEdit: boolean;
+  fetchedEducation?: Education[];
 }
 
-const ListEducation: FC<ListEducationProps> = ({ allowEdit }) => {
+const ListEducation: FC<ListEducationProps> = ({
+  allowEdit,
+  fetchedEducation,
+}) => {
   const { user } = useAuthContext();
   const { refreshEducationList } = useProfileContext();
   const [educationList, setEducationList] = useState<Education[]>([]);
   useEffect(() => {
-    const fetchEducation = async () => {
-      try {
-        const response = await api.get(`accounts/education/`, {
-          params: {
-            user: user?.id,
-          },
-        });
-        setEducationList(response.data);
-        console.log(educationList);
-      } catch (error) {
-        console.error("Error fetching education data:", error);
-      }
-    };
-    fetchEducation();
+    if (fetchedEducation) {
+      setEducationList(fetchedEducation);
+    } else {
+      const fetchEducation = async () => {
+        try {
+          const response = await api.get(`accounts/education/`, {
+            params: {
+              user: user?.id,
+            },
+          });
+          setEducationList(response.data);
+          console.log(educationList);
+        } catch (error) {
+          console.error("Error fetching education data:", error);
+        }
+      };
+      fetchEducation();
+    }
   }, [user?.id, refreshEducationList]);
   return (
     <div className="education-list shadow">
