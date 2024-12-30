@@ -7,6 +7,8 @@ import Popup from "../../Reusable/Popup";
 import { protectedApi } from "../../../api/axiosClient";
 import { useProfileContext } from "../../Profile/context/profile-context";
 import TrainerAdForm from "./TrainerAdForm";
+import { useNavigate } from "react-router-dom";
+import Rating from "./Rating";
 
 interface AdPreviewProps {
   ad: AdPreviewType;
@@ -14,14 +16,15 @@ interface AdPreviewProps {
 }
 
 const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
+  const navigate = useNavigate();
   const [popupOpen, setPopupOpen] = useState(false);
   const { setRefreshAds, refreshAds } = useProfileContext();
 
-  const handleEdit = () => {
+  const handleEdit = (event: React.MouseEvent) => {
     setPopupOpen(true); // Open the popup when edit is clicked
   };
 
-  const handleDelete = () => {
+  const handleDelete = (event: React.MouseEvent) => {
     const deleteAd = async () => {
       try {
         await protectedApi.delete(`/ads/${ad.id}/`);
@@ -35,8 +38,17 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
     deleteAd();
   };
 
+  const redirectToDetail = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest(".action-btns") && !target.closest(".popup-overlay")) {
+      navigate(`/ads/${ad.id}`);
+    } else {
+      return;
+    }
+  };
+
   return (
-    <div className="ad-preview__card shadow">
+    <div className="ad-preview__card shadow" onClick={redirectToDetail}>
       {allowEdit && (
         <div className="action-btns">
           <div onClick={handleEdit}>
@@ -62,11 +74,7 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
       <div className="ad-preview-col">
         <h3 className="ad-preview__name">{ad.full_name}</h3>
 
-        <div className="ad-preview__rating">
-          <StarRating rating={ad.average_rating} />
-          <p>{ad.average_rating} / 5</p>
-          <p>({ad.review_count})</p>
-        </div>
+        <Rating rating={ad.rating} />
 
         <p className="ad-preview__category">{ad.sub_category}</p>
       </div>

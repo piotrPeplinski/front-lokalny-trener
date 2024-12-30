@@ -153,3 +153,22 @@
 .action-btns div:first-of-type {
     margin-right: 0.75rem;
 }
+
+/* --------------------- */
+/* AD PREVIEW */
+/* --------------------- */
+.ad-detail__container {
+    display: flex;
+}
+
+.ad-detail__col {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 75%;
+}
+
+.ad-detail__col-sm {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 25%;
+}
