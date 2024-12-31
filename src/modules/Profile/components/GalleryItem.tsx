@@ -25,13 +25,20 @@ const GalleryItem: FC<GalleryItemProps> = ({ photo, allowEdit }) => {
 
   return (
     <div className="photo">
-      {allowEdit && (
-        <div className="btn btn-light" onClick={handleDelete}>
-          <TrashIcon />
-          <p>Usuń</p>
-        </div>
+      {allowEdit ? (
+        <>
+          <div className="btn btn-light" onClick={handleDelete}>
+            <TrashIcon />
+            <p>Usuń</p>
+          </div>
+          <img src={photo.image} alt="Photo" />
+        </>
+      ) : (
+        <img
+          src={`${process.env.REACT_APP_BACKEND_URL}/${photo.image}`}
+          alt="Photo"
+        />
       )}
-      <img src={photo.image} alt="Photo" />
     </div>
   );
 };

@@ -61,7 +61,7 @@
 .ad-preview__card {
     padding: 1rem;
     border-radius: 5px;
-    max-width: 50rem;
+    width: 55rem;
     margin-bottom: 3rem;
     display: flex;
     align-items: center;
@@ -226,4 +226,13 @@
 
 #insta {
     fill: #C13584;
+}
+
+/* --------------------- */
+/* ADS */
+/* --------------------- */
+.ads__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

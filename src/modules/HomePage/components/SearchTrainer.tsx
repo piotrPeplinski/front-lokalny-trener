@@ -1,9 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { FC, FormEvent, useEffect, useState } from "react";
 import { api } from "../../../api/axiosClient";
 import { Category } from "../types";
 import { HomeIcon, SearchIcon } from "../../../assets/icons/icons";
+import { useNavigate } from "react-router-dom";
 
 const SearchTrainer: FC<{}> = () => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState<Category>({
     id: 0,
@@ -15,6 +17,7 @@ const SearchTrainer: FC<{}> = () => {
     name: "",
   });
   const [remote, setRemote] = useState(false);
+
   //fetch categories on load
   useEffect(() => {
     const fetchCategories = async () => {
@@ -43,6 +46,11 @@ const SearchTrainer: FC<{}> = () => {
     }
   }, [category]);
 
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    navigate(`/search/${subcategory.id}`);
+  };
+
   return (
     <div className="search-container">
       <section>
@@ -51,7 +59,7 @@ const SearchTrainer: FC<{}> = () => {
             Znajdź idealnego specjalistę i umów zajęcia w kilka chwil – szybko,
             wygodnie, skutecznie!
           </h1>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="form-col">
               <h3>Gdzie chcesz odbyć zajęcia?</h3>
               <div className="form-row">
@@ -73,8 +81,6 @@ const SearchTrainer: FC<{}> = () => {
               <h3>W czym potrzebujesz pomocy?</h3>
               <div className="form-row">
                 <select
-                  name=""
-                  id=""
                   onChange={(e) => {
                     const selectedCategory = categories.find(
                       (category: Category) =>
@@ -93,7 +99,17 @@ const SearchTrainer: FC<{}> = () => {
                     <option value={category.id}>{category.name}</option>
                   ))}
                 </select>
-                <select name="" id="" disabled={category.id === 0}>
+                <select
+                  disabled={category.id === 0}
+                  onChange={(e) => {
+                    const selectedSub = subcategories.find(
+                      (sub: Category) => sub.id === parseInt(e.target.value)
+                    );
+                    if (selectedSub) {
+                      setSubcategory(selectedSub);
+                    }
+                  }}
+                >
                   <option selected disabled>
                     Podkategoria
                   </option>
@@ -103,7 +119,7 @@ const SearchTrainer: FC<{}> = () => {
                 </select>
               </div>
             </div>
-            <button className="btn btn-light">
+            <button className="btn btn-light" type="submit">
               <SearchIcon />
               <p>Wyszukaj</p>
             </button>

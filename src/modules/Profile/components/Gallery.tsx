@@ -33,7 +33,7 @@ const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
       };
       fetchPhotos();
     }
-  }, [refreshPhotos]);
+  }, [refreshPhotos, fetchedPhotos]);
 
   return (
     <div className="photo-gallery">

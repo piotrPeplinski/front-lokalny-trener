@@ -8,6 +8,7 @@ import { ProfileProvider } from "./modules/Profile/context/profile-context";
 import AddAdScreen from "./modules/Ads/AddAdScreen";
 import AdDetail from "./modules/Ads/AdDetailScreen";
 import AdDetailScreen from "./modules/Ads/AdDetailScreen";
+import AdsScreen from "./modules/Ads/AdsScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -45,6 +46,14 @@ const RouterBuilder = () => {
       element: (
         <ProfileProvider>
           <AdDetailScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/search/:subcategoryId",
+      element: (
+        <ProfileProvider>
+          <AdsScreen />
         </ProfileProvider>
       ),
     },
