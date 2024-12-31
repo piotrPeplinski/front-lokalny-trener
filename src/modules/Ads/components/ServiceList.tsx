@@ -17,7 +17,9 @@ const ServiceList: FC<ServiceListProps> = ({ services, setServices }) => {
 
   return (
     <>
-      <h3 className="subtitle text-center mt-2">Oferowane usługi</h3>
+      {setServices && (
+        <h3 className="subtitle text-center mt-2">Oferowane usługi</h3>
+      )}
       <div className="services-list shadow">
         <div className="service-row">
           <p>Nazwa</p>
@@ -26,9 +28,14 @@ const ServiceList: FC<ServiceListProps> = ({ services, setServices }) => {
         </div>
         {services?.map((service, index) => (
           <div className="service-row" key={index}>
-            <div className="delete-service" onClick={() => handleDelete(index)}>
-              <TrashIcon />
-            </div>
+            {setServices && (
+              <div
+                className="delete-service"
+                onClick={() => handleDelete(index)}
+              >
+                <TrashIcon />
+              </div>
+            )}
             <p>{service.name}</p>
             <p>{service.price}</p>
             <p>{service.time}</p>

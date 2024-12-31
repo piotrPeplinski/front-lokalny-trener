@@ -155,22 +155,40 @@
 }
 
 /* --------------------- */
-/* AD PREVIEW */
+/* AD DETAIL */
 /* --------------------- */
 .ad-detail__container {
     display: flex;
+    justify-content: space-between;
 }
 
 .ad-detail__col {
     display: flex;
     flex-direction: column;
-    flex: 0 0 75%;
+    flex: 0 0 71%;
 }
 
 .ad-detail__col-sm {
     display: flex;
     flex-direction: column;
-    flex: 0 0 25%;
+    flex: 0 0 21%;
+}
+
+.ad-detail__container h1 {
+    font-size: 3.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.ad-detail__desc {
+    font-size: 1.7rem;
+}
+
+.ad-detail__title {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 /* --------------------- */
@@ -199,7 +217,7 @@
 }
 
 .socials-row a {
-    flex: 0 0 12%;
+    flex: 0 0 9%;
 }
 
 #fb {
