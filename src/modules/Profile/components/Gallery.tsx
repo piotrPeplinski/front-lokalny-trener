@@ -3,31 +3,36 @@ import { Photo } from "../types/profile-types";
 import { api } from "../../../api/axiosClient";
 import GalleryItem from "./GalleryItem";
 import { useProfileContext } from "../context/profile-context";
+import { useAuthContext } from "../../Auth/context/auth-context";
 
 interface GalleryProps {
-  userId: number | undefined;
   allowEdit: boolean;
+  fetchedPhotos?: Photo[];
 }
 
-const Gallery: FC<GalleryProps> = ({ userId, allowEdit }) => {
+const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
   const { refreshPhotos } = useProfileContext();
+  const { user } = useAuthContext();
   const [photos, setPhotos] = useState<Photo[]>([]);
   // Fetch photos
   useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const response = await api.get("/accounts/photos/", {
-          params: {
-            user: userId,
-          },
-        });
-        setPhotos(response.data);
-      } catch (error) {
-        console.error("Error fetching photos:", error);
-      }
-    };
-
-    fetchPhotos();
+    if (fetchedPhotos) {
+      setPhotos(fetchedPhotos);
+    } else {
+      const fetchPhotos = async () => {
+        try {
+          const response = await api.get("/accounts/photos/", {
+            params: {
+              user: user?.id,
+            },
+          });
+          setPhotos(response.data);
+        } catch (error) {
+          console.error("Error fetching photos:", error);
+        }
+      };
+      fetchPhotos();
+    }
   }, [refreshPhotos]);
 
   return (

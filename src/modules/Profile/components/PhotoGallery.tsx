@@ -1,11 +1,9 @@
 import { FC } from "react";
 import Gallery from "./Gallery";
-import { useAuthContext } from "../../Auth/context/auth-context";
 import { protectedApi } from "../../../api/axiosClient";
 import { useProfileContext } from "../context/profile-context";
 
 const PhotoGallery: FC<{}> = () => {
-  const { user } = useAuthContext();
   const { refreshPhotos, setRefreshPhotos } = useProfileContext();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +44,7 @@ const PhotoGallery: FC<{}> = () => {
           </div>
         </div>
       </form>
-      <Gallery userId={user?.id} allowEdit={true} />
+      <Gallery allowEdit={true} />
     </div>
   );
 };

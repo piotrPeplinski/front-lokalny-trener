@@ -12,6 +12,7 @@ import { Education, Photo } from "../Profile/types/profile-types";
 import { api } from "../../api/axiosClient";
 import ContactInfo from "./components/ContactInfo";
 import avatar from "./../../assets/img/avatar.png";
+import Gallery from "../Profile/components/Gallery";
 
 interface AdDetailType {
   preview: AdPreviewType;
@@ -21,6 +22,7 @@ interface AdDetailType {
   education: Education[];
   photos: Photo[];
   reviews: ReviewType[];
+  user: number;
 }
 
 const AdDetailScreen: FC<{}> = () => {
@@ -67,6 +69,10 @@ const AdDetailScreen: FC<{}> = () => {
             <div className="mt-2">
               <h2 className="ad-detail__title">Oferowane usługi</h2>
               <ServiceList services={adDetails?.services} />
+            </div>
+            <div className="mt-2">
+              <h2 className="ad-detail__title">Galeria zdjęć</h2>
+              <Gallery allowEdit={false} fetchedPhotos={adDetails?.photos} />
             </div>
           </div>
           <div className="ad-detail__col-sm">
