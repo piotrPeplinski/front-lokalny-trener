@@ -198,6 +198,7 @@
     display: flex;
     align-items: center;
     font-size: 1.7rem;
+    margin-bottom: 1rem;
 }
 
 .contact-row svg {
@@ -207,8 +208,8 @@
     margin-right: 0.5rem;
 }
 
-.contact-row:first-of-type {
-    margin-bottom: 1rem;
+.contact-row:last-of-type {
+    margin-bottom: 0;
 }
 
 .socials-row {

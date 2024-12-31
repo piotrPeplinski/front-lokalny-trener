@@ -19,7 +19,10 @@ export interface RatingType {
 }
 
 export interface ContactInfoType {
+  id: number;
   email: string;
+  city: string;
+  remote: boolean;
   phone: string;
   instagram: string | null;
   facebook: string | null;

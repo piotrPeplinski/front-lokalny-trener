@@ -1,6 +1,12 @@
 import { FC } from "react";
 import { ContactInfoType } from "../types/ads-types";
-import { CallIcon, MailIcon, socialIcons } from "../../../assets/icons/icons";
+import {
+  CallIcon,
+  CheckIcon,
+  HomeIcon,
+  MailIcon,
+  socialIcons,
+} from "../../../assets/icons/icons";
 import { socials } from "../utils/utils";
 
 interface ContactInfoProps {
@@ -22,11 +28,23 @@ const ContactInfo: FC<ContactInfoProps> = ({ contactInfo }) => {
           <p>{contactInfo?.phone}</p>
         </div>
       )}
+      {contactInfo?.city && (
+        <div className="contact-row">
+          <HomeIcon />
+          <p>{contactInfo?.city}</p>
+        </div>
+      )}
+      {contactInfo?.remote && (
+        <div className="contact-row">
+          <CheckIcon />
+          <p>Zdalnie</p>
+        </div>
+      )}
       <div className="socials-row mt-2">
         {socials.map((social) => {
           const Icon = socialIcons[social];
           if (contactInfo) {
-            const url = contactInfo[social as keyof ContactInfoType];
+            const url = String(contactInfo[social as keyof ContactInfoType]);
             if (url) {
               return (
                 <a href={url} target="blank_">
