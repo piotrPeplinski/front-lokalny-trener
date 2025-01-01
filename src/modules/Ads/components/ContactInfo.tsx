@@ -40,7 +40,7 @@ const ContactInfo: FC<ContactInfoProps> = ({ contactInfo }) => {
           <p>Zdalnie</p>
         </div>
       )}
-      <div className="socials-row mt-2">
+      <div className="socials-row">
         {socials.map((social) => {
           const Icon = socialIcons[social];
           if (contactInfo) {

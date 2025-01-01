@@ -17,6 +17,7 @@ const SearchTrainer: FC<{}> = () => {
     name: "",
   });
   const [remote, setRemote] = useState(false);
+  const [city, setCity] = useState("");
 
   //fetch categories on load
   useEffect(() => {
@@ -48,7 +49,7 @@ const SearchTrainer: FC<{}> = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    navigate(`/search/${subcategory.id}`);
+    navigate(`/search/${subcategory.id}/${remote ? "remote" : city}`);
   };
 
   return (
@@ -67,6 +68,9 @@ const SearchTrainer: FC<{}> = () => {
                   type="text"
                   placeholder="Wpisz miasto"
                   disabled={remote}
+                  onChange={(e) => {
+                    setCity(e.target.value);
+                  }}
                 />
                 <div
                   onClick={() => setRemote(!remote)}

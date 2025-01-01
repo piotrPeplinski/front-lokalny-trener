@@ -50,7 +50,7 @@ const RouterBuilder = () => {
       ),
     },
     {
-      path: "/search/:subcategoryId",
+      path: "/search/:subcategoryId/:location",
       element: (
         <ProfileProvider>
           <AdsScreen />

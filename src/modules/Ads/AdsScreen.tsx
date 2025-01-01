@@ -5,7 +5,7 @@ import { AdPreviewType } from "./types/ads-types";
 import AdPreview from "./components/AdPreview";
 
 const AdsScreen: FC<{}> = () => {
-  const { subcategoryId } = useParams();
+  const { subcategoryId, location } = useParams();
   const [ads, setAds] = useState<AdPreviewType[]>([]);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const AdsScreen: FC<{}> = () => {
         const response = await api.get("/ads-preview/", {
           params: {
             subcategory: subcategoryId,
+            location: location,
           },
         });
         setAds(response.data);
