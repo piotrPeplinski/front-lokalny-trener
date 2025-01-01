@@ -17,6 +17,7 @@ const ListEducation: FC<ListEducationProps> = ({
   const { user } = useAuthContext();
   const { refreshEducationList } = useProfileContext();
   const [educationList, setEducationList] = useState<Education[]>([]);
+
   useEffect(() => {
     if (fetchedEducation) {
       setEducationList(fetchedEducation);
@@ -36,7 +37,7 @@ const ListEducation: FC<ListEducationProps> = ({
       };
       fetchEducation();
     }
-  }, [user?.id, refreshEducationList]);
+  }, [user?.id, refreshEducationList, fetchedEducation]);
   return (
     <div className="education-list shadow">
       <h2>Wykształcenie</h2>

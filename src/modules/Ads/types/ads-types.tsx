@@ -1,3 +1,5 @@
+import { Education, Photo } from "../../Profile/types/profile-types";
+
 export interface Service {
   id: number;
   name: string;
@@ -35,4 +37,15 @@ export interface ReviewType {
   rating: number;
   created: string;
   creator_full_name: string;
+}
+
+export interface AdDetailType {
+  preview: AdPreviewType;
+  contact_info: ContactInfoType;
+  services: Service[];
+  text: string;
+  education: Education[];
+  photos: Photo[];
+  reviews: ReviewType[];
+  user: number;
 }

@@ -74,7 +74,7 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
       <div className="ad-preview-col">
         <h3 className="ad-preview__name">{ad.full_name}</h3>
 
-        <Rating rating={ad.rating} />
+        <Rating rating={ad.rating} showAmount={true} />
 
         <p className="ad-preview__category">{ad.sub_category}</p>
       </div>

@@ -238,3 +238,36 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+/* --------------------- */
+/* REVIEW */
+/* --------------------- */
+
+.review__container {
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.review__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review__row h4 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.review__date {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #474747;
+}
+
+.review__text {
+    font-size: 1.6rem;
+    text-align: justify;
+    margin-top: 1rem;
+}
