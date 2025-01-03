@@ -11,11 +11,23 @@ import Rating from "./components/Rating";
 import { defaultAdDetails } from "./utils/utils";
 import { AdIcon } from "../../assets/icons/icons";
 import Review from "./components/Review";
+import { useAuthContext } from "../Auth/context/auth-context";
+import Popup from "../Reusable/Popup";
+import ClickableStars from "./components/ClickableStars";
 
 const AdDetailScreen: FC<{}> = () => {
   const { adId } = useParams();
+  const { isAuthenticated, user } = useAuthContext();
 
   const [adDetails, setAdDetails] = useState<AdDetailType>(defaultAdDetails);
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const [revRating, setRevRating] = useState(0);
+
+  const canAddReview =
+    isAuthenticated &&
+    adDetails.user !== user?.id &&
+    !adDetails.reviews.some((review) => review.creator === user?.id);
 
   useEffect(() => {
     const fetchAdDetails = async () => {
@@ -63,10 +75,15 @@ const AdDetailScreen: FC<{}> = () => {
             </div>
             <div className="mt-2">
               <h2 className="ad-detail__title">Opinie</h2>
-              <button className="btn btn-dark mb-1">
-                <AdIcon />
-                Dodaj opinię
-              </button>
+              {canAddReview && (
+                <button
+                  onClick={() => setPopupOpen(true)}
+                  className="btn btn-dark mb-1"
+                >
+                  <AdIcon />
+                  Dodaj opinię
+                </button>
+              )}
               <Rating rating={adDetails.preview.rating} showAmount={true} />
               <div className="mb-1"></div>
               {adDetails.reviews.map((review) => (
@@ -84,6 +101,21 @@ const AdDetailScreen: FC<{}> = () => {
           </div>
         </div>
       </div>
+      <Popup isOpen={popupOpen} onClose={() => setPopupOpen(false)}>
+        <h2 className="profile-func-title">Dodaj opinię</h2>
+        <form>
+          <ClickableStars rating={revRating} setRating={setRevRating} />
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="">Treść</label>
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
+          <button className="btn btn-dark" type="submit">
+            Dodaj
+          </button>
+        </form>
+      </Popup>
     </section>
   );
 };

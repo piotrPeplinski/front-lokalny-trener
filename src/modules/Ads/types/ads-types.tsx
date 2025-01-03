@@ -37,6 +37,7 @@ export interface ReviewType {
   rating: number;
   created: string;
   creator_full_name: string;
+  creator: number;
 }
 
 export interface AdDetailType {
