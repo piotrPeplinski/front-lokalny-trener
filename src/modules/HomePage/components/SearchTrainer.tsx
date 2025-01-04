@@ -71,6 +71,7 @@ const SearchTrainer: FC<{}> = () => {
                   onChange={(e) => {
                     setCity(e.target.value);
                   }}
+                  required={!remote}
                 />
                 <div
                   onClick={() => setRemote(!remote)}
@@ -85,6 +86,7 @@ const SearchTrainer: FC<{}> = () => {
               <h3>W czym potrzebujesz pomocy?</h3>
               <div className="form-row">
                 <select
+                  required
                   onChange={(e) => {
                     const selectedCategory = categories.find(
                       (category: Category) =>
@@ -104,6 +106,7 @@ const SearchTrainer: FC<{}> = () => {
                   ))}
                 </select>
                 <select
+                  required
                   disabled={category.id === 0}
                   onChange={(e) => {
                     const selectedSub = subcategories.find(
