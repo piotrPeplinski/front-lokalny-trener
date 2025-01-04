@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import PhotoGallery from "./components/PhotoGallery";
 import MyAds from "./components/MyAds";
 import { useProfileContext } from "./context/profile-context";
+import MyReviews from "./components/MyReviews";
 
 const ProfileScreen: FC<{}> = () => {
   const { selectedFunc, setSelectedFunc } = useProfileContext();
@@ -20,6 +21,8 @@ const ProfileScreen: FC<{}> = () => {
         return <PhotoGallery />;
       case "Moje ogłoszenia":
         return <MyAds />;
+      case "Opinie":
+        return <MyReviews />;
     }
   };
   return (
