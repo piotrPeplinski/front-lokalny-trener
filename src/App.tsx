@@ -1,18 +1,14 @@
-import { useMemo } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RouterBuilder from "./RouterBuilder";
 import "./assets/css/font-faces.css";
 import "./assets/css/main.css";
 import { AuthProvider } from "./modules/Auth/context/auth-context";
 
-const App = () => {
-  const routes = useMemo(() => RouterBuilder(), []);
+// Define the router outside the component if static
+const router = createBrowserRouter(RouterBuilder());
 
-  return (
-    <AuthProvider>
-      <RouterProvider router={createBrowserRouter(routes)} />
-    </AuthProvider>
-  );
+const App = () => {
+  return <RouterProvider router={router} />;
 };
 
 export default App;

@@ -2,7 +2,7 @@ import { FC } from "react";
 import logo from "./../../../assets/img/logo.png";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import { getNavbarData } from "../utils/functions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar: FC<{}> = () => {
   const { user, isAuthenticated, logout } = useAuthContext();
@@ -16,23 +16,26 @@ const NavBar: FC<{}> = () => {
 
   return (
     <nav>
-      <a href="/">
+      {/* Replaced <a> with <Link> */}
+      <Link to="/">
         <img src={logo} alt="Logo" />
-      </a>
+      </Link>
 
       <ul className="main-nav">
-        {navLinks.map((navLink) => (
-          <li>
-            <a className={navLink.classes} href={navLink.href}>
+        {navLinks.map((navLink, index) => (
+          <li key={index}>
+            {/* Changed <a> to <Link> */}
+            <Link className={navLink.classes} to={navLink.href}>
               {navLink.text}
-            </a>
+            </Link>
           </li>
         ))}
         {isAuthenticated && (
           <li>
-            <a onClick={handleLogout} className="shift" href="#">
+            {/* Prevent page reload by using Link with onClick */}
+            <Link to="#" onClick={handleLogout} className="shift">
               Wyloguj się
-            </a>
+            </Link>
           </li>
         )}
       </ul>
