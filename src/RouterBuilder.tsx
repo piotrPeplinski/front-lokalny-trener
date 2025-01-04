@@ -6,9 +6,9 @@ import LoginScreen from "./modules/Auth/LoginScreen";
 import ProfileScreen from "./modules/Profile/ProfileScreen";
 import { ProfileProvider } from "./modules/Profile/context/profile-context";
 import AddAdScreen from "./modules/Ads/AddAdScreen";
-import AdDetail from "./modules/Ads/AdDetailScreen";
 import AdDetailScreen from "./modules/Ads/AdDetailScreen";
 import AdsScreen from "./modules/Ads/AdsScreen";
+import ProtectedRoute from "./api/ProtectedRoute";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -28,17 +28,21 @@ const RouterBuilder = () => {
     {
       path: "/profile",
       element: (
-        <ProfileProvider>
-          <ProfileScreen />
-        </ProfileProvider>
+        <ProtectedRoute>
+          <ProfileProvider>
+            <ProfileScreen />
+          </ProfileProvider>
+        </ProtectedRoute>
       ),
     },
     {
       path: "/add",
       element: (
-        <ProfileProvider>
-          <AddAdScreen />
-        </ProfileProvider>
+        <ProtectedRoute>
+          <ProfileProvider>
+            <AddAdScreen />
+          </ProfileProvider>
+        </ProtectedRoute>
       ),
     },
     {
