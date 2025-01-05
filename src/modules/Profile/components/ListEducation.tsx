@@ -30,7 +30,6 @@ const ListEducation: FC<ListEducationProps> = ({
             },
           });
           setEducationList(response.data);
-          console.log(educationList);
         } catch (error) {
           console.error("Error fetching education data:", error);
         }
@@ -38,17 +37,22 @@ const ListEducation: FC<ListEducationProps> = ({
       fetchEducation();
     }
   }, [user?.id, refreshEducationList, fetchedEducation]);
+
   return (
-    <div className="education-list shadow">
-      <h2>Wykształcenie</h2>
-      {educationList.map((education) => (
-        <CardEducation
-          key={education.id}
-          education={education}
-          allowEdit={allowEdit}
-        />
-      ))}
-    </div>
+    <>
+      {educationList.length !== 0 && (
+        <div className="education-list shadow">
+          <h2>Wykształcenie</h2>
+          {educationList.map((education) => (
+            <CardEducation
+              key={education.id}
+              education={education}
+              allowEdit={allowEdit}
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,16 +1,24 @@
 import { FC } from "react";
 import "./../../assets/css/Profile/profile.css";
-import { functionalities } from "./utils/constans";
+import {
+  clientFunctionalities,
+  trainerFunctionalities,
+} from "./utils/constans";
 import Me from "./components/Me";
 import Education from "./components/Education";
 import PhotoGallery from "./components/PhotoGallery";
 import MyAds from "./components/MyAds";
 import { useProfileContext } from "./context/profile-context";
 import MyReviews from "./components/MyReviews";
+import { useAuthContext } from "../Auth/context/auth-context";
 
 const ProfileScreen: FC<{}> = () => {
   const { selectedFunc, setSelectedFunc } = useProfileContext();
-
+  const { user } = useAuthContext();
+  console.log(user);
+  const functionalities = user?.is_trainer
+    ? trainerFunctionalities
+    : clientFunctionalities;
   const renderFunctionality = () => {
     switch (selectedFunc) {
       case "O mnie":

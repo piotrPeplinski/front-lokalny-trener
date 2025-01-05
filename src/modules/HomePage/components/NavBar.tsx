@@ -16,7 +16,6 @@ const NavBar: FC<{}> = () => {
 
   return (
     <nav>
-      {/* Replaced <a> with <Link> */}
       <Link to="/">
         <img src={logo} alt="Logo" />
       </Link>
@@ -24,7 +23,6 @@ const NavBar: FC<{}> = () => {
       <ul className="main-nav">
         {navLinks.map((navLink, index) => (
           <li key={index}>
-            {/* Changed <a> to <Link> */}
             <Link className={navLink.classes} to={navLink.href}>
               {navLink.text}
             </Link>
@@ -32,7 +30,6 @@ const NavBar: FC<{}> = () => {
         ))}
         {isAuthenticated && (
           <li>
-            {/* Prevent page reload by using Link with onClick */}
             <Link to="#" onClick={handleLogout} className="shift">
               Wyloguj się
             </Link>

@@ -164,7 +164,11 @@ const UserForm: FC<{}> = () => {
           />
         </div>
         <div className="checkbox-col">
-          <label htmlFor="remote">Prowadzę zajęcia zdalnie</label>
+          <label htmlFor="remote">
+            {user?.is_trainer
+              ? "Prowadzę zajęcia zdalnie"
+              : "Akceptuję zajęcia zdalne"}
+          </label>
           <input
             className="form-input"
             checked={profileData.remote}

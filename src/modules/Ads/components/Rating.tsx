@@ -12,7 +12,7 @@ const Rating: FC<RatingProps> = ({ rating, showAmount }) => {
     <div className="ad-preview__rating">
       <StarRating rating={rating.average_rating} />
       <p>{rating.average_rating} / 5</p>
-      {showAmount && <p>({rating.review_count})</p>}
+      {showAmount && <p>({rating.review_count ? rating.review_count : 0})</p>}
     </div>
   );
 };

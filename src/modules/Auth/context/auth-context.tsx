@@ -82,6 +82,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   // Register function
+  // TODO: setting is_trainer does not work from decoded
   const register = async (data: RegisterData) => {
     try {
       const response = await api.post("/accounts/auth/register/", data);

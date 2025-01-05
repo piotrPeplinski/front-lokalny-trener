@@ -1,4 +1,4 @@
-const functionalities = [
+const trainerFunctionalities = [
   "O mnie",
   "Moje wykształcenie",
   "Moje ogłoszenia",
@@ -7,4 +7,10 @@ const functionalities = [
   "Opinie",
 ];
 
-export { functionalities };
+const clientFunctionalities = [
+  "O mnie",
+  "Moje ogłoszenia",
+  "Zmień e-mail/hasło",
+];
+
+export { trainerFunctionalities, clientFunctionalities };

@@ -26,6 +26,7 @@ const AdDetailScreen: FC<{}> = () => {
 
   // Check if the user can add a review
   const canAddReview =
+    !user?.is_trainer &&
     isAuthenticated &&
     adDetails.user !== user?.id &&
     !adDetails.reviews.some((review) => review.creator === user?.id);
