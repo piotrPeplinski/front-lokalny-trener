@@ -108,6 +108,10 @@ section {
     margin-bottom: 1rem;
 }
 
+.mr-2 {
+    margin-right: 2rem;
+}
+
 .row-center {
     display: flex;
     justify-content: center;
