@@ -29,10 +29,10 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
           const adData = response.data;
           setSubcategory(adData.subcategory);
           setCategory(adData.category);
-          setDescription(adData.description);
+          setDescription(adData.text);
           setMinPrice(adData.min_price);
           setMaxPrice(adData.max_price);
-          setDuration(adData.duration);
+          setDuration(adData.time);
           setPhone(adData.phone || ""); // Optional phone
         } catch (error) {
           console.error("Error fetching ad:", error);

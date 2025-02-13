@@ -4,6 +4,8 @@ import avatar from "./../../../assets/img/avatar.png";
 import { EditIcon, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
 import ClientAdForm from "./ClientAdForm";
+import { protectedApi } from "../../../api/axiosClient";
+import { useProfileContext } from "../../Profile/context/profile-context";
 
 interface ClientAdPreviewProps {
   ad: ClientAdPreviewType;
@@ -12,6 +14,22 @@ interface ClientAdPreviewProps {
 
 const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
   const [popupOpen, setPopupOpen] = useState(false);
+  const { setRefreshAds, refreshAds } = useProfileContext();
+
+  const handleDelete = (event: React.MouseEvent) => {
+    const deleteAd = async () => {
+      try {
+        await protectedApi.delete(`/client-ads/${ad.id}/`);
+        alert("Usunięto pomyślnie.");
+        setRefreshAds(!refreshAds);
+      } catch (err) {
+        alert("Błąd podczas usuwania. Spróbuj ponownie.");
+        console.log(err);
+      }
+    };
+    deleteAd();
+  };
+
   return (
     <div className="ad-preview__card shadow">
       {allowEdit && (
@@ -19,7 +37,7 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
           <div onClick={() => setPopupOpen(true)}>
             <EditIcon />
           </div>
-          <div>
+          <div onClick={handleDelete}>
             <TrashIcon />
           </div>
         </div>
