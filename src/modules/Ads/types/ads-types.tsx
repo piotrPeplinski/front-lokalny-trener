@@ -15,6 +15,16 @@ export interface AdPreviewType {
   rating: RatingType;
 }
 
+export interface ClientAdPreviewType {
+  id: number;
+  profile_picture: string;
+  full_name: string;
+  sub_category: string;
+  min_price: number;
+  max_price: number;
+  city: string;
+}
+
 export interface RatingType {
   average_rating: number;
   review_count: number;

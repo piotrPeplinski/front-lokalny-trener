@@ -154,6 +154,30 @@
     margin-right: 0.75rem;
 }
 
+/* CLIENT AD PREVIEW */
+.client-ad-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.client-ad-info p:first-of-type {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #3a7bb9;
+}
+
+.client-ad-info p:last-of-type {
+    font-size: 1.2rem;
+    font-weight: 500
+}
+
+.client-ad-info span {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 /* --------------------- */
 /* AD DETAIL */
 /* --------------------- */

@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { AdPreviewType } from "../types/ads-types";
-import StarRating from "./StarRating";
 import avatar from "./../../../assets/img/avatar.png";
 import { EditIcon, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
