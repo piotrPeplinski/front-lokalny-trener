@@ -4,6 +4,7 @@ import { Category } from "../../HomePage/types";
 import { api, protectedApi } from "../../../api/axiosClient";
 import { useNavigate } from "react-router-dom";
 import { AdIcon } from "../../../assets/icons/icons";
+import { useProfileContext } from "../../Profile/context/profile-context";
 
 interface ClientAdFormProps {
   adId?: number;
@@ -19,7 +20,10 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
   const [phone, setPhone] = useState<string>("");
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   const navigate = useNavigate();
+  const { setSelectedFunc } = useProfileContext();
+  const { setRefreshAds, refreshAds } = useProfileContext();
 
   useEffect(() => {
     if (adId) {
@@ -78,11 +82,15 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
 
     try {
       if (adId) {
+        //UPDATE
         await protectedApi.put(`/client-ads/${adId}/`, adData);
         alert("Ogłoszenie zostało zaktualizowane.");
+        setRefreshAds(!refreshAds);
       } else {
+        //CREATE
         await protectedApi.post(`/client-ads/`, adData);
         alert("Ogłoszenie zostało utworzone.");
+        setSelectedFunc("Moje ogłoszenia");
         navigate("/profile");
       }
     } catch (error) {
