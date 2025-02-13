@@ -6,6 +6,7 @@ import Popup from "../../Reusable/Popup";
 import ClientAdForm from "./ClientAdForm";
 import { protectedApi } from "../../../api/axiosClient";
 import { useProfileContext } from "../../Profile/context/profile-context";
+import { useNavigate } from "react-router-dom";
 
 interface ClientAdPreviewProps {
   ad: ClientAdPreviewType;
@@ -15,6 +16,7 @@ interface ClientAdPreviewProps {
 const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
   const [popupOpen, setPopupOpen] = useState(false);
   const { setRefreshAds, refreshAds } = useProfileContext();
+  const navigate = useNavigate();
 
   const handleDelete = (event: React.MouseEvent) => {
     const deleteAd = async () => {
@@ -30,8 +32,17 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
     deleteAd();
   };
 
+  const redirectToDetail = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest(".action-btns") && !target.closest(".popup-overlay")) {
+      navigate(`/client-ads/${ad.id}`);
+    } else {
+      return;
+    }
+  };
+
   return (
-    <div className="ad-preview__card shadow">
+    <div className="ad-preview__card shadow" onClick={redirectToDetail}>
       {allowEdit && (
         <div className="action-btns">
           <div onClick={() => setPopupOpen(true)}>

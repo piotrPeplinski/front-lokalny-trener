@@ -31,15 +31,15 @@ export interface RatingType {
 }
 
 export interface ContactInfoType {
-  id: number;
+  id?: number;
   email: string;
   city: string;
   remote: boolean;
   phone: string;
-  instagram: string | null;
-  facebook: string | null;
-  tiktok: string | null;
-  website: string | null;
+  instagram?: string | null;
+  facebook?: string | null;
+  tiktok?: string | null;
+  website?: string | null;
 }
 
 export interface ReviewType {
@@ -59,4 +59,33 @@ export interface AdDetailType {
   photos: Photo[];
   reviews: ReviewType[];
   user: number;
+}
+
+export interface ClientAdDetailType {
+  ad_data: {
+    id: number;
+    text: string;
+    sub_category: number;
+    subcategory: {
+      id: number;
+      name: string;
+    };
+    category: {
+      id: number;
+      name: string;
+    };
+    max_price: number;
+    min_price: number;
+    time: number;
+    phone: string;
+  };
+  user_data: {
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    profile_picture: string | null;
+    remote: boolean;
+    city: string;
+  };
 }

@@ -215,6 +215,16 @@
     font-weight: 500;
 }
 
+.ad-detail__price {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.ad-detail__price span {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
 /* --------------------- */
 /* CONTACT INFO */
 /* --------------------- */

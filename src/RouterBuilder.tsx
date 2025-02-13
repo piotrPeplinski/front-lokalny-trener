@@ -9,6 +9,7 @@ import AddAdScreen from "./modules/Ads/AddAdScreen";
 import AdDetailScreen from "./modules/Ads/AdDetailScreen";
 import AdsScreen from "./modules/Ads/AdsScreen";
 import ProtectedRoute from "./api/ProtectedRoute";
+import ClientAdDetailScreen from "./modules/Ads/ClientAdDetailScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -50,6 +51,14 @@ const RouterBuilder = () => {
       element: (
         <ProfileProvider>
           <AdDetailScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/client-ads/:adId",
+      element: (
+        <ProfileProvider>
+          <ClientAdDetailScreen />
         </ProfileProvider>
       ),
     },
