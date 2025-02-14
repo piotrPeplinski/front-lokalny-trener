@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../../api/axiosClient";
-import { AdPreviewType } from "./types/ads-types";
 import AdPreview from "./components/AdPreview";
+import ClientAdPreview from "./components/ClientAdPreview";
 
 const AdsScreen: FC<{}> = () => {
-  const { subcategoryId, location } = useParams();
-  const [ads, setAds] = useState<AdPreviewType[]>([]);
+  const { subcategoryId, location, trainer_ads } = useParams();
+  const [ads, setAds] = useState([]);
 
   useEffect(() => {
     const fetchAdPreviews = async () => {
@@ -15,6 +15,7 @@ const AdsScreen: FC<{}> = () => {
           params: {
             subcategory: subcategoryId,
             location: location,
+            trainer_ads: trainer_ads,
           },
         });
         setAds(response.data);
@@ -30,9 +31,13 @@ const AdsScreen: FC<{}> = () => {
       <div className="row">
         <h1 className="profile-func-title text-center">Ogłoszenia</h1>
         <div className="ads__container">
-          {ads.map((ad) => (
-            <AdPreview allowEdit={false} ad={ad} />
-          ))}
+          {ads.map((ad) =>
+            trainer_ads === "true" ? (
+              <AdPreview allowEdit={false} ad={ad} />
+            ) : (
+              <ClientAdPreview allowEdit={false} ad={ad} />
+            )
+          )}
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@ const SearchTrainer: FC<{}> = () => {
   const [remote, setRemote] = useState(false);
   const [city, setCity] = useState("");
 
-  //fetch categories on load
+  // Fetch categories on load
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -32,7 +32,7 @@ const SearchTrainer: FC<{}> = () => {
     fetchCategories();
   }, []);
 
-  //fetch subcategories when category selected
+  // Fetch subcategories when category is selected
   useEffect(() => {
     if (category.id !== 0) {
       const fetchSubcategories = async () => {
@@ -47,9 +47,11 @@ const SearchTrainer: FC<{}> = () => {
     }
   }, [category]);
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSearch = (trainerAds: boolean) => (event: FormEvent) => {
     event.preventDefault();
-    navigate(`/search/${subcategory.id}/${remote ? "remote" : city}`);
+    navigate(
+      `/search/${subcategory.id}/${remote ? "remote" : city}/${trainerAds ? true : false}`
+    );
   };
 
   return (
@@ -60,7 +62,7 @@ const SearchTrainer: FC<{}> = () => {
             Znajdź idealnego specjalistę i umów zajęcia w kilka chwil – szybko,
             wygodnie, skutecznie!
           </h1>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="form-col">
               <h3>Gdzie chcesz odbyć zajęcia?</h3>
               <div className="form-row">
@@ -102,7 +104,9 @@ const SearchTrainer: FC<{}> = () => {
                     Kategoria
                   </option>
                   {categories?.map((category: Category) => (
-                    <option value={category.id}>{category.name}</option>
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
                   ))}
                 </select>
                 <select
@@ -121,15 +125,23 @@ const SearchTrainer: FC<{}> = () => {
                     Podkategoria
                   </option>
                   {subcategories?.map((subcategory: Category) => (
-                    <option value={subcategory.id}>{subcategory.name}</option>
+                    <option key={subcategory.id} value={subcategory.id}>
+                      {subcategory.name}
+                    </option>
                   ))}
                 </select>
               </div>
             </div>
-            <button className="btn btn-light" type="submit">
-              <SearchIcon />
-              <p>Wyszukaj</p>
-            </button>
+            <div className="search-btns">
+              <button className="btn btn-light" onClick={handleSearch(true)}>
+                <SearchIcon />
+                <p>Znajdź trenera</p>
+              </button>
+              <button className="btn btn-dark" onClick={handleSearch(false)}>
+                <SearchIcon />
+                <p>Znajdź klienta</p>
+              </button>
+            </div>
           </form>
         </div>
       </section>

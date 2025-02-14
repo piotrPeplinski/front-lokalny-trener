@@ -177,6 +177,10 @@ a.shift.important:hover:after {
     background-color: #3a7bb9;
 }
 
+.search-btns button:first-of-type {
+    margin-bottom: 1rem;
+}
+
 /* --------------------- */
 /* STEPS */
 /* --------------------- */
