@@ -10,6 +10,7 @@ import AdDetailScreen from "./modules/Ads/AdDetailScreen";
 import AdsScreen from "./modules/Ads/AdsScreen";
 import ProtectedRoute from "./api/ProtectedRoute";
 import ClientAdDetailScreen from "./modules/Ads/ClientAdDetailScreen";
+import VerifyEmail from "./modules/Auth/VerifyEmail";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -67,6 +68,14 @@ const RouterBuilder = () => {
       element: (
         <ProfileProvider>
           <AdsScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/verify-email",
+      element: (
+        <ProfileProvider>
+          <VerifyEmail />
         </ProfileProvider>
       ),
     },

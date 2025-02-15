@@ -75,9 +75,9 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       }
 
       setIsAuthenticated(true);
-    } catch (error) {
-      console.error("Login failed:", error);
-      throw new Error("Invalid credentials");
+    } catch (error: any) {
+      console.log();
+      throw new Error(`${error.response.data.Error}`);
     }
   };
 
@@ -86,16 +86,9 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const register = async (data: RegisterData) => {
     try {
       const response = await api.post("/accounts/auth/register/", data);
-      const { access, refresh } = response.data;
-
-      // Save tokens to localStorage
-      localStorage.setItem("accessToken", access);
-      localStorage.setItem("refreshToken", refresh);
-
-      // Decode token to get user info
-      const decoded: any = decodeJWT(access);
-      setUser({ id: decoded.user_id, is_trainer: decoded.is_trainer });
-      setIsAuthenticated(true);
+      alert(
+        "Registration successful! Please check your email to verify your account before logging in."
+      );
     } catch (error) {
       console.error("Registration failed:", error);
       throw new Error("Registration failed");

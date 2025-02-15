@@ -17,8 +17,9 @@ const LoginScreen: FC<{}> = () => {
       await login(email, password); // Attempt login
       navigate("/");
       console.log("logged in: ", user?.id);
-    } catch (err) {
-      setError("Invalid email or password."); // Show error if login fails
+    } catch (error) {
+      console.log(error);
+      setError(`${error}`); // Show error if login fails
     }
   };
 
