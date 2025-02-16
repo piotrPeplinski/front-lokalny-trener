@@ -3,14 +3,10 @@ const trainerFunctionalities = [
   "Moje wykształcenie",
   "Moje ogłoszenia",
   "Galeria zdjęć",
-  "Zmień e-mail/hasło",
   "Opinie",
+  "Zmień hasło",
 ];
 
-const clientFunctionalities = [
-  "O mnie",
-  "Moje ogłoszenia",
-  "Zmień e-mail/hasło",
-];
+const clientFunctionalities = ["O mnie", "Moje ogłoszenia", "Zmień hasło"];
 
 export { trainerFunctionalities, clientFunctionalities };

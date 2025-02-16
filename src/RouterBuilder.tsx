@@ -11,6 +11,7 @@ import AdsScreen from "./modules/Ads/AdsScreen";
 import ProtectedRoute from "./api/ProtectedRoute";
 import ClientAdDetailScreen from "./modules/Ads/ClientAdDetailScreen";
 import VerifyEmailScreen from "./modules/Auth/VerifyEmailScreen";
+import RequestPasswordResetScreen from "./modules/Auth/RequestPasswordResetScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -31,6 +32,10 @@ const RouterBuilder = () => {
     {
       path: "/verify-email",
       element: <VerifyEmailScreen />,
+    },
+    {
+      path: "/request-password-reset",
+      element: <RequestPasswordResetScreen />,
     },
     {
       path: "/profile",

@@ -70,6 +70,7 @@ li {
 
 section {
     padding: 7rem 3rem;
+    min-height: calc(100vh - 91.7px - 370.77px);
 }
 
 .title {

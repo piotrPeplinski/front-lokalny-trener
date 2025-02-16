@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "./../../assets/css/Profile/profile.css";
 import {
   clientFunctionalities,
@@ -11,14 +11,16 @@ import MyAds from "./components/MyAds";
 import { useProfileContext } from "./context/profile-context";
 import MyReviews from "./components/MyReviews";
 import { useAuthContext } from "../Auth/context/auth-context";
+import { useNavigate } from "react-router-dom";
 
 const ProfileScreen: FC<{}> = () => {
   const { selectedFunc, setSelectedFunc } = useProfileContext();
   const { user } = useAuthContext();
-  console.log(user);
+  const navigate = useNavigate();
   const functionalities = user?.is_trainer
     ? trainerFunctionalities
     : clientFunctionalities;
+
   const renderFunctionality = () => {
     switch (selectedFunc) {
       case "O mnie":
@@ -33,6 +35,13 @@ const ProfileScreen: FC<{}> = () => {
         return <MyReviews />;
     }
   };
+
+  useEffect(() => {
+    if (selectedFunc === "Zmień hasło") {
+      navigate("/request-password-reset");
+    }
+  }, [selectedFunc, navigate]);
+
   return (
     <section>
       <div className="row">

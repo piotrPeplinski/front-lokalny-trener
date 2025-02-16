@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../assets/img/logo.png";
 import { useAuthContext } from "./context/auth-context";
 
@@ -53,9 +53,12 @@ const LoginScreen: FC<{}> = () => {
                 <button className="btn btn-light" type="submit">
                   Zaloguj się
                 </button>
-                <a className="forgot-password" href="#">
+                <Link
+                  to={"/request-password-reset"}
+                  className="forgot-password"
+                >
                   Zapomniałem hasła
-                </a>
+                </Link>
               </div>
             </form>
           </div>

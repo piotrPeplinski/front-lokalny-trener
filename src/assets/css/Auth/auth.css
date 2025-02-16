@@ -149,3 +149,21 @@
 .verification-message {
     font-size: 2rem;
 }
+
+/* --------------------- */
+/* PASSWORD RESET */
+/* --------------------- */
+.password-reset-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-reset-form button {
+    margin-top: 2rem;
+}
+
+.password-reset-form p {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
