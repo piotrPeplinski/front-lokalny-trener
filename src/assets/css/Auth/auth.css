@@ -142,3 +142,10 @@
     width: 4rem;
     margin-bottom: 2rem;
 }
+
+/* --------------------- */
+/* VERIFY EMAIL */
+/* --------------------- */
+.verification-message {
+    font-size: 2rem;
+}
