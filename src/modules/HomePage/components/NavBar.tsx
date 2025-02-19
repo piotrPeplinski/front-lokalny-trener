@@ -21,6 +21,11 @@ const NavBar: FC<{}> = () => {
       </Link>
 
       <ul className="main-nav">
+        <li>
+          <Link to="/pricing" className="shift important">
+            Cennik
+          </Link>
+        </li>
         {navLinks.map((navLink, index) => (
           <li key={index}>
             <Link className={navLink.classes} to={navLink.href}>

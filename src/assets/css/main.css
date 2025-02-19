@@ -118,6 +118,10 @@ section {
     justify-content: center;
 }
 
+.bold {
+    font-weight: 600 !important;
+}
+
 /* FORMS */
 .form-row-2 {
     display: flex;

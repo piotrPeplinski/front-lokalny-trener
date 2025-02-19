@@ -4,16 +4,20 @@ import { FC } from "react";
 
 interface PaymentBtnProps {
   plan: string;
-  text: string
+  text: string;
+  btn_light: boolean;
 }
-const PaymentBtn: FC<PaymentBtnProps> = ({ plan, text }) => {
+const PaymentBtn: FC<PaymentBtnProps> = ({ plan, text, btn_light }) => {
   const stripe = useStripe();
 
   const handleCheckout = async () => {
     try {
-      const response = await protectedApi.post("/payments/create-checkout-session/", {
-        plan,
-      });
+      const response = await protectedApi.post(
+        "/payments/create-checkout-session/",
+        {
+          plan,
+        }
+      );
       const sessionId = response.data.sessionId;
 
       if (stripe) {
@@ -24,7 +28,14 @@ const PaymentBtn: FC<PaymentBtnProps> = ({ plan, text }) => {
     }
   };
 
-  return <button onClick={handleCheckout}>{text}</button>;
+  return (
+    <button
+      className={`btn ${btn_light ? "btn-light" : "btn-dark"}`}
+      onClick={handleCheckout}
+    >
+      {text}
+    </button>
+  );
 };
 
 export default PaymentBtn;

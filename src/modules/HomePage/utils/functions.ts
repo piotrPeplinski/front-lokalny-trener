@@ -30,7 +30,7 @@ const getNavbarData = (user: User | null) => {
       {
         href: "/add",
         text: "Dodaj ogłoszenie",
-        classes: "shift important",
+        classes: "shift",
       },
     ];
   }

@@ -1,0 +1,98 @@
+.pricing-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(50% - 3rem);
+    border-radius: 5px;
+    background-color: #f3f9fe;
+}
+
+.pricing-card__name {
+    padding: 1.2rem;
+}
+
+.pricing-card__name h1 {
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+
+.plan-name {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #3799f6;
+}
+
+.pricing-discount {
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+}
+
+.pricing-card__prices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    background-color: #4aa3f7;
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
+.pricing-card__price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-card__price p {
+    font-size: 2.8rem;
+    font-weight: 500;
+
+}
+
+.pricing-card__price span {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.pricing-card__benefits {
+    padding: 1.2rem;
+}
+
+.pricing-card__benefit {
+    display: flex;
+    align-items: center;
+    text-align: justify;
+
+}
+
+.pricing-card__benefit svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #3799f6;
+}
+
+.pricing-card__benefit p {
+    font-size: 1.4rem;
+    margin-left: 0.7rem;
+}
+
+.benefit-inactive svg {
+    color: #858585;
+}
+
+.benefit-inactive p {
+    color: #858585;
+    text-decoration: line-through;
+}
+
+.pricing-card__btns {
+    border-top: 2px solid #3799f6;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
