@@ -13,6 +13,9 @@ import ClientAdDetailScreen from "./modules/Ads/ClientAdDetailScreen";
 import VerifyEmailScreen from "./modules/Auth/VerifyEmailScreen";
 import RequestPasswordResetScreen from "./modules/Auth/RequestPasswordResetScreen";
 import ResetPasswordScreen from "./modules/Auth/ResetPasswordScreen";
+import PricingScreen from "./modules/Payments/PricingScreen";
+import SuccessScreen from "./modules/Payments/SuccessScreen";
+import FailScreen from "./modules/Payments/FailScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -83,6 +86,30 @@ const RouterBuilder = () => {
       element: (
         <ProfileProvider>
           <AdsScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/pricing",
+      element: (
+        <ProfileProvider>
+          <PricingScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/payment-success",
+      element: (
+        <ProfileProvider>
+          <SuccessScreen />
+        </ProfileProvider>
+      ),
+    },
+    {
+      path: "/payment-fail",
+      element: (
+        <ProfileProvider>
+          <FailScreen />
         </ProfileProvider>
       ),
     },
