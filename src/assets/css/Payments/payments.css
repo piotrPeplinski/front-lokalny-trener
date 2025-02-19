@@ -75,7 +75,9 @@
     height: 2.5rem;
     color: #3799f6;
 }
-
+.trophy svg path {
+    fill: #3799f6;
+}
 .pricing-card__benefit p {
     font-size: 1.4rem;
     margin-left: 0.7rem;

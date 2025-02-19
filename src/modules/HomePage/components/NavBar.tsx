@@ -23,7 +23,7 @@ const NavBar: FC<{}> = () => {
       <ul className="main-nav">
         <li>
           <Link to="/pricing" className="shift important">
-            Cennik
+            Cennik trenera
           </Link>
         </li>
         {navLinks.map((navLink, index) => (
