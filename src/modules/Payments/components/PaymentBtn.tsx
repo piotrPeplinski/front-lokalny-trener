@@ -1,6 +1,7 @@
 import { useStripe } from "@stripe/react-stripe-js";
 import { protectedApi } from "../../../api/axiosClient";
 import { FC } from "react";
+import { useAuthContext } from "../../Auth/context/auth-context";
 
 interface PaymentBtnProps {
   plan: string;
@@ -9,8 +10,13 @@ interface PaymentBtnProps {
 }
 const PaymentBtn: FC<PaymentBtnProps> = ({ plan, text, btn_light }) => {
   const stripe = useStripe();
+  const { isAuthenticated, user } = useAuthContext();
 
   const handleCheckout = async () => {
+    if (!isAuthenticated || !user?.is_trainer) {
+      alert("Zaloguj się jako trener, aby zakupić subskrypcję.");
+      return;
+    }
     try {
       const response = await protectedApi.post(
         "/payments/create-checkout-session/",
