@@ -39,6 +39,8 @@ const ProfileScreen: FC<{}> = () => {
   useEffect(() => {
     if (selectedFunc === "Zmień hasło") {
       navigate("/request-password-reset");
+    } else if (selectedFunc === "Moja subskrypcja") {
+      navigate("/subscription");
     }
   }, [selectedFunc, navigate]);
 

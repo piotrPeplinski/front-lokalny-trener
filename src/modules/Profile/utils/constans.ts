@@ -5,6 +5,7 @@ const trainerFunctionalities = [
   "Galeria zdjęć",
   "Opinie",
   "Zmień hasło",
+  "Moja subskrypcja",
 ];
 
 const clientFunctionalities = ["O mnie", "Moje ogłoszenia", "Zmień hasło"];

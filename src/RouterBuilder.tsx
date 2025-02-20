@@ -16,6 +16,7 @@ import ResetPasswordScreen from "./modules/Auth/ResetPasswordScreen";
 import PricingScreen from "./modules/Payments/PricingScreen";
 import SuccessScreen from "./modules/Payments/SuccessScreen";
 import FailScreen from "./modules/Payments/FailScreen";
+import SubscriptionScreen from "./modules/Payments/SubscriptionScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -89,6 +90,7 @@ const RouterBuilder = () => {
         </ProfileProvider>
       ),
     },
+    //PAYMENTS
     {
       path: "/pricing",
       element: (
@@ -111,6 +113,14 @@ const RouterBuilder = () => {
         <ProfileProvider>
           <FailScreen />
         </ProfileProvider>
+      ),
+    },
+    {
+      path: "/subscription",
+      element: (
+        <ProtectedRoute>
+          <SubscriptionScreen />
+        </ProtectedRoute>
       ),
     },
   ];

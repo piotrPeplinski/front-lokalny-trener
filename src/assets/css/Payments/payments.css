@@ -153,3 +153,13 @@
     margin-top: 0.5rem;
     color: #3799f6;
 }
+
+/* ------------------------- */
+/* SUBSCRIPTION SCREEN */
+/* ------------------------- */
+.subscription-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    border-radius: 5px;
+}
