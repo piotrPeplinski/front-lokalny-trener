@@ -128,10 +128,9 @@ const PricingScreen: FC<{}> = () => {
                 <div className="trophy">
                   <TrophyIcon />
                 </div>
-
                 <p>
-                  Stałe wyróżnienie na szczycie ogłoszeń w twojej kategorii -
-                  więcej potencjalnych klientów!
+                  Stałe wyróżnienie na szczycie ogłoszeń w twojej kategorii -{" "}
+                  <span className="bold">więcej potencjalnych klientów!</span>
                 </p>
               </div>
               <div className="pricing-card__benefit">

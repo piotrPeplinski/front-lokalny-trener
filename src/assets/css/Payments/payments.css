@@ -1,3 +1,7 @@
+/* ------------------------- */
+/* PRICING SCREEN */
+/* ------------------------- */
+
 .pricing-container {
     display: flex;
     justify-content: space-between;
@@ -75,9 +79,11 @@
     height: 2.5rem;
     color: #3799f6;
 }
+
 .trophy svg path {
     fill: #3799f6;
 }
+
 .pricing-card__benefit p {
     font-size: 1.4rem;
     margin-left: 0.7rem;
@@ -97,4 +103,53 @@
     padding: 1.2rem;
     display: flex;
     justify-content: space-between;
+}
+
+/* ------------------------- */
+/* SUCCESS / FAIL PAYMENT SCREEN */
+/* ------------------------- */
+.payment-end-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-icon svg {
+    width: 5.3rem;
+    height: 5.3rem;
+    color: #fff;
+}
+
+.success-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background-color: #4ad66d;
+}
+
+.success-icon.fail {
+    background-color: #ff002b;
+}
+
+.payment-end-container h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.payment-end-container h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.payment-end-container p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    color: #3799f6;
 }
