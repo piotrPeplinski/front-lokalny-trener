@@ -5,13 +5,18 @@ import { protectedApi } from "../../../api/axiosClient";
 
 interface SubscriptionCardProps {
   subscription: SubscriptionType;
+  setSubscriptionCancelled: Function;
 }
 
-const SubscriptionCard: FC<SubscriptionCardProps> = ({ subscription }) => {
+const SubscriptionCard: FC<SubscriptionCardProps> = ({
+  subscription,
+  setSubscriptionCancelled,
+}) => {
   const handleCancelSubscription = async () => {
     try {
       const response = await protectedApi.delete("payments/subscription/");
       alert(response.data.message);
+      setSubscriptionCancelled(true);
     } catch (error: any) {
       alert(error.response.data.error);
     }
