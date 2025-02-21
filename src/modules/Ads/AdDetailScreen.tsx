@@ -99,7 +99,9 @@ const AdDetailScreen: FC<{}> = () => {
               <ServiceList services={adDetails.services} />
             </div>
             <div className="mt-2">
-              <h2 className="ad-detail__title">Galeria zdjęć</h2>
+              {adDetails.photos.length > 0 && (
+                <h2 className="ad-detail__title">Galeria zdjęć</h2>
+              )}
               <Gallery allowEdit={false} fetchedPhotos={adDetails.photos} />
             </div>
             <div className="mt-2">

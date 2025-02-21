@@ -86,9 +86,9 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
         navigate("/profile");
       }
       setRefreshAds(!refreshAds);
-    } catch (error) {
-      console.error("", error);
-      alert("Błąd podczas przesyłania ogłoszenia.");
+    } catch (error: any) {
+      const message = error?.response?.data[0];
+      alert(message ? message : "Błąd podczas tworzenia ogłoszenia.");
     } finally {
       setIsSubmitting(false);
     }

@@ -23,6 +23,7 @@ export interface ClientAdPreviewType {
   min_price: number;
   max_price: number;
   city: string;
+  remote: boolean;
 }
 
 export interface RatingType {

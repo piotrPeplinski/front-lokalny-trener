@@ -93,9 +93,9 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
         setSelectedFunc("Moje ogłoszenia");
         navigate("/profile");
       }
-    } catch (error) {
-      console.error("Error submitting ad:", error);
-      alert("Wystąpił błąd podczas zapisywania ogłoszenia.");
+    } catch (error: any) {
+      const message = error?.response?.data[0];
+      alert(message ? message : "Błąd podczas tworzenia ogłoszenia.");
     } finally {
       setIsSubmitting(false);
     }

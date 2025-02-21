@@ -69,7 +69,7 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
         <h3 className="ad-preview__name">{ad.full_name}</h3>
 
         <div className="client-ad-info">
-          <p>{ad.city}</p>
+          <p>{ad.city ? ad.city : "Zdalnie"}</p>
           <p>
             {ad.min_price}
             <span>PLN</span> - {ad.max_price}
