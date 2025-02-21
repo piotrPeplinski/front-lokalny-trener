@@ -16,8 +16,11 @@ const NavBar: FC<{}> = () => {
 
   return (
     <nav>
-      <Link to="/">
+      <Link className="nav-slogan" to="/">
         <img src={logo} alt="Logo" />
+        <h1>
+          Lokalny<span>Trener</span>
+        </h1>
       </Link>
 
       <ul className="main-nav">
