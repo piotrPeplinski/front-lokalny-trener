@@ -11,9 +11,14 @@ import { useNavigate } from "react-router-dom";
 interface ClientAdPreviewProps {
   ad: ClientAdPreviewType;
   allowEdit: boolean;
+  disabled?: boolean;
 }
 
-const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
+const ClientAdPreview: FC<ClientAdPreviewProps> = ({
+  ad,
+  allowEdit,
+  disabled,
+}) => {
   const [popupOpen, setPopupOpen] = useState(false);
   const { setRefreshAds, refreshAds } = useProfileContext();
   const navigate = useNavigate();
@@ -34,7 +39,11 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
 
   const redirectToDetail = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (!target.closest(".action-btns") && !target.closest(".popup-overlay")) {
+    if (
+      !target.closest(".action-btns") &&
+      !target.closest(".popup-overlay") &&
+      !disabled
+    ) {
       navigate(`/client-ads/${ad.id}`);
     } else {
       return;
@@ -42,7 +51,10 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({ ad, allowEdit }) => {
   };
 
   return (
-    <div className="ad-preview__card shadow" onClick={redirectToDetail}>
+    <div
+      className={`ad-preview__card shadow ${disabled ? "blur" : ""}`}
+      onClick={redirectToDetail}
+    >
       {allowEdit && (
         <div className="action-btns">
           <div onClick={() => setPopupOpen(true)}>

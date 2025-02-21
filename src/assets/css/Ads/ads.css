@@ -269,9 +269,31 @@
 /* ADS */
 /* --------------------- */
 .ads__container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+.overlay-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 500;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.overlay-message div {
+    margin-top: 2rem;
 }
 
 /* --------------------- */
