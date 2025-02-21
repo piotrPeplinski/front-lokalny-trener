@@ -8,6 +8,7 @@ import { api, protectedApi } from "../../../api/axiosClient";
 import { Category } from "../../HomePage/types";
 import { useNavigate } from "react-router-dom";
 import { useProfileContext } from "../../Profile/context/profile-context";
+import { getErrorMessage } from "../../Reusable/utils";
 
 interface TrainerAdFormProps {
   adId?: number;
@@ -87,8 +88,11 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
       }
       setRefreshAds(!refreshAds);
     } catch (error: any) {
-      const message = error?.response?.data[0];
-      alert(message ? message : "Błąd podczas tworzenia ogłoszenia.");
+      const message = getErrorMessage(
+        error,
+        "Błąd podczas tworzenia ogłoszenia."
+      );
+      alert(message);
     } finally {
       setIsSubmitting(false);
     }
