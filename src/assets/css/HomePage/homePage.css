@@ -102,7 +102,10 @@ a.shift.important:hover:after {
 /* SEARCH TRAINER */
 /* --------------------- */
 .search-container {
-    background: linear-gradient(to right, #4285c4, #86bedf);
+    /* background: linear-gradient(to right, #4285c4, #86bedf); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url(../../img/baner.png);
+    background-size: cover;
+    background-position: center;
 }
 
 .search-container h1 {
