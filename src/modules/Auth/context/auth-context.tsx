@@ -10,6 +10,7 @@ interface AuthContextProps {
   register: (data: RegisterData) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
+  setUser: Function;
 }
 
 // Create the context
@@ -35,11 +36,13 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           setUser({
             id: userData.id,
             is_trainer: userData.is_trainer,
+            is_subscribed: userData.is_subscribed,
           });
           setIsAuthenticated(true);
         } catch (error) {
           console.error("Failed to fetch user profile:", error);
         }
+        console.log("fetching profile");
       };
 
       fetchUserProfile();
@@ -68,15 +71,14 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setUser({
           id: userId,
           is_trainer: response.data.is_trainer,
+          is_subscribed: response.data.is_subscribed,
         });
-        console.log(response.data.is_trainer);
       } catch (error) {
         console.error("Error fetching profile data:", error);
       }
 
       setIsAuthenticated(true);
     } catch (error: any) {
-      console.log();
       throw new Error(`${error.response.data.Error}`);
     }
   };
@@ -105,7 +107,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <AuthContext.Provider
-      value={{ user, login, register, logout, isAuthenticated }}
+      value={{ user, login, register, logout, isAuthenticated, setUser }}
     >
       {children}
     </AuthContext.Provider>

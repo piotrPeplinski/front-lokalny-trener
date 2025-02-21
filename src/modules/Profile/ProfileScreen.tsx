@@ -20,7 +20,7 @@ const ProfileScreen: FC<{}> = () => {
   const functionalities = user?.is_trainer
     ? trainerFunctionalities
     : clientFunctionalities;
-
+    
   const renderFunctionality = () => {
     switch (selectedFunc) {
       case "O mnie":

@@ -4,7 +4,7 @@ import logo from "./../../assets/img/logo.png";
 import { useAuthContext } from "./context/auth-context";
 
 const LoginScreen: FC<{}> = () => {
-  const { login, user } = useAuthContext();
+  const { login } = useAuthContext();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -16,7 +16,6 @@ const LoginScreen: FC<{}> = () => {
     try {
       await login(email, password); // Attempt login
       navigate("/");
-      console.log("logged in: ", user?.id);
     } catch (error) {
       console.log(error);
       setError(`${error}`); // Show error if login fails

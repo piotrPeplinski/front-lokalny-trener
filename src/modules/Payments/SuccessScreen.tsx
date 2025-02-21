@@ -1,7 +1,15 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { CheckIcon } from "../../assets/icons/icons";
+import { useAuthContext } from "../Auth/context/auth-context";
 
 const SuccessScreen: FC<{}> = () => {
+  const { user, setUser } = useAuthContext();
+  useEffect(() => {
+    setUser({
+      ...user,
+      is_subscribed: true,
+    });
+  }, []);
   return (
     <section>
       <div className="payment-end-container">
