@@ -49,8 +49,24 @@ const SearchTrainer: FC<{}> = () => {
 
   const handleSearch = (trainerAds: boolean) => (event: FormEvent) => {
     event.preventDefault();
+    //check if all parameters selected
+    if (!city && !remote) {
+      alert("Wybierz miejsce.");
+      return;
+    }
+    if (!category.name) {
+      alert("Wybierz kategorię.");
+      return;
+    }
+    if (!subcategory.name) {
+      alert("Wybierz podkategorię.");
+      return;
+    }
+    //navigate to ads screen
     navigate(
-      `/search/${subcategory.id}/${remote ? "remote" : city}/${trainerAds ? true : false}`
+      `/search/${subcategory.id}/${remote ? "remote" : city}/${
+        trainerAds ? true : false
+      }`
     );
   };
 
