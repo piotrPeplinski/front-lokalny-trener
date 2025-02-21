@@ -13,6 +13,9 @@ export interface AdPreviewType {
   full_name: string;
   sub_category: string;
   rating: RatingType;
+  premium: boolean;
+  city: string;
+  remote: boolean;
 }
 
 export interface ClientAdPreviewType {

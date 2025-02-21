@@ -71,11 +71,15 @@
     cursor: pointer;
 }
 
+.ad-preview__card.premium {
+    border: 3px solid #1877F2;
+}
+
 .ad-preview__card:hover {
     background-color: #ebebeb;
 }
 
-.ad-preview-col:last-of-type {
+.ad-preview-col {
     margin-left: 2rem;
 }
 
@@ -119,6 +123,27 @@
 .ad-preview__rating p:last-of-type {
     font-weight: 500;
     color: #3a7bb9;
+}
+
+.premium-sign {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: #1877F2;
+    margin: 0.4rem;
+}
+
+.premium-sign svg {
+    width: 1.8rem;
+    margin-right: 0.3rem;
+}
+
+.premium-sign svg path {
+    fill: #1877F2;
 }
 
 /* STARS RATING */

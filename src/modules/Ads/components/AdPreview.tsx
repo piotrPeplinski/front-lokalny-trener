@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { AdPreviewType } from "../types/ads-types";
 import avatar from "./../../../assets/img/avatar.png";
-import { EditIcon, TrashIcon } from "../../../assets/icons/icons";
+import { EditIcon, FullStar, TrashIcon } from "../../../assets/icons/icons";
 import Popup from "../../Reusable/Popup";
 import { protectedApi } from "../../../api/axiosClient";
 import { useProfileContext } from "../../Profile/context/profile-context";
@@ -47,7 +47,10 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
   };
 
   return (
-    <div className="ad-preview__card shadow" onClick={redirectToDetail}>
+    <div
+      className={`ad-preview__card shadow ${ad.premium ? "premium" : ""}`}
+      onClick={redirectToDetail}
+    >
       {allowEdit && (
         <div className="action-btns">
           <div onClick={handleEdit}>
@@ -72,11 +75,18 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
       </div>
       <div className="ad-preview-col">
         <h3 className="ad-preview__name">{ad.full_name}</h3>
-
         <Rating rating={ad.rating} showAmount={true} />
-
-        <p className="ad-preview__category">{ad.sub_category}</p>
+        <div className="client-ad-info">
+          <p>{ad.city ? ad.city : "Zdalnie"}</p>
+          <p className="ad-preview__category">{ad.sub_category}</p>
+        </div>
       </div>
+      {ad.premium && (
+        <div className="premium-sign">
+          <FullStar />
+          <p>Wyróżnione</p>
+        </div>
+      )}
       <Popup isOpen={popupOpen} onClose={() => setPopupOpen(false)}>
         <TrainerAdForm adId={ad.id} />
       </Popup>

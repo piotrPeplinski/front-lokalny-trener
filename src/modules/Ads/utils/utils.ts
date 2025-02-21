@@ -12,6 +12,9 @@ const defaultAdDetails: AdDetailType = {
       average_rating: 0,
       review_count: 0,
     },
+    premium: false,
+    city: "",
+    remote: false,
   },
   contact_info: {
     id: 0,
