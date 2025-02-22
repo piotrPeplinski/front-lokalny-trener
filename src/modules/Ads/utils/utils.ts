@@ -39,7 +39,8 @@ const defaultAdDetails: AdDetailType = {
 const defaultClientAdDetails: ClientAdDetailType = {
   ad_data: {
     id: 0,
-    text: "No description available.",
+    title: "",
+    text: "",
     sub_category: 0,
     subcategory: {
       id: 0,

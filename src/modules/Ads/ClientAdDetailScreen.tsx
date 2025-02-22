@@ -50,11 +50,15 @@ const ClientAdDetailScreen: FC<{}> = () => {
               </h1>
             </div>
             <div className="mt-2">
+              <h2 className="ad-detail__title">Tytuł</h2>
+              <p className="ad-detail__desc">{adDetails.ad_data.title}</p>
+            </div>
+            <div className="mt-2">
               <h2 className="ad-detail__title">przedział cenowy</h2>
               <p className="ad-detail__price">
                 {adDetails.ad_data.min_price}
                 <span>PLN</span> - {adDetails.ad_data.max_price}
-                <span>PLN</span>
+                <span>PLN</span> / {adDetails.ad_data.time} minut
               </p>
             </div>
             <div className="mt-2">

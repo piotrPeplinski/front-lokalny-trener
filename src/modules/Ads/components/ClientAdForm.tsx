@@ -13,6 +13,7 @@ interface ClientAdFormProps {
 const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
   const [category, setCategory] = useState<Category>({ id: 0, name: "" });
   const [subcategory, setSubcategory] = useState<Category>({ id: 0, name: "" });
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState<string>("");
   const [minPrice, setMinPrice] = useState<number | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
@@ -33,6 +34,7 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
           const adData = response.data;
           setSubcategory(adData.subcategory);
           setCategory(adData.category);
+          setTitle(adData.title);
           setDescription(adData.text);
           setMinPrice(adData.min_price);
           setMaxPrice(adData.max_price);
@@ -47,6 +49,10 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
   }, [adId]);
 
   const validateForm = () => {
+    if (!title.trim()) {
+      alert("Dodaj tytuł.");
+      return false;
+    }
     if (!description.trim()) {
       alert("Dodaj opis.");
       return false;
@@ -73,6 +79,7 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
 
     const adData = {
       sub_category: subcategory.id,
+      title: title,
       text: description,
       min_price: minPrice,
       max_price: maxPrice,
@@ -151,29 +158,42 @@ const ClientAdForm: FC<ClientAdFormProps> = ({ adId }) => {
         </div>
       </div>
       <div className="form-row-2">
-        <div className="form-row-2" style={{ marginBottom: 0 }}>
-          <div className="form-col-2 mr-2">
-            <label htmlFor="duration">Czas (Minuty)</label>
-            <input
-              id="duration"
-              className="form-input"
-              type="number"
-              value={duration || ""}
-              onChange={(e) => setDuration(Number(e.target.value))}
+        <div className="form-col-wrapper">
+          <div className="form-col-2" style={{ width: "100%" }}>
+            <label htmlFor="duration">Tytuł (max 50 znaków)</label>
+            <textarea
+              style={{ width: "100%" }}
+              className="client-form__title"
+              maxLength={50}
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
-          <div className="form-col-2">
-            <label htmlFor="phone">Nr tel (opcjonalnie)</label>
-            <input
-              id="phone"
-              className="form-input"
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+          <div className="form-row-2 mt-2" style={{ marginBottom: 0 }}>
+            <div className="form-col-2 mr-2">
+              <label htmlFor="duration">Czas (Minuty)</label>
+              <input
+                id="duration"
+                className="form-input"
+                type="number"
+                value={duration || ""}
+                onChange={(e) => setDuration(Number(e.target.value))}
+              />
+            </div>
+            <div className="form-col-2">
+              <label htmlFor="phone">Nr tel (opcjonalnie)</label>
+              <input
+                id="phone"
+                className="form-input"
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
           </div>
         </div>
-
         <div className="form-col-2">
           <label htmlFor="description">Opis</label>
           <textarea

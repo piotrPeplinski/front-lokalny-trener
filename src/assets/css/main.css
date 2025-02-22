@@ -139,6 +139,16 @@ section {
     flex-direction: column;
 }
 
+.form-col-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.client-form__title {
+    max-height: 6rem;
+}
+
 .form-col-2 label {
     font-size: 1.4rem;
     text-transform: uppercase;

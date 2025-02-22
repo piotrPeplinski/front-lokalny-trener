@@ -28,6 +28,7 @@ export interface ClientAdPreviewType {
   max_price: number;
   city: string;
   remote: boolean;
+  title: string;
 }
 
 export interface RatingType {
@@ -69,6 +70,7 @@ export interface AdDetailType {
 export interface ClientAdDetailType {
   ad_data: {
     id: number;
+    title: string;
     text: string;
     sub_category: number;
     subcategory: {

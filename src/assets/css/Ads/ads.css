@@ -189,7 +189,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
 }
 
 .client-ad-info p:first-of-type {
@@ -207,6 +207,11 @@
 .client-ad-info span {
     font-size: 1rem;
     font-weight: 400;
+}
+
+.client-ad__title {
+    font-size: 1.6rem;
+    margin-bottom: 0.9rem;
 }
 
 /* --------------------- */
@@ -320,6 +325,7 @@
     font-weight: 500;
     padding: 2rem;
     border-radius: 5px;
+    background-color: #fff;
 }
 
 .overlay-message div {
