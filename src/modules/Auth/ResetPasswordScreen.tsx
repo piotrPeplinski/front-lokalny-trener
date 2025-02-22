@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../../api/axiosClient";
+import { getErrorMessage } from "../Reusable/utils";
 
 const ResetPasswordScreen: FC<{}> = () => {
   const [searchParams] = useSearchParams();
@@ -19,9 +20,7 @@ const ResetPasswordScreen: FC<{}> = () => {
       });
       setMessage(response.data.message);
     } catch (error: any) {
-      setMessage(
-        error.response?.data?.message || "Błąd podczas resetowania hasła."
-      );
+      setMessage(getErrorMessage(error, "Błąd podczas resetowania hasła."));
     }
   };
 
