@@ -122,6 +122,10 @@ section {
     font-weight: 600 !important;
 }
 
+.m-0 {
+    margin: 0 !important;
+}
+
 /* FORMS */
 .form-row-2 {
     display: flex;

@@ -97,7 +97,7 @@
 .ad-preview__name {
     font-size: 2.3rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .ad-preview__category {
@@ -123,6 +123,11 @@
 .ad-preview__rating p:last-of-type {
     font-weight: 500;
     color: #3a7bb9;
+}
+
+.ad-preview__price {
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .premium-sign {
@@ -154,8 +159,8 @@
 .star-container svg {
     width: 2rem;
     height: 2rem;
-    color: #3a7bb9;
-    fill: #3a7bb9;
+    color: #FFBF00;
+    fill: #FFBF00;
 }
 
 /* ACTION BUTTONS */

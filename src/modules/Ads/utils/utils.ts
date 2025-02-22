@@ -15,6 +15,7 @@ const defaultAdDetails: AdDetailType = {
     premium: false,
     city: "",
     remote: false,
+    lowest_service_price: 0,
   },
   contact_info: {
     id: 0,

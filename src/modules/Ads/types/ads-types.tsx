@@ -16,6 +16,7 @@ export interface AdPreviewType {
   premium: boolean;
   city: string;
   remote: boolean;
+  lowest_service_price: number;
 }
 
 export interface ClientAdPreviewType {
