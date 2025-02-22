@@ -228,7 +228,7 @@ a.shift.important:hover:after {
 }
 
 /* --------------------- */
-/* NAVBAR */
+/* FOOTER */
 /* --------------------- */
 footer {
     background-color: #111;
@@ -330,4 +330,37 @@ footer .row img {
 
 .programmer-link:hover {
     color: #eee;
+}
+
+/* --------------------- */
+/* ABOUT */
+/* --------------------- */
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.about-row {
+    max-width: 90rem;
+    margin: 0 auto;
+}
+
+.about-container h1 {
+    text-align: center;
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.about-container h2 {
+    font-size: 2.2rem;
+    text-align: justify;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+.about-container p {
+    font-size: 1.8rem;
+    text-align: justify;
 }

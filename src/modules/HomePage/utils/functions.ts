@@ -5,7 +5,7 @@ const getNavbarData = (user: User | null) => {
   if (!user) {
     links = [
       {
-        href: "#",
+        href: "/about",
         text: "Czym jesteśmy",
         classes: "shift",
       },

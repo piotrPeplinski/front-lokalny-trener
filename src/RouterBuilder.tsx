@@ -17,6 +17,7 @@ import PricingScreen from "./modules/Payments/PricingScreen";
 import SuccessScreen from "./modules/Payments/SuccessScreen";
 import FailScreen from "./modules/Payments/FailScreen";
 import SubscriptionScreen from "./modules/Payments/SubscriptionScreen";
+import AboutScreen from "./modules/HomePage/AboutScreen";
 
 const RouterBuilder = () => {
   // components specified in general routers will have navbar and footer (components specified in App.layout.tsx)
@@ -24,6 +25,10 @@ const RouterBuilder = () => {
     {
       path: "/",
       element: <HomePage />,
+    },
+    {
+      path: "/about",
+      element: <AboutScreen />,
     },
     //AUTH
     {
