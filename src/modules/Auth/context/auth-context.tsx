@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import { api, protectedApi } from "../../../api/axiosClient";
 import { decodeJWT } from "../utils/functions";
 import { RegisterData, User } from "../types/auth-types";
+import { getErrorMessage } from "../../Reusable/utils";
 
 // Define the shape of the context
 interface AuthContextProps {
@@ -40,9 +41,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           });
           setIsAuthenticated(true);
         } catch (error) {
-          console.error("Failed to fetch user profile:", error);
+          return;
         }
-        console.log("fetching profile");
       };
 
       fetchUserProfile();
@@ -74,26 +74,24 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           is_subscribed: response.data.is_subscribed,
         });
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        return;
       }
 
       setIsAuthenticated(true);
     } catch (error: any) {
-      throw new Error(`${error.response.data.Error}`);
+      const errorMessage = getErrorMessage(error);
+      return Promise.reject(errorMessage);
     }
   };
 
   // Register function
-  // TODO: setting is_trainer does not work from decoded
   const register = async (data: RegisterData) => {
     try {
       const response = await api.post("/accounts/auth/register/", data);
-      alert(
-        "Registration successful! Please check your email to verify your account before logging in."
-      );
-    } catch (error) {
-      console.error("Registration failed:", error);
-      throw new Error("Registration failed");
+      return response.data.message;
+    } catch (error: any) {
+      const errorMessage = getErrorMessage(error);
+      return Promise.reject(errorMessage);
     }
   };
 

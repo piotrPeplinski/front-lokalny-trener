@@ -13,7 +13,6 @@ const RegisterForm: FC<RegisterFormProps> = ({ isTrainer }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [error, setError] = useState<string | null>(null); // For error handling
 
   // Handle the form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,12 +20,9 @@ const RegisterForm: FC<RegisterFormProps> = ({ isTrainer }) => {
 
     // Basic validation for passwords matching
     if (password !== confirmPassword) {
-      setError("Hasła nie pasują");
+      alert("Hasła nie są takie same.");
       return;
     }
-
-    // Clear any previous error
-    setError(null);
 
     // Prepare data for registration
     const data = {
@@ -37,10 +33,11 @@ const RegisterForm: FC<RegisterFormProps> = ({ isTrainer }) => {
 
     try {
       // Call the register method from AuthContext to register the user
-      await register(data);
+      const message = await register(data);
+      alert(message);
       navigate("/");
-    } catch (err) {
-      setError("Wystąpił błąd podczas rejestracji. Spróbuj ponownie.");
+    } catch (errorMessage) {
+      alert(errorMessage);
     }
   };
 
@@ -84,9 +81,6 @@ const RegisterForm: FC<RegisterFormProps> = ({ isTrainer }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-
-        {/* Error message */}
-        {error && <p className="error-message">{error}</p>}
 
         {/* Submit button */}
         <button className="btn btn-dark margin-top" type="submit">

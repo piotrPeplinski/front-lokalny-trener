@@ -9,16 +9,14 @@ const LoginScreen: FC<{}> = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await login(email, password); // Attempt login
       navigate("/");
-    } catch (error) {
-      console.log(error);
-      setError(`${error}`); // Show error if login fails
+    } catch (errorMessage) {
+      alert(errorMessage);
     }
   };
 
@@ -29,7 +27,6 @@ const LoginScreen: FC<{}> = () => {
           <div className="login-container dark-bg">
             <form onSubmit={handleSubmit}>
               <img src={logo} alt="Logo" />
-              {error && <p className="error-message">{error}</p>}
               <p className="form-label">E-mail</p>
               <input
                 required
