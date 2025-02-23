@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./../../../assets/img/logo.png";
 import { CallIcon, MailIcon } from "../../../assets/icons/icons";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
@@ -13,7 +14,13 @@ const Footer: React.FC = () => {
               <h4>Social Media</h4>
               <ul>
                 <li>
-                  <a href="#">Instagram</a>
+                  <a
+                    href="https://www.instagram.com/lokalnytrener.pl?igsh=MXNwcW93cXg1MmFjNg%3D%3D&utm_source=qr
+"
+                    target="_blank"
+                  >
+                    Instagram
+                  </a>
                 </li>
                 <li>
                   <a href="#">Facebook</a>
@@ -27,17 +34,17 @@ const Footer: React.FC = () => {
               <h4>Warunki serwisu</h4>
               <ul>
                 <li>
-                  <a href="#">Polityka Prywatności</a>
+                  <Link to="/policy">Polityka Prywatności</Link>
                 </li>
                 <li>
-                  <a href="#">Regulamin serwisu</a>
+                  <Link to="/statute">Regulamin serwisu</Link>
                 </li>
               </ul>
             </div>
           </div>
           <div className="footer-contact">
             <p>
-              <CallIcon /> +48 123 456 789
+              <CallIcon /> +48 694 034 450
             </p>
             <p>
               <MailIcon /> support@lokalnytrener.pl
