@@ -10,7 +10,7 @@ const HomePage: FC<{}> = () => {
       <header>
         <SearchTrainer />
       </header>
-      <section>
+      <section className="no-height-section">
         <Steps />
       </section>
       <RegisterScreen darkBg={true} />

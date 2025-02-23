@@ -26,7 +26,7 @@ li {
 /* REUSABLE */
 /* --------------------- */
 .row {
-    width: 1140px;
+    max-width: 1140px;
     margin: 0 auto;
 }
 
@@ -71,6 +71,10 @@ li {
 section {
     padding: 7rem 3rem;
     min-height: calc(100vh - 91.7px - 370.77px);
+}
+
+.no-height-section {
+    min-height: 0;
 }
 
 .title {
@@ -163,6 +167,10 @@ section {
     border-radius: 8px;
     padding: 0 4px;
     border: 1px solid #8b8b8b;
+}
+
+textarea {
+    border-radius: 8px;
 }
 
 .form-input,

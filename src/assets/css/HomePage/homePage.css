@@ -11,6 +11,10 @@ nav img {
     align-items: center;
 }
 
+.show-hide-nav {
+    display: none;
+}
+
 .nav-slogan h1 {
     font-size: 3.2rem;
     color: #000;

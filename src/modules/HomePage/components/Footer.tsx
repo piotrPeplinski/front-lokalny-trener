@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               <CallIcon /> +48 123 456 789
             </p>
             <p>
-              <MailIcon /> example@gmail.com
+              <MailIcon /> support@lokalnytrener.pl
             </p>
           </div>
         </div>

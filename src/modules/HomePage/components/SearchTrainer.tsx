@@ -72,7 +72,7 @@ const SearchTrainer: FC<{}> = () => {
 
   return (
     <div className="search-container">
-      <section>
+      <section className="no-height-section">
         <div className="row">
           <h1>
             Znajdź idealnego specjalistę i umów zajęcia w kilka chwil – szybko,

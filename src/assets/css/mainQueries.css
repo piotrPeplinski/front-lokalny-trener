@@ -1,0 +1,362 @@
+/* big tablets/small notebooks (just font size) */
+@media only screen and (max-width: 1200px) {
+    html, body {
+        font-size: 8px;
+    }
+
+    .row {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 5.5rem 2.5rem;
+        min-height: calc(100vh - 71.36px - 296.5px);
+    }
+
+    textarea {
+        margin-left: 1rem;
+    }
+}
+
+/* ipads */
+@media only screen and (max-width: 1023px) {
+
+    /* REUSABLE */
+    section {
+        padding: 4.5rem 2rem;
+    }
+
+    .form-row-2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    textarea {
+        margin: 0;
+    }
+
+    .form-row-2 .form-col-2:first-of-type {
+        margin-bottom: 2rem;
+    }
+
+    /* NAV */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        position: relative;
+    }
+
+    .nav-slogan {
+        padding: 1rem;
+    }
+
+    .show-hide-nav {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 10px;
+    }
+
+    .show-hide-nav svg {
+        color: #000;
+        width: 5rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-hidden {
+        display: none;
+    }
+
+    .main-nav li {
+        width: 100%;
+        margin: 0;
+        border-top: 1px solid #d6d6d6;
+        text-align: center;
+
+    }
+
+    a.shift:after {
+        display: none;
+    }
+
+    a.shift,
+    a.shift.important,
+    a.shift:hover {
+        display: block;
+        color: black;
+        padding: 0;
+        margin: 1rem 0;
+    }
+
+    /* SEARCH TRAINER */
+    .search-container form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container form .form-col:first-of-type {
+        margin-bottom: 2rem;
+    }
+
+    .search-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+
+    /* AUTH */
+    .register-row {
+        flex-direction: column;
+    }
+
+    .register-row input:first-of-type {
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+
+    /* ADS */
+    .ad-preview__card {
+        flex: 0 0 calc(50% - 2rem);
+    }
+
+    .mt-2 .services-list {
+        margin-right: 2rem;
+    }
+
+    .service-row p {
+        flex: 0 0 27%;
+    }
+
+    .service-row p:first-of-type {
+        flex: 0 0 46%;
+    }
+
+    .col-2 form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* PROFILE */
+    .me-container .form-row-2 {
+        align-items: flex-start;
+    }
+}
+
+/* iphones */
+@media only screen and (max-width: 767px) {
+    html, body {
+        font-size: 7px;
+    }
+
+    .row {
+        padding: 0;
+    }
+
+    .form-col-2 {
+        width: 100%;
+        align-items: center;
+    }
+
+    .row-2 {
+        flex-direction: column;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    /* HOME PAGE */
+    .search-container h1 {
+        font-size: 3.6rem;
+    }
+
+    .search-container .form-row {
+        flex-direction: column;
+    }
+
+    .form-row select:first-of-type, .form-row input {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step:not(:first-of-type):not(:last-of-type) {
+        margin: 2rem 0;
+    }
+
+    .auth-col:first-of-type,
+    .auth-col:last-of-type {
+        padding: 0;
+        border: none;
+    }
+
+    .auth-row:first-of-type {
+        margin-bottom: 2rem;
+    }
+
+    .auth-row:first-of-type .auth-col:first-of-type {
+        margin-right: 1rem;
+    }
+
+    .auth-row:first-of-type .auth-col:last-of-type {
+        margin-left: 1rem;
+    }
+
+    .auth-row:last-of-type {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-container {
+        align-items: center;
+    }
+
+    .register-container form {
+        margin-top: 2rem;
+        align-items: center;
+    }
+
+    .auth-row:last-of-type .auth-col {
+        width: 100%;
+        align-items: center;
+        display: block;
+    }
+
+    .benefits h3 {
+        margin-top: 2rem;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 4rem 2rem;
+    }
+
+    .footer-row {
+        flex-direction: column;
+    }
+
+    .footer-links {
+        justify-content: space-between;
+    }
+
+    .footer-contact {
+        width: fit-content;
+        margin-top: 2rem;
+    }
+
+    .footer-row:not(:first-child):not(:last-child) {
+        margin: 2rem 0;
+    }
+
+    .footer-text {
+        text-align: center;
+    }
+
+    .footer-text:first-of-type {
+        margin-bottom: 1rem;
+    }
+
+    /* PRICING */
+    .pricing-container {
+        flex-direction: column-reverse;
+    }
+
+    .pricing-card:last-of-type {
+        margin-bottom: 2rem;
+    }
+
+    /* ADS */
+    .ad-preview__card {
+        flex: 0 0 100%;
+        margin-bottom: 2rem;
+    }
+
+    .ad-detail__container {
+        flex-direction: column-reverse;
+    }
+
+    .ad-detail__col-sm {
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        flex-direction: row;
+    }
+
+    .mt-2 .services-list {
+        margin: 0;
+    }
+
+    /* SUBSCRIPTION */
+    .subscription-card {
+        max-width: 100%;
+    }
+
+    .row-small-space {
+        flex-direction: column;
+    }
+
+    .row-small-space select:first-of-type {
+        margin-bottom: 1rem;
+    }
+
+    /* PROFILE */
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-func-title {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .profile-image-circle {
+        margin: 0 auto;
+    }
+
+    .me-container .form-row-2 {
+        align-items: center;
+    }
+
+    .me-container form .btn {
+        margin: 0 auto;
+    }
+
+    .me-container .ad-preview__card {
+        width: 100%;
+    }
+
+    .education-container {
+        flex-direction: column;
+    }
+
+    .education-container .education-list-col {
+        margin-top: 2rem;
+    }
+
+    /* POPUP */
+    .popup-content {
+        padding: 1rem;
+        padding-top: 5rem;
+        max-height: 70vh;
+        width: 90vw;
+        overflow-y: scroll;
+    }
+
+    .popup-content h1 {
+        font-size: 3rem;
+    }
+}
+
+/* small phones */
+@media only screen and (max-width: 374px) {}
