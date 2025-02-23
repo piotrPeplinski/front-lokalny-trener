@@ -5,6 +5,7 @@ import { AdPreviewType } from "../../Ads/types/ads-types";
 import AdPreview from "../../Ads/components/AdPreview";
 import { useProfileContext } from "../context/profile-context";
 import ClientAdPreview from "../../Ads/components/ClientAdPreview";
+import { getErrorMessage } from "../../Reusable/utils";
 
 const MyAds: FC<{}> = () => {
   const { user } = useAuthContext();
@@ -21,8 +22,12 @@ const MyAds: FC<{}> = () => {
           },
         });
         setAds(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error: any) {
+        const message = getErrorMessage(
+          error,
+          "Błąd podczas pobierania ogłoszeń."
+        );
+        alert(message);
       }
     };
     fetchAds();

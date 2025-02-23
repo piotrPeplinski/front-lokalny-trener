@@ -71,7 +71,6 @@ const UserForm: FC<{}> = () => {
         `accounts/users/${user?.id}/`,
         formData
       );
-      console.log("Profile updated successfully:", response.data);
       alert("Zaktualizowano pomyślnie!");
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -89,7 +88,6 @@ const UserForm: FC<{}> = () => {
       });
       setProfileData(response.data); // Update profile data after deletion
       setProfilePicture(null); // Reset the local state for profile picture
-      console.log("Profile picture deleted successfully:", response.data);
       alert("Pomyślnie usunięto Twoje zdjęcie profilowe!");
     } catch (error) {
       console.error("Error deleting profile picture:", error);

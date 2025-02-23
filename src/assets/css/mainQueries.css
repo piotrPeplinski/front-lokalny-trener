@@ -456,6 +456,23 @@
     .popup-content h1 {
         font-size: 3rem;
     }
+
+    /* REMOVE HOVER EFFECTS */
+    .btn-light:hover,
+    .btn-light:active {
+        background-color: #fff;
+        border: 2px solid #3a7bb9;
+        color: #3a7bb9;
+        fill: #3a7bb9;
+    }
+
+    .btn-dark:hover,
+    .btn-dark:active {
+        background-color: #3a7bb9;
+        border: 2px solid #3a7bb9;
+        color: #fff;
+        fill: #fff;
+    }
 }
 
 /* small phones */

@@ -31,7 +31,6 @@ const AdPreview: FC<AdPreviewProps> = ({ ad, allowEdit }) => {
         setRefreshAds(!refreshAds);
       } catch (err) {
         alert("Błąd podczas usuwania. Spróbuj ponownie.");
-        console.log(err);
       }
     };
     deleteAd();

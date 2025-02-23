@@ -5,6 +5,7 @@ import AdPreview from "./components/AdPreview";
 import ClientAdPreview from "./components/ClientAdPreview";
 import { useAuthContext } from "../Auth/context/auth-context";
 import { AdPreviewType } from "./types/ads-types";
+import { getErrorMessage } from "../Reusable/utils";
 
 const AdsScreen: FC<{}> = () => {
   const { subcategoryId, location, trainer_ads } = useParams();
@@ -22,8 +23,12 @@ const AdsScreen: FC<{}> = () => {
           },
         });
         setAds(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error: any) {
+        const message = getErrorMessage(
+          error,
+          "Błąd podczas pobierania ogłoszeń."
+        );
+        alert(message);
       }
     };
     fetchAdPreviews();

@@ -3,6 +3,7 @@ import { api } from "../../../api/axiosClient";
 import { Category } from "../types";
 import { HomeIcon, SearchIcon } from "../../../assets/icons/icons";
 import { useNavigate } from "react-router-dom";
+import { getErrorMessage } from "../../Reusable/utils";
 
 const SearchTrainer: FC<{}> = () => {
   const navigate = useNavigate();
@@ -25,8 +26,12 @@ const SearchTrainer: FC<{}> = () => {
       try {
         const response = await api.get("/categories/");
         setCategories(response.data);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        const message = getErrorMessage(
+          error,
+          "Błąd podczas pobierania kategorii."
+        );
+        alert(message);
       }
     };
     fetchCategories();
@@ -40,7 +45,11 @@ const SearchTrainer: FC<{}> = () => {
           const response = await api.get(`/categories/${category.id}`);
           setSubcategories(response.data);
         } catch (error) {
-          console.log(error);
+          const message = getErrorMessage(
+            error,
+            "Błąd podczas pobierania podkategorii."
+          );
+          alert(message);
         }
       };
       fetchSubcategories();
@@ -137,9 +146,7 @@ const SearchTrainer: FC<{}> = () => {
                     }
                   }}
                 >
-                  <option disabled>
-                    Podkategoria
-                  </option>
+                  <option disabled>Podkategoria</option>
                   {subcategories?.map((subcategory: Category) => (
                     <option key={subcategory.id} value={subcategory.id}>
                       {subcategory.name}

@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { api } from "../../api/axiosClient";
 import { Category } from "../HomePage/types";
 import { useAuthContext } from "../Auth/context/auth-context";
+import { getErrorMessage } from "./utils";
 
 interface SelectSubCategoryProps {
   subcategory: Category;
@@ -28,8 +29,12 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       try {
         const response = await api.get("/categories/");
         setCategories(response.data);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        const message = getErrorMessage(
+          error,
+          "Błąd podczas pobierania kategorii."
+        );
+        alert(message);
       }
     };
     fetchCategories();
@@ -45,8 +50,12 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
         try {
           const response = await api.get(`/categories/${category.id}`);
           setSubcategories(response.data);
-        } catch (error) {
-          console.log(error);
+        } catch (error: any) {
+          const message = getErrorMessage(
+            error,
+            "Błąd podczas pobierania podkategorii."
+          );
+          alert(message);
         }
       };
       fetchSubcategories();

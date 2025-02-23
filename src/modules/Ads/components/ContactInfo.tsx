@@ -44,7 +44,6 @@ const ContactInfo: FC<ContactInfoProps> = ({ contactInfo }) => {
         {socials.map((social, index) => {
           const url = contactInfo[social as keyof ContactInfoType];
           if (url) {
-            console.log(url);
             const Icon = socialIcons[social];
             return (
               <a href={String(url)} target="blank_" key={index}>

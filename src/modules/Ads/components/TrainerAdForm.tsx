@@ -41,8 +41,12 @@ const TrainerAdForm: FC<TrainerAdFormProps> = ({ adId }) => {
           setCategory(response.data.category);
           setDescription(response.data.text);
           setServices(response.data.services);
-        } catch (err) {
-          console.log(err);
+        } catch (error: any) {
+          const message = getErrorMessage(
+            error,
+            "Błąd podczas pobierania ogłoszenia."
+          );
+          alert(message);
         }
       };
       fetchAd();
