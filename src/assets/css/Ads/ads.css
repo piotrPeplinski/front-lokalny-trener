@@ -7,11 +7,17 @@
 }
 
 .service-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.5rem 0;
     border-bottom: 1px solid #fff;
     position: relative;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -30,12 +36,16 @@
 }
 
 .service-row p {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     font-size: 1.6rem;
     text-align: center;
 }
 
 .service-row p:first-of-type {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     padding: 0 2rem;
 }
@@ -46,6 +56,8 @@
     height: 2rem;
     cursor: pointer;
     opacity: 0;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
     transition: all 0.4s;
     bottom: -10px;
     left: 0;
@@ -63,10 +75,16 @@
     border-radius: 5px;
     width: 55rem;
     margin-bottom: 3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     position: relative;
     background-color: transparent;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
     transition: all 0.4s;
     cursor: pointer;
 }
@@ -105,8 +123,12 @@
 }
 
 .ad-preview__rating {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin-bottom: 0.6rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     font-size: 1.3rem;
 }
@@ -134,7 +156,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     font-size: 1.3rem;
     text-transform: uppercase;
@@ -153,6 +179,8 @@
 
 /* STARS RATING */
 .star-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -168,6 +196,8 @@
     position: absolute;
     top: 0;
     right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 1rem;
 }
@@ -186,8 +216,14 @@
 
 /* CLIENT AD PREVIEW */
 .client-ad-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin-bottom: 0.7rem;
 }
@@ -218,19 +254,37 @@
 /* AD DETAIL */
 /* --------------------- */
 .ad-detail__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
 .ad-detail__col {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 71%;
     flex: 0 0 71%;
 }
 
 .ad-detail__col-sm {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 21%;
     flex: 0 0 21%;
 }
 
@@ -265,7 +319,11 @@
 /* CONTACT INFO */
 /* --------------------- */
 .contact-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     font-size: 1.7rem;
     margin-bottom: 1rem;
@@ -283,12 +341,18 @@
 }
 
 .socials-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     margin-top: 1rem;
 }
 
 .socials-row a {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 9%;
     flex: 0 0 9%;
 }
 
@@ -305,12 +369,18 @@
 /* --------------------- */
 .ads__container {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
 .blur {
+    -webkit-filter: blur(5px);
     filter: blur(5px);
 }
 
@@ -318,6 +388,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: black;
     font-size: 3rem;
@@ -343,7 +415,11 @@
 }
 
 .review__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
