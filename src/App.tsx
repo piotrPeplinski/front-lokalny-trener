@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <DefaultHelmet />
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </>
   );
 };

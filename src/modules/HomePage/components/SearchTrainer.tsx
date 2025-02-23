@@ -127,11 +127,12 @@ const SearchTrainer: FC<{}> = () => {
                   }}
                 >
                   <option disabled>Kategoria</option>
-                  {categories?.map((category: Category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
+                  {categories.length > 0 &&
+                    categories.map((category: Category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
                 </select>
                 <select
                   defaultValue={"Podkategoria"}
@@ -147,11 +148,12 @@ const SearchTrainer: FC<{}> = () => {
                   }}
                 >
                   <option disabled>Podkategoria</option>
-                  {subcategories?.map((subcategory: Category) => (
-                    <option key={subcategory.id} value={subcategory.id}>
-                      {subcategory.name}
-                    </option>
-                  ))}
+                  {subcategories.length > 0 &&
+                    subcategories.map((subcategory: Category) => (
+                      <option key={subcategory.id} value={subcategory.id}>
+                        {subcategory.name}
+                      </option>
+                    ))}
                 </select>
               </div>
             </div>

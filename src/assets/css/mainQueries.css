@@ -473,6 +473,11 @@
         color: #fff;
         fill: #fff;
     }
+
+    /* DEPLOY ADJUSTMENTS */
+    .auth-col .btn {
+        font-size: 1.7rem;
+    }
 }
 
 /* small phones */
