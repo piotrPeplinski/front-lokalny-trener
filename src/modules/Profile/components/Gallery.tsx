@@ -37,8 +37,8 @@ const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
 
   return (
     <div className="photo-gallery">
-      {photos.map((photo) => (
-        <GalleryItem photo={photo} allowEdit={allowEdit} />
+      {photos.map((photo, index) => (
+        <GalleryItem key={index} photo={photo} allowEdit={allowEdit} />
       ))}
     </div>
   );

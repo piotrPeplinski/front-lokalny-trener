@@ -31,11 +31,11 @@ const MyAds: FC<{}> = () => {
   return (
     <div className="me-container">
       <h1 className="profile-func-title">Moje ogłoszenia</h1>
-      {ads.map((ad) =>
+      {ads.map((ad, index) =>
         user?.is_trainer ? (
-          <AdPreview ad={ad} allowEdit={true} />
+          <AdPreview key={index} ad={ad} allowEdit={true} />
         ) : (
-          <ClientAdPreview ad={ad} allowEdit={true} />
+          <ClientAdPreview key={index} ad={ad} allowEdit={true} />
         )
       )}
     </div>

@@ -65,6 +65,7 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
       </h3>
       <div className="row-small-space">
         <select
+          defaultValue={"Kategoria"}
           className="form-select shadow"
           value={selectedCategory ? category.id : undefined}
           onChange={(e) => {
@@ -77,14 +78,15 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
             }
           }}
         >
-          <option selected disabled>
-            Kategoria
-          </option>
+          <option disabled>Kategoria</option>
           {categories?.map((category: Category) => (
-            <option value={category.id}>{category.name}</option>
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
           ))}
         </select>
         <select
+          defaultValue={"Podkategoria"}
           disabled={category.name === ""}
           value={subcategory.name === "" ? undefined : subcategory.id}
           className="form-select shadow"
@@ -98,11 +100,11 @@ const SelectSubCategory: FC<SelectSubCategoryProps> = ({
             }
           }}
         >
-          <option selected disabled>
-            Podkategoria
-          </option>
+          <option disabled>Podkategoria</option>
           {subcategories?.map((subcategory: Category) => (
-            <option value={subcategory.id}>{subcategory.name}</option>
+            <option key={subcategory.id} value={subcategory.id}>
+              {subcategory.name}
+            </option>
           ))}
         </select>
       </div>

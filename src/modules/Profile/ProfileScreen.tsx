@@ -20,7 +20,7 @@ const ProfileScreen: FC<{}> = () => {
   const functionalities = user?.is_trainer
     ? trainerFunctionalities
     : clientFunctionalities;
-    
+
   const renderFunctionality = () => {
     switch (selectedFunc) {
       case "O mnie":
@@ -50,8 +50,9 @@ const ProfileScreen: FC<{}> = () => {
         <div className="profile-container">
           <div className="profile-funcs">
             <div className="funcs-card shadow">
-              {functionalities.map((func) => (
+              {functionalities.map((func, index) => (
                 <p
+                  key={index}
                   onClick={() => setSelectedFunc(func)}
                   className={`${func === selectedFunc ? "selected" : ""}`}
                 >

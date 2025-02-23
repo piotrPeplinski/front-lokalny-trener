@@ -4,6 +4,7 @@ import { api } from "../../api/axiosClient";
 import AdPreview from "./components/AdPreview";
 import ClientAdPreview from "./components/ClientAdPreview";
 import { useAuthContext } from "../Auth/context/auth-context";
+import { AdPreviewType } from "./types/ads-types";
 
 const AdsScreen: FC<{}> = () => {
   const { subcategoryId, location, trainer_ads } = useParams();
@@ -33,11 +34,12 @@ const AdsScreen: FC<{}> = () => {
       <div className="row">
         <h1 className="profile-func-title text-center">Ogłoszenia</h1>
         <div className={`ads__container`}>
-          {ads.map((ad) =>
+          {ads.map((ad, index) =>
             trainer_ads === "true" ? (
-              <AdPreview allowEdit={false} ad={ad} />
+              <AdPreview key={index} allowEdit={false} ad={ad} />
             ) : (
               <ClientAdPreview
+                key={index}
                 allowEdit={false}
                 ad={ad}
                 disabled={user?.is_subscribed ? false : true}

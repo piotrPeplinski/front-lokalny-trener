@@ -104,6 +104,7 @@ const SearchTrainer: FC<{}> = () => {
               <h3>W czym potrzebujesz pomocy?</h3>
               <div className="form-row">
                 <select
+                  defaultValue={"Kategoria"}
                   required
                   onChange={(e) => {
                     const selectedCategory = categories.find(
@@ -116,9 +117,7 @@ const SearchTrainer: FC<{}> = () => {
                     }
                   }}
                 >
-                  <option selected disabled>
-                    Kategoria
-                  </option>
+                  <option disabled>Kategoria</option>
                   {categories?.map((category: Category) => (
                     <option key={category.id} value={category.id}>
                       {category.name}
@@ -126,6 +125,7 @@ const SearchTrainer: FC<{}> = () => {
                   ))}
                 </select>
                 <select
+                  defaultValue={"Podkategoria"}
                   required
                   disabled={category.id === 0}
                   onChange={(e) => {
@@ -137,7 +137,7 @@ const SearchTrainer: FC<{}> = () => {
                     }
                   }}
                 >
-                  <option selected disabled>
+                  <option disabled>
                     Podkategoria
                   </option>
                   {subcategories?.map((subcategory: Category) => (

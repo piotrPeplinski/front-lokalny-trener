@@ -17,8 +17,8 @@ const Benefits: FC<BenefitsProps> = ({ isTrainer }) => {
         <p>Co zyskujesz?</p>
       </div>
       <div className="benefits__list">
-        {benefitsObj.benefitsArray.map((benefit) => (
-          <div className="benefits__list__benefit">
+        {benefitsObj.benefitsArray.map((benefit, index) => (
+          <div key={index} className="benefits__list__benefit">
             <CheckIcon />
             <p>{benefit}</p>
           </div>
