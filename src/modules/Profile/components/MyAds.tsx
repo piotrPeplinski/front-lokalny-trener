@@ -6,11 +6,13 @@ import AdPreview from "../../Ads/components/AdPreview";
 import { useProfileContext } from "../context/profile-context";
 import ClientAdPreview from "../../Ads/components/ClientAdPreview";
 import { getErrorMessage } from "../../Reusable/utils";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 const MyAds: FC<{}> = () => {
   const { user } = useAuthContext();
   const { refreshAds } = useProfileContext();
   const [ads, setAds] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAds = async () => {
@@ -22,12 +24,14 @@ const MyAds: FC<{}> = () => {
           },
         });
         setAds(response.data);
+        setLoading(false);
       } catch (error: any) {
         const message = getErrorMessage(
           error,
           "Błąd podczas pobierania ogłoszeń."
         );
         alert(message);
+        setLoading(false);
       }
     };
     fetchAds();
@@ -36,11 +40,15 @@ const MyAds: FC<{}> = () => {
   return (
     <div className="me-container">
       <h1 className="profile-func-title">Moje ogłoszenia</h1>
-      {ads.map((ad, index) =>
-        user?.is_trainer ? (
-          <AdPreview key={index} ad={ad} allowEdit={true} />
-        ) : (
-          <ClientAdPreview key={index} ad={ad} allowEdit={true} />
+      {loading ? (
+        <LoadSpinner />
+      ) : (
+        ads.map((ad, index) =>
+          user?.is_trainer ? (
+            <AdPreview key={index} ad={ad} allowEdit={true} />
+          ) : (
+            <ClientAdPreview key={index} ad={ad} allowEdit={true} />
+          )
         )
       )}
     </div>

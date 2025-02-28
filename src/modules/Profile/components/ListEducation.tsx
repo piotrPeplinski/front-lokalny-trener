@@ -4,6 +4,7 @@ import { useAuthContext } from "../../Auth/context/auth-context";
 import CardEducation from "./CardEducation";
 import { Education } from "../types/profile-types";
 import { useProfileContext } from "../context/profile-context";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 interface ListEducationProps {
   allowEdit: boolean;
@@ -17,6 +18,7 @@ const ListEducation: FC<ListEducationProps> = ({
   const { user } = useAuthContext();
   const { refreshEducationList } = useProfileContext();
   const [educationList, setEducationList] = useState<Education[]>([]);
+  const [loading, setLoading] = useState(fetchedEducation ? false : true);
 
   useEffect(() => {
     if (fetchedEducation) {
@@ -30,8 +32,9 @@ const ListEducation: FC<ListEducationProps> = ({
             },
           });
           setEducationList(response.data);
+          setLoading(false);
         } catch (error) {
-          console.error("Error fetching education data:", error);
+          setLoading(false);
         }
       };
       fetchEducation();
@@ -40,6 +43,7 @@ const ListEducation: FC<ListEducationProps> = ({
 
   return (
     <>
+      {loading && <LoadSpinner />}
       {educationList.length !== 0 && (
         <div className="education-list shadow">
           <h2>Wykształcenie</h2>

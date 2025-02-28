@@ -3,6 +3,7 @@ import avatar from "./../../../assets/img/avatar.png";
 import { UserProfile } from "../types/profile-types";
 import { protectedApi } from "../../../api/axiosClient";
 import { useAuthContext } from "../../Auth/context/auth-context";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 const UserForm: FC<{}> = () => {
   const { user } = useAuthContext();
@@ -14,6 +15,7 @@ const UserForm: FC<{}> = () => {
     remote: false,
   });
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [loading, setLoading] = useState(true);
 
   //fill form with existing user data
   useEffect(() => {
@@ -21,8 +23,9 @@ const UserForm: FC<{}> = () => {
       try {
         const response = await protectedApi.get(`accounts/users/${user?.id}`);
         setProfileData(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        setLoading(false);
       }
     };
 
@@ -94,97 +97,104 @@ const UserForm: FC<{}> = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="">
-            {profileData.profile_picture ? "Zmień " : "Dodaj "}Zdjęcie profilowe
-          </label>
-          <input
-            type="file"
-            accept="image/*" // Restrict to image files only
-            onChange={handleFileChange}
-          />
-          {profileData.profile_picture && (
-            <button
-              type="button"
-              className="btn btn-light"
-              onClick={handleDeleteProfilePicture}
-            >
-              Usuń zdjęcie profilowe
-            </button>
-          )}
-        </div>
-        <div className="profile-image-circle">
-          <img
-            src={profileData.profile_picture || avatar}
-            alt="Profile picture"
-          />
-        </div>
-      </div>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="name">Imię</label>
-          <input
-            className="form-input"
-            value={profileData.first_name}
-            type="text"
-            id="name"
-            onChange={(e) =>
-              setProfileData({ ...profileData, first_name: e.target.value })
-            }
-          />
-        </div>
-        <div className="form-col-2">
-          <label htmlFor="surname">Nazwisko</label>
-          <input
-            className="form-input"
-            value={profileData.last_name}
-            type="text"
-            id="surname"
-            onChange={(e) =>
-              setProfileData({ ...profileData, last_name: e.target.value })
-            }
-          />
-        </div>
-      </div>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="city">Miasto</label>
-          <input
-            className="form-input"
-            value={profileData.city}
-            type="text"
-            id="city"
-            onChange={(e) =>
-              setProfileData({ ...profileData, city: e.target.value })
-            }
-          />
-        </div>
-        <div className="checkbox-col">
-          <label htmlFor="remote">
-            {user?.is_trainer
-              ? "Prowadzę zajęcia zdalnie"
-              : "Akceptuję zajęcia zdalne"}
-          </label>
-          <input
-            className="form-input"
-            checked={profileData.remote}
-            type="checkbox"
-            id="remote"
-            onChange={(e) =>
-              setProfileData({
-                ...profileData,
-                remote: e.target.checked,
-              })
-            }
-          />
-        </div>
-      </div>
-      <button className="btn btn-dark" type="submit">
-        Zapisz zmiany
-      </button>
-    </form>
+    <>
+      {loading ? (
+        <LoadSpinner />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="">
+                {profileData.profile_picture ? "Zmień " : "Dodaj "}Zdjęcie
+                profilowe
+              </label>
+              <input
+                type="file"
+                accept="image/*" // Restrict to image files only
+                onChange={handleFileChange}
+              />
+              {profileData.profile_picture && (
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  onClick={handleDeleteProfilePicture}
+                >
+                  Usuń zdjęcie profilowe
+                </button>
+              )}
+            </div>
+            <div className="profile-image-circle">
+              <img
+                src={profileData.profile_picture || avatar}
+                alt="Profile picture"
+              />
+            </div>
+          </div>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="name">Imię</label>
+              <input
+                className="form-input"
+                value={profileData.first_name}
+                type="text"
+                id="name"
+                onChange={(e) =>
+                  setProfileData({ ...profileData, first_name: e.target.value })
+                }
+              />
+            </div>
+            <div className="form-col-2">
+              <label htmlFor="surname">Nazwisko</label>
+              <input
+                className="form-input"
+                value={profileData.last_name}
+                type="text"
+                id="surname"
+                onChange={(e) =>
+                  setProfileData({ ...profileData, last_name: e.target.value })
+                }
+              />
+            </div>
+          </div>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="city">Miasto</label>
+              <input
+                className="form-input"
+                value={profileData.city}
+                type="text"
+                id="city"
+                onChange={(e) =>
+                  setProfileData({ ...profileData, city: e.target.value })
+                }
+              />
+            </div>
+            <div className="checkbox-col">
+              <label htmlFor="remote">
+                {user?.is_trainer
+                  ? "Prowadzę zajęcia zdalnie"
+                  : "Akceptuję zajęcia zdalne"}
+              </label>
+              <input
+                className="form-input"
+                checked={profileData.remote}
+                type="checkbox"
+                id="remote"
+                onChange={(e) =>
+                  setProfileData({
+                    ...profileData,
+                    remote: e.target.checked,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <button className="btn btn-dark" type="submit">
+            Zapisz zmiany
+          </button>
+        </form>
+      )}
+    </>
   );
 };
 

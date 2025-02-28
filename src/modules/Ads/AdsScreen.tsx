@@ -5,11 +5,14 @@ import AdPreview from "./components/AdPreview";
 import ClientAdPreview from "./components/ClientAdPreview";
 import { useAuthContext } from "../Auth/context/auth-context";
 import { getErrorMessage } from "../Reusable/utils";
+import { ClipLoader } from "react-spinners";
+import LoadSpinner from "../Reusable/LoadSpinner";
 
 const AdsScreen: FC<{}> = () => {
   const { subcategoryId, location, trainer_ads } = useParams();
   const [ads, setAds] = useState([]);
   const { user } = useAuthContext();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAdPreviews = async () => {
@@ -22,11 +25,13 @@ const AdsScreen: FC<{}> = () => {
           },
         });
         setAds(response.data);
+        setLoading(false);
       } catch (error: any) {
         const message = getErrorMessage(
           error,
           "Błąd podczas pobierania ogłoszeń."
         );
+        setLoading(false);
         alert(message);
       }
     };
@@ -42,6 +47,7 @@ const AdsScreen: FC<{}> = () => {
     <section>
       <div className="row">
         <h1 className="profile-func-title text-center">Ogłoszenia</h1>
+        {loading && <LoadSpinner />}
         <div className="ads__container">
           {ads.map((ad, index) =>
             trainer_ads === "true" ? (

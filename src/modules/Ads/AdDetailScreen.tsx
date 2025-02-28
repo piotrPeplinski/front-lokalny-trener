@@ -14,6 +14,7 @@ import Review from "./components/Review";
 import { useAuthContext } from "../Auth/context/auth-context";
 import Popup from "../Reusable/Popup";
 import ClickableStars from "./components/ClickableStars";
+import LoadSpinner from "../Reusable/LoadSpinner";
 
 const AdDetailScreen: FC<{}> = () => {
   const { adId } = useParams();
@@ -23,6 +24,7 @@ const AdDetailScreen: FC<{}> = () => {
   const [popupOpen, setPopupOpen] = useState(false);
   const [revRating, setRevRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // Check if the user can add a review
   const canAddReview =
@@ -36,8 +38,9 @@ const AdDetailScreen: FC<{}> = () => {
       try {
         const response = await api.get(`/ads-detail/${adId}/`);
         setAdDetails(response.data);
+        setLoading(false);
       } catch (err) {
-        console.error(err);
+        setLoading(false);
       }
     };
     fetchAdDetails();
@@ -73,64 +76,68 @@ const AdDetailScreen: FC<{}> = () => {
   return (
     <section>
       <div className="row">
-        <div className="ad-detail__container">
-          <div className="ad-detail__col">
-            <div className="row-center">
-              <div className="profile-image-circle">
-                <img
-                  src={
-                    adDetails.preview.profile_picture
-                      ? `${process.env.REACT_APP_BACKEND_URL}/${adDetails.preview.profile_picture}`
-                      : avatar
-                  }
-                  alt="Profile Picture"
-                />
+        {loading ? (
+          <LoadSpinner />
+        ) : (
+          <div className="ad-detail__container">
+            <div className="ad-detail__col">
+              <div className="row-center">
+                <div className="profile-image-circle">
+                  <img
+                    src={
+                      adDetails.preview.profile_picture
+                        ? `${process.env.REACT_APP_BACKEND_URL}/${adDetails.preview.profile_picture}`
+                        : avatar
+                    }
+                    alt="Profile Picture"
+                  />
+                </div>
+              </div>
+              <div className="row-center">
+                <h1>{adDetails.preview.full_name}</h1>
+              </div>
+              <div className="mt-2">
+                <h2 className="ad-detail__title">Opis</h2>
+                <p className="ad-detail__desc">{adDetails.text}</p>
+              </div>
+              <div className="mt-2">
+                <h2 className="ad-detail__title">Oferowane usługi</h2>
+                <ServiceList services={adDetails.services} />
+              </div>
+              <div className="mt-2">
+                {adDetails.photos.length > 0 && (
+                  <h2 className="ad-detail__title">Galeria zdjęć</h2>
+                )}
+                <Gallery allowEdit={false} fetchedPhotos={adDetails.photos} />
+              </div>
+              <div className="mt-2">
+                <h2 className="ad-detail__title">Opinie</h2>
+                {canAddReview && (
+                  <button
+                    onClick={() => setPopupOpen(true)}
+                    className="btn btn-dark mb-1"
+                  >
+                    <AdIcon />
+                    Dodaj opinię
+                  </button>
+                )}
+                <Rating rating={adDetails.preview.rating} showAmount={true} />
+                <div className="mb-1"></div>
+                {adDetails.reviews.map((review, index) => (
+                  <Review key={index} review={review} />
+                ))}
               </div>
             </div>
-            <div className="row-center">
-              <h1>{adDetails.preview.full_name}</h1>
-            </div>
-            <div className="mt-2">
-              <h2 className="ad-detail__title">Opis</h2>
-              <p className="ad-detail__desc">{adDetails.text}</p>
-            </div>
-            <div className="mt-2">
-              <h2 className="ad-detail__title">Oferowane usługi</h2>
-              <ServiceList services={adDetails.services} />
-            </div>
-            <div className="mt-2">
-              {adDetails.photos.length > 0 && (
-                <h2 className="ad-detail__title">Galeria zdjęć</h2>
-              )}
-              <Gallery allowEdit={false} fetchedPhotos={adDetails.photos} />
-            </div>
-            <div className="mt-2">
-              <h2 className="ad-detail__title">Opinie</h2>
-              {canAddReview && (
-                <button
-                  onClick={() => setPopupOpen(true)}
-                  className="btn btn-dark mb-1"
-                >
-                  <AdIcon />
-                  Dodaj opinię
-                </button>
-              )}
-              <Rating rating={adDetails.preview.rating} showAmount={true} />
-              <div className="mb-1"></div>
-              {adDetails.reviews.map((review, index) => (
-                <Review key={index} review={review} />
-              ))}
+            <div className="ad-detail__col-sm">
+              <ContactInfo contactInfo={adDetails.contact_info} />
+              <div className="mt-2"></div>
+              <ListEducation
+                allowEdit={false}
+                fetchedEducation={adDetails.education}
+              />
             </div>
           </div>
-          <div className="ad-detail__col-sm">
-            <ContactInfo contactInfo={adDetails.contact_info} />
-            <div className="mt-2"></div>
-            <ListEducation
-              allowEdit={false}
-              fetchedEducation={adDetails.education}
-            />
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Review Popup */}

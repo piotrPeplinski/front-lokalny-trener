@@ -4,6 +4,7 @@ import { protectedApi } from "../../../api/axiosClient";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import { RatingType, ReviewType } from "../../Ads/types/ads-types";
 import Review from "../../Ads/components/Review";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 interface ReviewDataType {
   rating: RatingType;
@@ -19,6 +20,7 @@ const MyReviews: FC<{}> = () => {
     },
     reviews: [],
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -30,8 +32,9 @@ const MyReviews: FC<{}> = () => {
           },
         });
         setReviewData(response.data);
+        setLoading(false);
       } catch (err) {
-        console.error("Error fetching reviews:", err);
+        setLoading(false);
       }
     };
     fetchReviews();
@@ -40,12 +43,18 @@ const MyReviews: FC<{}> = () => {
   return (
     <div className="me-container">
       <h2 className="profile-func-title">Opinie</h2>
-      <Rating showAmount={true} rating={reviewData.rating} />
-      <div className="mt-2">
-        {reviewData.reviews.map((review, index) => (
-          <Review key={index} review={review} />
-        ))}
-      </div>
+      {loading ? (
+        <LoadSpinner />
+      ) : (
+        <>
+          <Rating showAmount={true} rating={reviewData.rating} />
+          <div className="mt-2">
+            {reviewData.reviews.map((review, index) => (
+              <Review key={index} review={review} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

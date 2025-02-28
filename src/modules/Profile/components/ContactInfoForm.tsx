@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useAuthContext } from "../../Auth/context/auth-context";
 import { api, protectedApi } from "../../../api/axiosClient";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 interface SocialMedia {
   phone: string;
@@ -19,6 +20,7 @@ const ContactInfoForm: FC<{}> = () => {
     tiktok: "",
     website: "",
   });
+  const [loading, setLoading] = useState(true);
 
   // Fetch the existing social media data for the user
   useEffect(() => {
@@ -26,8 +28,9 @@ const ContactInfoForm: FC<{}> = () => {
       try {
         const response = await api.get(`/accounts/socials/${user?.id}/`);
         setFormData(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching social media data:", error);
+        setLoading(false);
       }
     };
 
@@ -54,69 +57,75 @@ const ContactInfoForm: FC<{}> = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="phone">Numer telefonu</label>
-          <input
-            className="form-input"
-            type="tel"
-            id="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            pattern="\d{9}"
-            title="Podaj prawidłowy numer telefonu składający się z 9 cyfr"
-          />
-        </div>
-      </div>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="facebook">Facebook (link)</label>
-          <input
-            className="form-input"
-            type="url"
-            id="facebook"
-            value={formData.facebook}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-col-2">
-          <label htmlFor="instagram">Instagram (link)</label>
-          <input
-            className="form-input"
-            type="url"
-            id="instagram"
-            value={formData.instagram}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form-row-2">
-        <div className="form-col-2">
-          <label htmlFor="tiktok">Tiktok (link)</label>
-          <input
-            className="form-input"
-            type="url"
-            id="tiktok"
-            value={formData.tiktok}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-col-2">
-          <label htmlFor="website">Strona internetowa (link)</label>
-          <input
-            className="form-input"
-            type="url"
-            id="website"
-            value={formData.website}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <button className="btn btn-dark" type="submit">
-        Zapisz zmiany
-      </button>
-    </form>
+    <>
+      {loading ? (
+        <LoadSpinner />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="phone">Numer telefonu</label>
+              <input
+                className="form-input"
+                type="tel"
+                id="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                pattern="\d{9}"
+                title="Podaj prawidłowy numer telefonu składający się z 9 cyfr"
+              />
+            </div>
+          </div>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="facebook">Facebook (link)</label>
+              <input
+                className="form-input"
+                type="url"
+                id="facebook"
+                value={formData.facebook}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-col-2">
+              <label htmlFor="instagram">Instagram (link)</label>
+              <input
+                className="form-input"
+                type="url"
+                id="instagram"
+                value={formData.instagram}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-row-2">
+            <div className="form-col-2">
+              <label htmlFor="tiktok">Tiktok (link)</label>
+              <input
+                className="form-input"
+                type="url"
+                id="tiktok"
+                value={formData.tiktok}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-col-2">
+              <label htmlFor="website">Strona internetowa (link)</label>
+              <input
+                className="form-input"
+                type="url"
+                id="website"
+                value={formData.website}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <button className="btn btn-dark" type="submit">
+            Zapisz zmiany
+          </button>
+        </form>
+      )}
+    </>
   );
 };
 

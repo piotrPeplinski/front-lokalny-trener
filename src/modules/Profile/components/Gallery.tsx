@@ -4,6 +4,7 @@ import { api } from "../../../api/axiosClient";
 import GalleryItem from "./GalleryItem";
 import { useProfileContext } from "../context/profile-context";
 import { useAuthContext } from "../../Auth/context/auth-context";
+import LoadSpinner from "../../Reusable/LoadSpinner";
 
 interface GalleryProps {
   allowEdit: boolean;
@@ -14,6 +15,7 @@ const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
   const { refreshPhotos } = useProfileContext();
   const { user } = useAuthContext();
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [loading, setLoading] = useState(fetchedPhotos ? false : true);
   // Fetch photos
   useEffect(() => {
     if (fetchedPhotos) {
@@ -27,8 +29,9 @@ const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
             },
           });
           setPhotos(response.data);
+          setLoading(false);
         } catch (error) {
-          console.error("Error fetching photos:", error);
+          setLoading(false);
         }
       };
       fetchPhotos();
@@ -37,9 +40,13 @@ const Gallery: FC<GalleryProps> = ({ allowEdit, fetchedPhotos }) => {
 
   return (
     <div className="photo-gallery">
-      {photos.map((photo, index) => (
-        <GalleryItem key={index} photo={photo} allowEdit={allowEdit} />
-      ))}
+      {loading ? (
+        <LoadSpinner />
+      ) : (
+        photos.map((photo, index) => (
+          <GalleryItem key={index} photo={photo} allowEdit={allowEdit} />
+        ))
+      )}
     </div>
   );
 };
