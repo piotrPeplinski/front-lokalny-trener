@@ -4,7 +4,6 @@ import { api } from "../../api/axiosClient";
 import AdPreview from "./components/AdPreview";
 import ClientAdPreview from "./components/ClientAdPreview";
 import { useAuthContext } from "../Auth/context/auth-context";
-import { AdPreviewType } from "./types/ads-types";
 import { getErrorMessage } from "../Reusable/utils";
 
 const AdsScreen: FC<{}> = () => {
@@ -32,13 +31,18 @@ const AdsScreen: FC<{}> = () => {
       }
     };
     fetchAdPreviews();
-  }, [subcategoryId]);
+  }, [subcategoryId, trainer_ads, location]);
+
+  //for debug
+  useEffect(() => {
+    console.log(ads);
+  }, [ads]);
 
   return (
     <section>
       <div className="row">
         <h1 className="profile-func-title text-center">Ogłoszenia</h1>
-        <div className={`ads__container`}>
+        <div className="ads__container">
           {ads.map((ad, index) =>
             trainer_ads === "true" ? (
               <AdPreview key={index} allowEdit={false} ad={ad} />
