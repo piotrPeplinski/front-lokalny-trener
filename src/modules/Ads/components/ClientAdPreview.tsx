@@ -69,7 +69,7 @@ const ClientAdPreview: FC<ClientAdPreviewProps> = ({
           <img
             src={
               ad.profile_picture
-                ? `${process.env.REACT_APP_BACKEND_URL}/${ad.profile_picture}`
+                ? `${ad.profile_picture}`
                 : avatar
             }
             alt="Profile Picture"

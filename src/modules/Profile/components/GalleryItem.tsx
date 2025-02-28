@@ -35,7 +35,7 @@ const GalleryItem: FC<GalleryItemProps> = ({ photo, allowEdit }) => {
         </>
       ) : (
         <img
-          src={`${process.env.REACT_APP_BACKEND_URL}/${photo.image}`}
+          src={`${photo.image}`}
           alt="Photo"
         />
       )}

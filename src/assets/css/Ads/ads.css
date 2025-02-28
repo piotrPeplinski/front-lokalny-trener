@@ -296,6 +296,7 @@
 
 .ad-detail__desc {
     font-size: 1.7rem;
+    text-align: justify;
 }
 
 .ad-detail__title {

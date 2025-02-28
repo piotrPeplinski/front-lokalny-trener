@@ -43,7 +43,7 @@ const ClientAdDetailScreen: FC<{}> = () => {
                   <img
                     src={
                       adDetails.user_data.profile_picture
-                        ? `${process.env.REACT_APP_BACKEND_URL}/${adDetails.user_data.profile_picture}`
+                        ? `${adDetails.user_data.profile_picture}`
                         : avatar
                     }
                     alt="Profile Picture"
