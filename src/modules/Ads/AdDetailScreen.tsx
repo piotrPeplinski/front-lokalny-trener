@@ -74,7 +74,7 @@ const AdDetailScreen: FC<{}> = () => {
   };
 
   return (
-    <section>
+    <section className="trainer-ad-section">
       <div className="row">
         {loading ? (
           <LoadSpinner />
