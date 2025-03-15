@@ -3,6 +3,7 @@ import { ReviewType } from "../types/ads-types";
 import Rating from "./Rating";
 import { EditIcon, TrashIcon } from "../../../assets/icons/icons";
 import ReviewForm from "./ReviewForm";
+import { protectedApi } from "../../../api/axiosClient";
 
 interface ReviewProps {
   review: ReviewType;
@@ -12,6 +13,16 @@ interface ReviewProps {
 
 const Review: FC<ReviewProps> = ({ review, allowEdit, refreshFunction }) => {
   const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleDelete = async () => {
+    try {
+      await protectedApi.delete(`/my-reviews/${review.id}/`);
+      refreshFunction && refreshFunction();
+    } catch (err) {
+      alert("Błąd podczas usuwania opinii.");
+    }
+  };
+
   return (
     <div className="review__container shadow">
       <div className="review__row">
@@ -27,7 +38,7 @@ const Review: FC<ReviewProps> = ({ review, allowEdit, refreshFunction }) => {
             <div onClick={() => setPopupOpen(true)}>
               <EditIcon />
             </div>
-            <div>
+            <div onClick={handleDelete}>
               <TrashIcon />
             </div>
           </div>
