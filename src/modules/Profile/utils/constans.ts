@@ -8,6 +8,11 @@ const trainerFunctionalities = [
   "Moja subskrypcja",
 ];
 
-const clientFunctionalities = ["O mnie", "Moje ogłoszenia", "Zmień hasło"];
+const clientFunctionalities = [
+  "O mnie",
+  "Moje ogłoszenia",
+  "Zmień hasło",
+  "Wystawione opinie",
+];
 
 export { trainerFunctionalities, clientFunctionalities };

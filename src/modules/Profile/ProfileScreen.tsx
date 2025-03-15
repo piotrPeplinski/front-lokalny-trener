@@ -12,6 +12,7 @@ import { useProfileContext } from "./context/profile-context";
 import MyReviews from "./components/MyReviews";
 import { useAuthContext } from "../Auth/context/auth-context";
 import { useNavigate } from "react-router-dom";
+import LeftReviews from "./components/LeftReviews";
 
 const ProfileScreen: FC<{}> = () => {
   const { selectedFunc, setSelectedFunc } = useProfileContext();
@@ -33,6 +34,8 @@ const ProfileScreen: FC<{}> = () => {
         return <MyAds />;
       case "Opinie":
         return <MyReviews />;
+      case "Wystawione opinie":
+        return <LeftReviews />;
     }
   };
 

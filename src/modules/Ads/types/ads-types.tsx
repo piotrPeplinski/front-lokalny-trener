@@ -49,10 +49,12 @@ export interface ContactInfoType {
 }
 
 export interface ReviewType {
+  id: number;
   text: string;
   rating: number;
   created: string;
   creator_full_name: string;
+  trainer_full_name: string;
   creator: number;
 }
 

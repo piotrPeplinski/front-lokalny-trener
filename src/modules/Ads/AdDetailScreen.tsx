@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ServiceList from "./components/ServiceList";
 import ListEducation from "../Profile/components/ListEducation";
 import { AdDetailType } from "./types/ads-types";
-import { api, protectedApi } from "../../api/axiosClient";
+import { api } from "../../api/axiosClient";
 import ContactInfo from "./components/ContactInfo";
 import avatar from "./../../assets/img/avatar.png";
 import Gallery from "../Profile/components/Gallery";
@@ -12,9 +12,8 @@ import { defaultAdDetails } from "./utils/utils";
 import { AdIcon } from "../../assets/icons/icons";
 import Review from "./components/Review";
 import { useAuthContext } from "../Auth/context/auth-context";
-import Popup from "../Reusable/Popup";
-import ClickableStars from "./components/ClickableStars";
 import LoadSpinner from "../Reusable/LoadSpinner";
+import ReviewForm from "./components/ReviewForm";
 
 const AdDetailScreen: FC<{}> = () => {
   const { adId } = useParams();
@@ -22,9 +21,8 @@ const AdDetailScreen: FC<{}> = () => {
 
   const [adDetails, setAdDetails] = useState<AdDetailType>(defaultAdDetails);
   const [popupOpen, setPopupOpen] = useState(false);
-  const [revRating, setRevRating] = useState(0);
-  const [reviewText, setReviewText] = useState("");
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
   // Check if the user can add a review
   const canAddReview =
@@ -44,34 +42,7 @@ const AdDetailScreen: FC<{}> = () => {
       }
     };
     fetchAdDetails();
-  }, [adId]);
-
-  const handleReviewSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (revRating === 0) {
-      alert("Proszę ocenić przed dodaniem opinii.");
-      return;
-    }
-
-    try {
-      await protectedApi.post(`/ads-detail/${adId}/`, {
-        rating: revRating,
-        text: reviewText,
-      });
-
-      // Refetch the ad details to update rating and reviews
-      const updatedResponse = await api.get(`/ads-detail/${adId}/`);
-      setAdDetails(updatedResponse.data);
-
-      // Reset state and close popup
-      setPopupOpen(false);
-      setRevRating(0);
-      setReviewText("");
-    } catch (error) {
-      console.error("Failed to submit review:", error);
-      alert("Wystąpił błąd podczas dodawania opinii.");
-    }
-  };
+  }, [adId, refresh]);
 
   return (
     <section className="trainer-ad-section">
@@ -141,30 +112,12 @@ const AdDetailScreen: FC<{}> = () => {
       </div>
 
       {/* Review Popup */}
-      <Popup isOpen={popupOpen} onClose={() => setPopupOpen(false)}>
-        <h2 className="profile-func-title">Dodaj opinię</h2>
-        <form onSubmit={handleReviewSubmit}>
-          <ClickableStars rating={revRating} setRating={setRevRating} />
-          <div className="form-row-2">
-            <div className="form-col-2">
-              <label htmlFor="desc">Treść</label>
-              <textarea
-                id="desc"
-                value={reviewText}
-                onChange={(e) => setReviewText(e.target.value)}
-                required
-              ></textarea>
-            </div>
-          </div>
-          <button
-            className="btn btn-dark"
-            type="submit"
-            disabled={revRating === 0}
-          >
-            Dodaj
-          </button>
-        </form>
-      </Popup>
+      <ReviewForm
+        adId={adId}
+        popupOpen={popupOpen}
+        setPopupOpen={setPopupOpen}
+        refreshFunction={() => setRefresh(!refresh)}
+      />
     </section>
   );
 };
