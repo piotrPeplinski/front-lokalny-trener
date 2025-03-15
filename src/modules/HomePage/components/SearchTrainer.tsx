@@ -160,11 +160,11 @@ const SearchTrainer: FC<{}> = () => {
             <div className="search-btns">
               <button className="btn btn-light" onClick={handleSearch(true)}>
                 <SearchIcon />
-                <p>Znajdź trenera</p>
+                <p>Ogłoszenia trenerów</p>
               </button>
               <button className="btn btn-dark" onClick={handleSearch(false)}>
                 <SearchIcon />
-                <p>Znajdź klienta</p>
+                <p>Ogłoszenia klientów</p>
               </button>
             </div>
           </form>
