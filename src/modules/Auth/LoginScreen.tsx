@@ -48,7 +48,11 @@ const LoginScreen: FC<{}> = () => {
           <div className="center-wrapper">
             <div className="login-container dark-bg">
               <form onSubmit={handleSubmit}>
-                <img src={logo} alt="Logo" />
+                <div className="auth-title">
+                  <img src={logo} alt="Logo" />
+                  <h2>Zaloguj się</h2>
+                </div>
+
                 <p className="form-label">E-mail</p>
                 <input
                   required
