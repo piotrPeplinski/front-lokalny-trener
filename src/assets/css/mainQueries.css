@@ -254,57 +254,24 @@
         margin: 2rem 0;
     }
 
-    .auth-col:first-of-type,
-    .auth-col:last-of-type {
-        padding: 0;
-        border: none;
-    }
-
-    .auth-row:first-of-type {
-        margin-bottom: 2rem;
-    }
-
-    .auth-row:first-of-type .auth-col:first-of-type {
-        margin-right: 1rem;
-    }
-
-    .auth-row:first-of-type .auth-col:last-of-type {
-        margin-left: 1rem;
-    }
-
-    .auth-row:last-of-type {
+    /* AUTH */
+    .account-row {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
     }
 
-    .register-container {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+    .account-title {
+        margin-bottom: 0rem;
     }
 
-    .register-container form {
-        margin-top: 2rem;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+    .benefits__intro {
+        margin-top: 1rem;
     }
 
-    .auth-row:last-of-type .auth-col {
-        width: 100%;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        display: block;
-    }
-
-    .benefits h3 {
-        margin-top: 2rem;
+    .account-col h4 {
+        margin-top: 1rem;
     }
 
     /* FOOTER */
@@ -395,6 +362,8 @@
     }
 
     .socials-row a {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 3rem;
         flex: 0 0 3rem;
     }
 

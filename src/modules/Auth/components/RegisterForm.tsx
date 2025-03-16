@@ -127,6 +127,15 @@ const RegisterForm: FC<{}> = () => {
                 ))}
               </div>
             </div>
+            <div className="center-wrapper">
+              <button
+                className="btn btn-dark"
+                onClick={() => handleSubmit(true)}
+              >
+                <AvatarIcon />
+                Założ konto trenera
+              </button>
+            </div>
           </div>
           <div className="account-col">
             <h4>Jestem klientem</h4>
@@ -148,21 +157,6 @@ const RegisterForm: FC<{}> = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="account-row">
-          <div className="account-col">
-            <div className="center-wrapper">
-              <button
-                className="btn btn-dark"
-                onClick={() => handleSubmit(true)}
-              >
-                <AvatarIcon />
-                Założ konto trenera
-              </button>
-            </div>
-          </div>
-          <div className="account-col">
             <div className="center-wrapper">
               <button
                 className="btn btn-dark"
@@ -173,6 +167,10 @@ const RegisterForm: FC<{}> = () => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="account-row">
+          <div className="account-col"></div>
+          <div className="account-col"></div>
         </div>
       </Popup>
     </div>
