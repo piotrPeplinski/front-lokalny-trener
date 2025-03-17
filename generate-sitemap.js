@@ -15,8 +15,11 @@ const routes = [
   { url: "/add", changefreq: "monthly", priority: 0.7 },
   { url: "/pricing", changefreq: "monthly", priority: 0.8 },
   { url: "/payment-success", changefreq: "monthly", priority: 0.6 },
+  { url: "/register-success", changefreq: "monthly", priority: 0.6 },
   { url: "/payment-fail", changefreq: "monthly", priority: 0.6 },
   { url: "/subscription", changefreq: "daily", priority: 0.7 },
+  { url: "/policy", changefreq: "monthly", priority: 0.6 },
+  { url: "/statute", changefreq: "monthly", priority: 0.6 },
   // Add more routes as needed
 ];
 
