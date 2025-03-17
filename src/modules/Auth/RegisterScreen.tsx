@@ -30,7 +30,7 @@ const RegisterScreen: FC<RegisterScreenProps> = ({ darkBg }) => {
           content={`${process.env.REACT_APP_FRONTEND_URL}/register`}
         />
       </Helmet>
-      <section className={darkBg ? "dark-bg" : ""}>
+      <section className={`no-height-section ${darkBg ? "dark-bg" : ""}`}>
         <div className="row">
           <div className="center-wrapper">
             <RegisterForm />

@@ -109,7 +109,7 @@ const RegisterForm: FC<{}> = () => {
         </div>
         <div className="account-row">
           <div className="account-col">
-            <h4>Jestem trenerem</h4>
+            <h4>Jestem ekspertem</h4>
             <div className="benefits">
               <h5>
                 Załóż konto, zapełnij swój grafik i zacznij zarabiać już dziś!
@@ -133,7 +133,7 @@ const RegisterForm: FC<{}> = () => {
                 onClick={() => handleSubmit(true)}
               >
                 <AvatarIcon />
-                Założ konto trenera
+                Załóż konto eksperta
               </button>
             </div>
           </div>
@@ -163,14 +163,10 @@ const RegisterForm: FC<{}> = () => {
                 onClick={() => handleSubmit(false)}
               >
                 <AvatarIcon />
-                Założ konto klienta
+                Załóż konto klienta
               </button>
             </div>
           </div>
-        </div>
-        <div className="account-row">
-          <div className="account-col"></div>
-          <div className="account-col"></div>
         </div>
       </Popup>
     </div>
