@@ -471,8 +471,8 @@
     .popup-content {
         padding: 1rem;
         padding-top: 5rem;
-        max-height: 85vh;
-        width: 96vw;
+        max-height: 78vh;
+        width: 92vw;
         overflow-y: scroll;
     }
 
