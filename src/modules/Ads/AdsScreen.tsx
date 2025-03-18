@@ -48,7 +48,7 @@ const AdsScreen: FC<{}> = () => {
       <div className="row">
         <h1 className="profile-func-title text-center">Ogłoszenia</h1>
         {loading && <LoadSpinner />}
-        <div className="ads__container">
+        <div className="posts__container">
           {ads.map((ad, index) =>
             trainer_ads === "true" ? (
               <AdPreview key={index} allowEdit={false} ad={ad} />
